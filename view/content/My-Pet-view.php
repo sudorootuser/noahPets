@@ -47,8 +47,8 @@ if (isset($_POST['mi-pet'])) {
                 <span>Mi masota se llama <input type="text" class="form-text" name="name_pet"> y es un </span>
                 <select class="form-select-my-pet" name="pet_type">
                     <option selected>...</option>
-                    <option value="gato">gato</option>
-                    <option value="perro">perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Perro">Perro</option>
                 </select>
                 <br>
                 <br>

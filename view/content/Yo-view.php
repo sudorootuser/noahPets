@@ -71,7 +71,6 @@ if (isset($_POST['yo'])) {
                         </div>
                     </div>
                     <div class="col-2"></div>
-
                 </div>
                 </span>
             </form>

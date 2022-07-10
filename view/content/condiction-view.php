@@ -25,17 +25,17 @@ if (isset($_POST['condiction'])) {
         <div class="row">
             <div class="col-4"></div>
             <div class="col">
-            <?php
-            if (isset($sessionSmg)) {
-                if ($sessionSmg != '') {
-            ?>
-                    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                        <strong>Error! </strong><?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-            <?php
+                <?php
+                if (isset($sessionSmg)) {
+                    if ($sessionSmg != '') {
+                ?>
+                        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            <strong>Error! </strong><?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                <?php
+                    }
                 }
-            }
-            ?>
+                ?>
                 <form action="" method="post" class="forms-condiction">
                     <span><?php echo $_SESSION['mi_pet']['Name_Pet']; ?></span>
                     <div class="row">
@@ -58,6 +58,7 @@ if (isset($_POST['condiction'])) {
             </div>
             <div class="col-2"></div>
         </div>
+        </form>
     </div>
-    </form>
+
 </div>

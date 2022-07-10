@@ -180,6 +180,7 @@ body {
 /* on mouse-over, add border color */
 .form-check-yo:hover input {
     border: none;
+    cursor: pointer;
 }
 
 .form-check-yo .aceptTerms {
@@ -189,6 +190,7 @@ body {
     border: none;
     margin-top: -20px;
     margin-right: 10px;
+
 }
 
 .cont-button-yo {
@@ -211,12 +213,6 @@ body {
     background-color: #F07639;
     color: white;
 }
-
-/* .button-home-yo button .pet-img {
-    margin-top: -5px;
-    width: 35px;
-    height: 35px
-} */
 
 .button-yo button .mi-yo-img {
     margin-top: -5px;
@@ -247,7 +243,7 @@ body {
     font-weight: 600;
     border: 2px solid #F07639;
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
 }
 
 .forms-my-pet {
@@ -255,9 +251,12 @@ body {
 }
 
 .forms-my-pet .form-text {
+    color: #7a7a7a;
+    font-weight: 600;
+    font-weight: 28px;
     border: 2px solid #F07639;
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
 }
 
 .my-pet .forms-my-pet span {
@@ -327,10 +326,18 @@ body {
     margin-bottom: 80px;
 }
 
+.form-select-condiction option {
+    border: 2px solid red;
+
+}
+
 .forms-my-pet .form-text {
+    color: #7a7a7a;
+    font-weight: 600;
+    font-weight: 28px;
     border: 2px solid #F07639;
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
 }
 
 .my-pet .forms-my-pet span {
@@ -395,6 +402,12 @@ body {
     margin: 5px;
     width: 150px;
     height: 65px;
+    margin-left: 25px;
+}
+
+.form-check input:checked {
+    border: none;
+    background-color: #F07639;
 }
 
 .form-check label {
@@ -425,4 +438,109 @@ body {
     color: #7a7a7a;
     font-size: 28px;
     font-weight: 600;
+}
+
+/* Another pet */
+
+.another-pet img {
+    width: 400px;
+    height: 100%;
+}
+
+.cont-button-p {
+    padding-top: 60px;
+    text-align: center;
+    align-items: center;
+}
+
+
+.button-p button {
+    cursor: pointer;
+    background: #F07639;
+    padding: 20px;
+    width: 45%;
+    margin-right: -45%;
+    border-radius: 25px;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.button-p button:hover {
+    background-color: #F07639;
+    color: white;
+}
+
+.button-p button .mi-yo-img {
+    margin-top: -5px;
+    margin-left: 10px;
+    width: 35px;
+    height: 35px
+}
+
+/* End Another Pet */
+
+/* Food */
+
+.food-balance .card {
+    cursor: pointer;
+    width: 100%;
+    padding: 30px 30px 0 30px;
+    border-radius: 35px;
+    border: 2px solid #F07639;
+}
+
+.food-balance .card-body a {
+    width: 150px;
+    border-radius: 15px;
+}
+
+/* End Food */
+
+/* Diet */
+
+.food-diet .card {
+
+    /* padding: 5px; */
+    border-radius: 35px;
+    border: 2px solid #F07639;
+    background-color: #F07639;
+    margin-bottom: 40px;
+}
+
+.food-diet .card-title {
+    text-align: left;
+    color: #2F294E;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.food-diet .card-text {
+    color: #ffff;
+    /* font-size: 28px;  */
+    font-weight: 500;
+}
+
+.food-diet img {
+    width: 180px;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+/* CHekc Out */
+
+.forms-checkout input {
+    border: 2px solid #F07639;
+    margin-top: 30px;
+    border-radius: 15px;
+    height: 65px;
+}
+
+.forms-checkout span {
+    text-align: left;
+}
+
+.forms-checkout input:focus {
+    border: 2px solid #F07639;
 }
