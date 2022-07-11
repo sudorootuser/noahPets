@@ -23,9 +23,8 @@ if (isset($_POST['estery'])) {
 } ?>
 <div class="container-fluid condiction">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-        <?php
+        <div class="col">
+            <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
             ?>
@@ -38,18 +37,20 @@ if (isset($_POST['estery'])) {
             ?>
             <form action="" method="post" class="forms-condiction">
                 <?php if ($_SESSION['condiction']['Type_Cond'] == 'Macho') { ?>
-                    <span><?php echo $_SESSION['mi_pet']['Name_Pet']; ?> esta castrado</span>
+                    <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> esta castrado</span>
                 <?php } else { ?>
-                    <span><?php echo $_SESSION['mi_pet']['Name_Pet']; ?> esta esterilizada</span>
+                    <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> esta esterilizada</span>
                 <?php }
                 ?>
                 <div class="row">
+                    <div class="col"></div>
                     <div class="col">
-                        <select class="form-select-condiction" name="esterilizad">
+                        <select class="form-select form-select-condiction" name="esterilizad">
                             <option value="Sí" selected>Sí</option>
                             <option value="No">No</option>
                         </select>
                     </div>
+                    <div class="col"></div>
                 </div>
                 <br>
                 <div class="row">
@@ -61,9 +62,7 @@ if (isset($_POST['estery'])) {
                     </div>
                     <div class="col-2"></div>
                 </div>
-                </span>
             </form>
         </div>
-        <div class="col-2"></div>
     </div>
 </div>

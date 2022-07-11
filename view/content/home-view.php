@@ -1,5 +1,9 @@
 <!-- Content -->
-
+<?php
+session_start(['name' => 'SPM']);
+session_unset(['name' => 'SPM']);
+session_destroy(['name' => 'SPM']);
+?>
 <div class="container-fluid home" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
 	<img src="./view/assets/img/NoahPets.png" alt="">
 	<div class="row">

@@ -3,7 +3,7 @@ include "./model/mainModel.php";
 
 $yo = new mainModel();
 
-if (isset($_POST['type'])) {
+if (isset($_POST['build'])) {
 
     $physical_build = $yo->limpiar_cadena($_POST['physical-build']);
 
@@ -29,7 +29,7 @@ if (isset($_POST['type'])) {
                 if ($sessionSmg != '') {
             ?>
                     <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                        <strong>Error! </strong><?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      <?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
             <?php
                 }
@@ -41,25 +41,25 @@ if (isset($_POST['type'])) {
                 <div class="row text-center">
                     <div class="col">
                         <div class="row">
-                            <div class="col-12" style="display:show;" id="delgado_white">
-                                <img style="width: 100%;" src="../view/assets/img/delgado_white.png" alt="" srcset="">
+                            <div id="delgado_og" class="col-12" style="display:none;">
+                                <img style="width: 100%;" src="../view/assets/img/ideal_orange.png" alt="" srcset="">
                             </div>
-                            <div class="col-12" style="display:none;">
-                                <img style="width: 100%;" src="../view/assets/img/delgado_orange.png" alt="" srcset="">
+                            <div id="delgado_wt" class="col-12" style="display:block;">
+                                <img style="width: 100%;" src="../view/assets/img/ideal_white.png" alt="" srcset="">
                             </div>
                         </div>
                         <span>Delgado</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="physical-build" id="delgado_bt" value="Delgado">
+                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Delgado" checked>
                         </div>
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col-12" style="display:none;">
-                                <img style="width: 100%;" src="../view/assets/img/ideal_white.png" alt="" srcset="">
+                            <div id="ideal_og" class="col-12" style="display:block;">
+                                <img style="width: 100%;" src="../view/assets/img/delgado_orange.png" alt="" srcset="">
                             </div>
-                            <div class="col-12" style="display:show;">
-                                <img style="width: 100%;" src="../view/assets/img/ideal_orange.png" alt="" srcset="">
+                            <div id="ideal_wt" class="col-12" style="display:none;">
+                                <img style="width: 100%;" src="../view/assets/img/delgado_white.png" alt="" srcset="">
                             </div>
                         </div>
                         <span>Ideal</span>
@@ -69,10 +69,10 @@ if (isset($_POST['type'])) {
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col-12" style="display:show;">
+                            <div id="peso_wt" class="col-12" style="display:block;">
                                 <img style="width: 100%;" src="../view/assets/img/sobrepeso_white.png" alt="" srcset="">
                             </div>
-                            <div class="col-12" style="display:none;">
+                            <div id="peso_og" class="col-12" style="display:none;">
                                 <img style="width: 100%;" src="../view/assets/img/sobrepeso_orange.png" alt="" srcset="">
                             </div>
                         </div>
@@ -84,52 +84,59 @@ if (isset($_POST['type'])) {
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                     <div class="col cont-button-g">
                         <div class="button-g">
-                            <button class="btn btn" type="submit" name="type" value="type">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            <button class="btn btn" type="submit" name="build" value="build">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            <br>
+                            <br>
                         </div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                 </div>
                 </span>
             </form>
         </div>
         <div class="col-2"></div>
     </div>
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <p class="auto-style3"><input name="pago1" class="pago" type="radio" style="width: 70px; height: 70px" value="Ventanilla" />&nbsp;<span class="auto-style4"> Recoger en Ventanilla</span></p>
-    <p>&nbsp;</p>
-    <p class="auto-style3"><input checked="checked" class="pago" name="pago1" type="radio" style="width: 70px; height: 70px" value="Deposito" /><span class="auto-style4"> Deposito Bancario</span></p>
-    <p>&nbsp;</p>
-
-    <div id="div1" style="display:none;">
-        <p class="auto-style3"><span class="auto-style4">CLABE Bancaria:</span></p>
-        <p class="auto-style1"><input type="number" name="RECEIVER_BANK_ACCOUNT_NUMBER" id="RECEIVER_BANK_ACCOUNT_NUMBER" size="23" style="font-family: Arial; font-size: 50pt; height: 75px; width: 845px;" required class="auto-style5" /></p>
-        <p class="auto-style3"><span class="auto-style4">Confirma CLABE Bancaria:</span></p>
-        <p class="auto-style1"><input type="number" name="RECEIVER_ACCOUNT_NUMBER_CONFIRMATION" id="RECEIVER_ACCOUNT_NUMBER_CONFIRMATION" size="23" style="font-family: Arial; font-size: 50pt; height: 75px; width: 845px;" required class="auto-style5" /></p>
-    </div>
-
-    <div id="div2" style="display:none;">
-        <center>
-            <span>Has seleccionado ventanilla</span>
-        </center>
-    </div> -->
 </div>
-<!-- <script>
+<script>
     $(document).ready(function() {
-        $(".pago").click(function(evento) {
+        $(".form-check-input").click(function(evento) {
 
             var valor = $(this).val();
 
-            if (valor == 'Deposito') {
-                $("#div1").css("display", "block");
-                $("#div2").css("display", "none");
+            if (valor == 'Sobrepeso') {
+
+                $("#ideal_wt").css("display", "block");
+                $("#ideal_og").css("display", "none");
+
+                $("#delgado_og").css("display", "none");
+                $("#delgado_wt").css("display", "block");
+
+                $("#peso_og").css("display", "block");
+                $("#peso_wt").css("display", "none");
+            } else if (valor == 'Ideal') {
+
+                $("#peso_wt").css("display", "block");
+                $("#peso_og").css("display", "none");
+
+                $("#delgado_og").css("display", "none");
+                $("#delgado_wt").css("display", "block");
+
+                $("#ideal_og").css("display", "block");
+                $("#ideal_wt").css("display", "none");
             } else {
-                $("#div1").css("display", "none");
-                $("#div2").css("display", "block");
+
+                $("#peso_wt").css("display", "block");
+                $("#peso_og").css("display", "none");
+
+                $("#ideal_og").css("display", "none");
+                $("#ideal_wt").css("display", "block");
+
+                $("#delgado_og").css("display", "block");
+                $("#delgado_wt").css("display", "none");
             }
         });
-    }); -->
+    });
 </script>

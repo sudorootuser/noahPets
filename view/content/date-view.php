@@ -3,7 +3,7 @@ include "./model/mainModel.php";
 
 $yo = new mainModel();
 
-if (isset($_POST['raze'])) {
+if (isset($_POST['date'])) {
 
     $date_nacio = $yo->limpiar_cadena($_POST['date_nacio']);
 
@@ -11,7 +11,7 @@ if (isset($_POST['raze'])) {
 
     if ($date_nacio == "") {
 
-        $sessionSmg = "Todos los campos son obligatorios";
+        $sessionSmg = "La fecha es obligatoría";
     } else {
 
         $_SESSION['date_nacio'] = [
@@ -22,9 +22,9 @@ if (isset($_POST['raze'])) {
 } ?>
 <div class="container-fluid date">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-        <?php
+        <div class="col-1"></div>
+        <div class="col-10">
+            <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
             ?>
@@ -36,18 +36,22 @@ if (isset($_POST['raze'])) {
             }
             ?>
             <form action="" method="post" class="forms-date">
-                <span><?php echo $_SESSION['mi_pet']['Name_Pet']; ?> nacio el</span>
+                <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> nacio el</span>
                 <div class="row">
-                    <input class="form-select-date" type="date" name="date_nacio" id="">
-                    <br>
-                    <label for="formFile" class="form-label">¿No estás seguro? Escribe un aproximado</label>
+                    <div class="col-sm-1"></div>
+                    <div class="col">
+                        <input class="form-select-date" type="date" name="date_nacio" id="">
+                        <br>
+                        <label for="formFile" class="form-label">¿No estás seguro? Escribe un aproximado</label>
+                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col cont-button-g">
                         <div class="button-g">
-                            <button class="btn btn" type="submit" name="raze" value="estery">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            <button class="btn btn" type="submit" name="date" value="date">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                         </div>
                     </div>
                     <div class="col-2"></div>
@@ -55,6 +59,6 @@ if (isset($_POST['raze'])) {
                 </span>
             </form>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
     </div>
 </div>

@@ -23,9 +23,9 @@ if (isset($_POST['food'])) {
 } ?>
 <div class="container-fluid condiction">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-        <?php
+        <div class="col-1"></div>
+        <div class="col-10">
+            <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
             ?>
@@ -37,7 +37,7 @@ if (isset($_POST['food'])) {
             }
             ?>
             <form action="" method="post" class="forms-condiction">
-                <span>Actualmente la comida que le doy a <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> es</span>
+                <span>Actualmente la comida que le doy a <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
                 <div class="row">
                     <div class="col">
                         <select class="form-select-raze" name="food-style">
@@ -49,17 +49,17 @@ if (isset($_POST['food'])) {
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                     <div class="col cont-button-g">
                         <div class="button-g">
                             <button class="btn btn" type="submit" name="food" value="food">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                         </div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                 </div>
                 </span>
             </form>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
     </div>
 </div>

@@ -36,11 +36,11 @@ if (isset($_POST['condiction'])) {
             }
             ?>
             <form action="" method="post" class="forms-condiction">
-                <span>¿Qué síntomas ha tenido o tiene <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> asociadas a esta condición?</span>
+                <span>¿<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene una condición médica adicional?</span>
                 <div class="row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Sí" id="additional_check" name="additional_check">
+                            <input class="form-check-input" type="radio" value="Sí" id="additional_check" name="additional_check">
                             <label class="form-check-label" for="additional_check" style="font-size:28px;">
                                 SÍ
                             </label>
@@ -48,11 +48,18 @@ if (isset($_POST['condiction'])) {
                     </div>
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="No" id="additional_check" name="additional_check">
+                            <input class="form-check-input" type="radio" value="No" id="additional_check" name="additional_check">
                             <label class="form-check-label" for="additional_check" style="font-size:28px;">
                                 NO
                             </label>
                         </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_area" rows="7" placeholder="Describe la condición adicional de tu mascota!"></textarea>
                     </div>
                 </div>
                 <br>
@@ -71,3 +78,18 @@ if (isset($_POST['condiction'])) {
         <div class="col-2"></div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".form-check-input").click(function(evento) {
+
+            var valor = $(this).val();
+
+            if (valor == 'Sí') {
+                $("#text_area").css("display", "block");
+            } else {
+
+                $("#text_area").css("display", "none");
+            }
+        });
+    });
+</script>

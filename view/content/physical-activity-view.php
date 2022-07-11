@@ -3,9 +3,9 @@ include "./model/mainModel.php";
 
 $yo = new mainModel();
 
-if (isset($_POST['type'])) {
+if (isset($_POST['activity'])) {
 
-    $physical_activity = $yo->limpiar_cadena($_POST['activity']);
+    $physical_activity = $yo->limpiar_cadena($_POST['physical-activity']);
 
     $sessionSmg = "";
 
@@ -24,7 +24,7 @@ if (isset($_POST['type'])) {
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-        <?php
+            <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
             ?>
@@ -37,49 +37,60 @@ if (isset($_POST['type'])) {
             ?>
             <form action="" method="post" class="forms-condiction">
                 <span>El nivel de actividad física de <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> es</span>
-                <br><br><br>
-                <div class="row">
-                    <div class="col-4">
-                        <img style="width: 100%;" src="../view/assets/img/poco_activo.png" alt="" srcset="">
-                    </div>
-                    <div class="col-4">
-                        <img style="width: 100%;" src="../view/assets/img/activa.png" alt="" srcset="">
-                    </div>
-                    <div class="col-4">
-                        <img style="width: 100%;" src="../view/assets/img/muy_activa.png" alt="" srcset="">
-                    </div>
-                </div>
-                <div class="row">
+                <div class="row text-center">
                     <div class="col">
-                        <span>Poco activa</span>
+                        <div class="row">
+                            <div id="poc_At_og" class="col-12" style="display:none;">
+                                <img style="width: 100%;" src="../view/assets/img/poco_activo_og.png" alt="" srcset="">
+                            </div>
+                            <div id="poc_At_wt" class="col-12" style="display:block;">
+                                <img style="width: 100%;" src="../view/assets/img/poco_activo_wt.png" alt="" srcset="">
+                            </div>
+                        </div>
+                        <span>Poco Activo</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="activity" id="activity1" value="Poco activa">
+                            <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Poco Activo" checked>
                         </div>
                     </div>
                     <div class="col">
+                        <div class="row">
+                            <div id="activa_og" class="col-12" style="display:block;">
+                                <img style="width: 100%;" src="../view/assets/img/activa_og.png" alt="" srcset="">
+                            </div>
+                            <div id="activa_wt" class="col-12" style="display:none;">
+                                <img style="width: 100%;" src="../view/assets/img/activa_wt.png" alt="" srcset="">
+                            </div>
+                        </div>
                         <span>Activa</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="activity" id="activity1" checked value="Activa">
+                            <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Activa" checked>
                         </div>
                     </div>
                     <div class="col">
+                        <div class="row">
+                            <div id="m_activa_wt" class="col-12" style="display:block;">
+                                <img style="width: 100%;" src="../view/assets/img/muy_activa_wt.png" alt="" srcset="">
+                            </div>
+                            <div id="m_activa_og" class="col-12" style="display:none;">
+                                <img style="width: 100%;" src="../view/assets/img/muy_activa_og.png" alt="" srcset="">
+                            </div>
+                        </div>
                         <span>Muy activa</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="activity" id="activity1" value="Muy activa">
+                            <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Muy Activa">
                         </div>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                     <div class="col cont-button-g">
                         <div class="button-g">
-                            <button class="btn btn" type="submit" name="type" value="type">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            <button class="btn btn" type="submit" name="activity" value="activity">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             <br><br>
-
                         </div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                 </div>
                 </span>
             </form>
@@ -87,3 +98,46 @@ if (isset($_POST['type'])) {
         <div class="col-2"></div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $(".form-check-input").click(function(evento) {
+
+            var valor = $(this).val();
+
+            if (valor == 'Poco Activo') {
+
+                $("#poc_At_og").css("display", "block");
+                $("#poc_At_wt").css("display", "none");
+
+                $("#activa_og").css("display", "none");
+                $("#activa_wt").css("display", "block");
+
+                $("#m_activa_og").css("display", "none");
+                $("#m_activa_wt").css("display", "block");
+
+            } else if (valor == 'Activa') {
+
+                $("#activa_og").css("display", "block");
+                $("#activa_wt").css("display", "none");
+
+                $("#poc_At_og").css("display", "none");
+                $("#poc_At_wt").css("display", "block");
+
+                $("#m_activa_og").css("display", "none");
+                $("#m_activa_wt").css("display", "block");
+
+            } else {
+
+                $("#m_activa_og").css("display", "block");
+                $("#m_activa_wt").css("display", "none");
+
+                $("#poc_At_og").css("display", "none");
+                $("#poc_At_wt").css("display", "block");
+
+                $("#activa_og").css("display", "none");
+                $("#activa_wt").css("display", "block");
+
+            }
+        });
+    });
+</script>

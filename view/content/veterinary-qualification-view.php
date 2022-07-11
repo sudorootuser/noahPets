@@ -5,7 +5,7 @@ $yo = new mainModel();
 
 if (isset($_POST['condiction'])) {
 
-    $veterinary_check = $yo->limpiar_cadena($_POST['veterinary_check']);
+    $veterinary_check = $yo->limpiar_cadena($_POST['check_option']);
     $examen_file = $_FILES['examen_file']['name'];
 
     $sessionSmg = "";
@@ -26,7 +26,7 @@ if (isset($_POST['condiction'])) {
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-        <?php
+            <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
             ?>
@@ -38,68 +38,79 @@ if (isset($_POST['condiction'])) {
             }
             ?>
             <form action="" method="post" class="forms-condiction" enctype="multipart/form-data">
-                <span>¿Cómo califica la condición médica de <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> su veterinario??</span>
+                <span>¿Cómo califica la condición médica de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> su veterinario?</span>
+                <br>
+                <br>
                 <div class="row">
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="LEVE" id="veterinary_check" name="veterinary_check">
-                                <label class="form-check-label" for="veterinary_check" checked>
-                                    LEVE
-                                </label>
-                            </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Leve" id="type_food" name="check_option">
+                            <label class="form-check-label" for="type_food">
+                                Estado Leve
+                            </label>
                         </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="MODERADA" id="veterinary_check" name="veterinary_check">
-                                <label class="form-check-label" for="veterinary_check">
-                                    MODERADA
-                                </label>
-                            </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Moderada" id="type_food" name="check_option">
+                            <label class="form-check-label" for="type_food">
+                                Moderada
+                            </label>
                         </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="AGUDA/CRÓNICA" id="veterinary_check" name="veterinary_check">
-                                <label class="form-check-label" for="veterinary_check">
-                                    AGUDA/CRÓNICA
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="PERRITO FELIZ" id="veterinary_check" name="veterinary_check">
-                                <label class="form-check-label" for="veterinary_check">
-                                    PERRITO FELIZ
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="PERRITO SENTADO" id="veterinary_check" name="veterinary_check">
-                                <label class="form-check-label" for="veterinary_check">
-                                    PERRITO SENTADO
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="PERRITO TRISTE" id="veterinary_check" name="veterinary_check">
-                                <label class="form-check-label" for="veterinary_check">
-                                    PERRITO TRISTE
-                                </label>
-                            </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Aguda/Crónica" id="type_food" name="check_option">
+                            <label class="form-check-label" for="type_food">
+                                Aguda/Crónica
+                            </label>
                         </div>
                     </div>
                 </div>
                 <br>
-                <span>Por favor adjunta los exámenes médicos más recientes de <?php echo $_SESSION['mi_pet']['Name_Pet']; ?></span>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Perrito Feliz" id="type_food" name="check_option" checked>
+                            <label class="form-check-label" for="type_food" >
+                                Perrito Feliz
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Perrito Sentado" id="type_food" name="check_option">
+                            <label class="form-check-label" for="type_food">
+                                Perrito Sentado
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Perrito Triste" id="type_food" name="check_option">
+                            <label class="form-check-label" for="type_food">
+                                Perrito Triste
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <br>
-                <input class="form-select-date" type="file" name="examen_file" id="">
+                <span>Por favor adjunta los exámenes médicos más recientes de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?></span>
                 <br>
                 <br>
                 <div class="row">
-                    <div class="col-2"></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm">
+                        <input class="form-control form-select-vet" type="file" name="examen_file" id="">
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-1"></div>
                     <div class="col cont-button-g">
                         <div class="button-g">
                             <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
@@ -107,9 +118,8 @@ if (isset($_POST['condiction'])) {
                             <br>
                         </div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                 </div>
-                </span>
             </form>
         </div>
         <div class="col-2"></div>

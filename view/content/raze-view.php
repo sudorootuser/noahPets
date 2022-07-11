@@ -37,7 +37,7 @@ if (isset($_POST['raze'])) {
             }
             ?>
             <form action="" method="post" class="forms-condiction">
-                <span>La raza de <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> es</span>
+                <span>La raza de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
                 <div class="row">
                     <div class="col">
                         <select class="form-select-raze" name="type_raze">

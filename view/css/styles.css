@@ -64,10 +64,10 @@ body {
     cursor: pointer;
     background: #F07639;
     padding: 20px;
-    width: 45%;
+    /* width: 45%; */
     border-radius: 25px;
     color: white;
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -321,14 +321,10 @@ body {
     border: 2px solid #F07639;
     background-color: #F07639;
     border-radius: 15px;
-    height: 80px;
-    width: 200px;
+    height: 65px;
+    /* width: 200px; */
     margin-bottom: 80px;
-}
-
-.form-select-condiction option {
     border: 2px solid red;
-
 }
 
 .forms-my-pet .form-text {
@@ -370,13 +366,15 @@ body {
 }
 
 .form-select-date {
+
     font-size: 25px;
     font-weight: 600;
     text-align: center;
     color: #7a7a7a;
     border: 2px solid #F07639;
     border-radius: 15px;
-    height: 40px;
+    height: 60px;
+    width: 70%;
 }
 
 .forms-date {
@@ -398,6 +396,7 @@ body {
     background-repeat: no-repeat;
     /* border: 1px solid rgb(200, 105, 10); */
     border: none;
+    cursor: pointer;
     border-radius: 20px;
     margin: 5px;
     width: 150px;
@@ -412,16 +411,24 @@ body {
 
 .form-check label {
     margin-top: 15px;
-    font-weight: 28px;
+    font-size: 25px;
     font-weight: 600;
     /* border: 2px solid green; */
     margin-left: 100;
+    color: #7a7a7a;
+
 }
 
 /* Load */
 .forms-condiction-load {
     text-align: center;
     margin-top: 30px;
+}
+
+.forms-condiction select {
+    border: 2px solid #F07639;
+    cursor: pointer;
+    /* background-color: #F07639; */
 }
 
 .forms-condiction-load span {
@@ -543,4 +550,18 @@ body {
 
 .forms-checkout input:focus {
     border: 2px solid #F07639;
+}
+
+/* Veterinary */
+
+.form-select-vet {
+
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a7a7a;
+    border: 2px solid #F07639;
+    border-radius: 15px;
+    height: 55px;
+    /* width: 70%; */
 }
