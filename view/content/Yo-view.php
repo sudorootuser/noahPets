@@ -53,7 +53,7 @@ if (isset($_POST['yo'])) {
                 <span class="text-yo">Siempre es bueno conocer propietarios amorosos y responsables</span>
                 <br>
                 <br>
-                <span>Mi nombe es <input type="text" class="form-text" name="nombre" value=" <?php echo  $nombre = isset($nombre) ? $nombre : ' ' ?>" required>, vivo en la ciudad de <input type="text" class="form-text" name="ciudad" value=" <?php echo  $nombre = isset($ciudad) ? $ciudad : ' ' ?>" required></span>
+                <span>Mi nombe es <input type="text" class="form-text" name="nombre" value=" <?php echo  $nombre = isset($nombre) ? $nombre : ' ' ?>" required>, vivo en la ciudad de <input type="text" class="form-text" name="ciudad" value="<?php echo  $nombre = isset($ciudad) ? $ciudad : ' ' ?>" required></span>
                 <br>
                 <br>
                 <span>Pueden contactarme para ampliar la información de mi mascota, </span>

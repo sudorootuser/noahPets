@@ -43,13 +43,13 @@ if (isset($_POST['weight'])) {
                 <div class="row">
                     <div class="col-sm-1"></div>
                     <div class="col-sm">
-                        <input class="form-select-date" type="number" name="wight_peso" id="">
+                        <input class="form-select-date" type="number" name="wight_peso" value="<?php echo $wight_peso = isset($wight_peso) ? $wight_peso : ' ' ?>">
                         <label for="formFile" class="form-label">¿No estás seguro? Escribe un aproximado</label>
                         <br>
                         <br>
                         <label for="formFile" class="form-label">¿El peso ideal de <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> es?</label>
                         <br>
-                        <input class="form-select-date" type="number" name="wight_peso_op" id="">
+                        <input class="form-select-date" type="number" name="wight_peso_op" value="<?php echo $wight_peso_op = isset($wight_peso_op) ? $wight_peso_op : ' ' ?>">
                         <br>
                         <label for="formFile" class="form-label">Opcional</label>
                     </div>

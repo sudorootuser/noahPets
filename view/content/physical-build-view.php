@@ -50,7 +50,7 @@ if (isset($_POST['build'])) {
                         </div>
                         <span>Delgado</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Delgado" checked>
+                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Delgado" checked value="<?php echo $physical_build = isset($physical_build) ? $physical_build : ' ' ?>">
                         </div>
                     </div>
                     <div class="col">
@@ -64,7 +64,7 @@ if (isset($_POST['build'])) {
                         </div>
                         <span>Ideal</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Ideal" checked>
+                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Ideal" checked value="<?php echo $physical_build = isset($physical_build) ? $physical_build : ' ' ?>">
                         </div>
                     </div>
                     <div class="col">
@@ -78,7 +78,7 @@ if (isset($_POST['build'])) {
                         </div>
                         <span>Sobrepeso</span>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Sobrepeso">
+                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Sobrepeso" value="<?php echo $physical_build = isset($physical_build) ? $physical_build : ' ' ?>">
                         </div>
                     </div>
                 </div>

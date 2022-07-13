@@ -45,7 +45,7 @@ if (isset($_POST['estery'])) {
                 <div class="row">
                     <div class="col"></div>
                     <div class="col">
-                        <select class="form-select form-select-condiction" name="esterilizad">
+                        <select class="form-select form-select-condiction" name="esterilizad" value="<?php echo  $esterilizad = isset($esterilizad) ? $esterilizad : ' ' ?>">
                             <option value="Sí" selected>Sí</option>
                             <option value="No">No</option>
                         </select>

@@ -42,7 +42,7 @@ if (isset($_POST['type'])) {
                 <span>Actualmente la comida que le doy a <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
                 <div class="row">
                     <div class="col">
-                        <select class="form-select-raze" name="concentrado">
+                        <select class="form-select-raze" name="concentrado" value="<?php echo $concentrado = isset($concentrado) ? $concentrado : ' ' ?>">
                             <option value="Concentrado" selected>Concentrado</option>
                             <option value="Barf">Barf</option>
                             <option value="Natural Horneada">Natural Horneada</option>
@@ -53,7 +53,7 @@ if (isset($_POST['type'])) {
                 <span>De la marca</span>
                 <div class="row">
                     <div class="col">
-                        <select class="form-select-raze" name="marca">
+                        <select class="form-select-raze" name="marca" value="<?php echo $marca = isset($marca) ? $marca : ' ' ?>">
                             <option value="Monello" selected>Monello</option>
                             <option value="Chunky">Chunky</option>
                             <option value="Hills">Hills</option>

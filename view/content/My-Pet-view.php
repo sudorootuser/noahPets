@@ -44,8 +44,8 @@ if (isset($_POST['mi-pet'])) {
                 <span>Hola <input type="text" class="form-text" value="<?php echo $_SESSION['yo']['NombreYo']; ?>">. Ahora cuéntanos de tu mascota.</span>
                 <br>
                 <br>
-                <span>Mi masota se llama <input type="text" class="form-text" name="name_pet"> y es un </span>
-                <select class="form-select-my-pet" name="pet_type">
+                <span>Mi masota se llama <input type="text" class="form-text" name="name_pet" value="<?php echo  $name_pet = isset($ciudad) ? $name_pet : ' ' ?>"> y es un </span>
+                <select class="form-select-my-pet" name="pet_type" value="<?php echo  $name_pet = isset($ciudad) ? $name_pet : ' ' ?>">
                     <option selected>...</option>
                     <option value="Gato">Gato</option>
                     <option value="Perro">Perro</option>

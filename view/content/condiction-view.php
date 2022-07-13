@@ -40,7 +40,7 @@ if (isset($_POST['condiction'])) {
                 <div class="row">
                     <div class="col-3"></div>
                     <div class="col">
-                        <select class="form-select form-select-condiction" name="type">
+                        <select class="form-select form-select-condiction" name="type" value="<?php echo  $type = isset($type) ? $type : ' ' ?>">
                             <option value="Macho">Macho</option>
                             <option value="Hembra">Hembra</option>
                         </select>

@@ -40,7 +40,7 @@ if (isset($_POST['raze'])) {
                 <span>La raza de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
                 <div class="row">
                     <div class="col">
-                        <select class="form-select-raze" name="type_raze">
+                        <select class="form-select-raze" name="type_raze" value="<?php echo  $type_raze = isset($type_raze) ? $type_raze : ' ' ?>">
                             <option value="Akita" selected>Akita</option>
                             <option value="American Pit Bull Terrier">American Pit Bull Terrier</option>
                             <option value="Beagle">Beagle</option>

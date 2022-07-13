@@ -40,7 +40,7 @@ if (isset($_POST['date'])) {
                 <div class="row">
                     <div class="col-sm-1"></div>
                     <div class="col">
-                        <input class="form-select-date" type="date" name="date_nacio" id="">
+                        <input class="form-select-date" type="date" name="date_nacio" id="" value="<?php echo $date_nacio = isset($date_nacio) ? $date_nacio : ' ' ?>">
                         <br>
                         <label for="formFile" class="form-label">¿No estás seguro? Escribe un aproximado</label>
                     </div>

@@ -14,9 +14,9 @@ if (isset($_POST['condiction'])) {
     //     $sessionSmg = "Todos los campos son obligatorios";
     // } else {
 
-    $_SESSION['additional'] = [
-        "additional_check" => $additional_check
-    ];
+    // $_SESSION['additional'] = [
+    //     "additional_check" => $additional_check
+    // ];
     header('Location:' . SERVERURL . 'checkout/');
     // }
 } ?>
