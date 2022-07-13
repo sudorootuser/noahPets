@@ -25,7 +25,7 @@ if (isset($_POST['mi-pet'])) {
     }
 } ?>
 
-<div class="container-fluid My-Pet">
+<div class="container-fluid My-Pet" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">

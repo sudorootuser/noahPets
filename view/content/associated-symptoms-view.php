@@ -3,52 +3,59 @@ include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+
 if (isset($_POST['condiction'])) {
 
 
-    $check_pollo = isset($_POST['check_pollo']) ?  $_POST['check_pollo'] : '';
-    $check_pollo = isset($_POST['check_pollo']) ?  $_POST['check_pollo'] : '';
-    $check_res = isset($_POST['check_res']) ?  $_POST['check_res'] : '';
-    $check_pescado = isset($_POST['check_pescado']) ?  $_POST['check_pescado'] : '';
-    $check_pavo = isset($_POST['check_pavo']) ?  $_POST['check_pavo'] : '';
-    $check_zanahoria = isset($_POST['check_zanahoria']) ?  $_POST['check_zanahoria'] : '';
-    $check_remolacha = isset($_POST['check_remolacha']) ?  $_POST['check_remolacha'] : '';
-    $check_espinaca = isset($_POST['check_espinaca']) ?  $_POST['check_espinaca'] : '';
-    $check_zuquini = isset($_POST['check_zuquini']) ?  $_POST['check_zuquini'] : '';
+    $check_diarrea = isset($_POST['check_diarrea']) ?  $_POST['check_diarrea'] : '';
+    $check_vomito = isset($_POST['check_vomito']) ?  $_POST['check_vomito'] : '';
+    $check_gases = isset($_POST['check_gases']) ?  $_POST['check_gases'] : '';
+    $check_mal_aliento = isset($_POST['check_mal_aliento']) ?  $_POST['check_mal_aliento'] : '';
+    $check_caida_pelo = isset($_POST['check_caida_pelo']) ?  $_POST['check_caida_pelo'] : '';
+    $check_picazon = isset($_POST['check_picazon']) ?  $_POST['check_picazon'] : '';
+    $check_pelo_opaco = isset($_POST['check_pelo_opaco']) ?  $_POST['check_pelo_opaco'] : '';
+    $check_convulsiones = isset($_POST['check_convulsiones']) ?  $_POST['check_convulsiones'] : '';
+    $check_dolor_articulas = isset($_POST['check_dolor_articulas']) ?  $_POST['check_dolor_articulas'] : '';
+    $check_desanimo = isset($_POST['check_desanimo']) ?  $_POST['check_desanimo'] : '';
+    $check_ayuno_prol = isset($_POST['check_ayuno_prol']) ?  $_POST['check_ayuno_prol'] : '';
     $check_otro = isset($_POST['check_otro']) ?  $_POST['check_otro'] : '';
-    $name_text = isset($_POST['name_text']) ?  $_POST['name_text'] : '';
+    $check_textarea = isset($_POST['check_textarea']) ?  $_POST['check_textarea'] : '';
 
 
-
-
-    $check_pollo = $yo->limpiar_cadena($check_pollo);
-    $check_res = $yo->limpiar_cadena($check_res);
-    $check_pescado = $yo->limpiar_cadena($check_pescado);
-    $check_pavo = $yo->limpiar_cadena($check_pavo);
-    $check_zanahoria = $yo->limpiar_cadena($check_zanahoria);
-    $check_remolacha = $yo->limpiar_cadena($check_remolacha);
-    $check_espinaca = $yo->limpiar_cadena($check_espinaca);
-    $check_zuquini = $yo->limpiar_cadena($check_zuquini);
+    $check_diarrea = $yo->limpiar_cadena($check_diarrea);
+    $check_vomito = $yo->limpiar_cadena($check_vomito);
+    $check_gases = $yo->limpiar_cadena($check_gases);
+    $check_mal_aliento = $yo->limpiar_cadena($check_mal_aliento);
+    $check_caida_pelo = $yo->limpiar_cadena($check_caida_pelo);
+    $check_picazon = $yo->limpiar_cadena($check_picazon);
+    $check_pelo_opaco = $yo->limpiar_cadena($check_pelo_opaco);
+    $check_convulsiones = $yo->limpiar_cadena($check_convulsiones);
+    $check_dolor_articulas = $yo->limpiar_cadena($check_dolor_articulas);
+    $check_desanimo = $yo->limpiar_cadena($check_desanimo);
+    $check_ayuno_prol = $yo->limpiar_cadena($check_ayuno_prol);
     $check_otro = $yo->limpiar_cadena($check_otro);
-    $name_text = $yo->limpiar_cadena($name_text);
+    $check_textarea = $yo->limpiar_cadena($check_textarea);
 
-    $_SESSION['type_intolerance'] = [
-        "check_pollo" => $check_pollo,
-        "check_res" => $check_res,
-        "check_pescado" => $check_pescado,
-        "check_pavo" => $check_pavo,
-        "check_zanahoria" => $check_zanahoria,
-        "check_remolacha" => $check_remolacha,
-        "check_espinaca" => $check_espinaca,
-        "check_zuquini" => $check_zuquini,
+    $_SESSION['associated_sympt'] = [
+        "check_diarrea" => $check_diarrea,
+        "check_vomito" => $check_vomito,
+        "check_gases" => $check_gases,
+        "check_mal_aliento" => $check_mal_aliento,
+        "check_caida_pelo" => $check_caida_pelo,
+        "check_picazon" => $check_picazon,
+        "check_pelo_opaco" => $check_pelo_opaco,
+        "check_convulsiones" => $check_convulsiones,
+        "check_dolor_articulas" => $check_dolor_articulas,
+        "check_desanimo" => $check_desanimo,
+        "check_ayuno_prol" => $check_ayuno_prol,
         "check_otro" => $check_otro,
-        "name_text" => $name_text
+        "check_textarea" => $check_textarea
     ];
 
     header('Location:' . SERVERURL . 'veterinary-qualification/');
 }
 ?>
-<div class="container-fluid condiction">
+<div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -77,6 +84,7 @@ if (isset($_POST['condiction'])) {
                                     </label>
                                 </div>
                             </div>
+
                             <div class="col-sm-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="Vómito" id="type_food" name="check_vomito">
@@ -85,6 +93,7 @@ if (isset($_POST['condiction'])) {
                                     </label>
                                 </div>
                             </div>
+
                             <div class="col-sm-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="Gases" id="type_food" name="check_gases">
@@ -93,6 +102,7 @@ if (isset($_POST['condiction'])) {
                                     </label>
                                 </div>
                             </div>
+
                             <div class="col-sm-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="Mal Aliento" id="type_food" name="check_mal_aliento">
@@ -137,6 +147,7 @@ if (isset($_POST['condiction'])) {
                                 </div>
                             </div>
                         </div>
+
                         <br>
                         <div class="row">
                             <div class="col-sm-3">
@@ -157,7 +168,7 @@ if (isset($_POST['condiction'])) {
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Ayuno Prolongado" id="type_food" name="check_ayuno_prolongado">
+                                    <input class="form-check-input" type="checkbox" value="Ayuno Prolongado" id="type_food" name="check_ayuno_prol">
                                     <label class="form-check-label" for="type_food">
                                         Ayuno Prolongado
                                     </label>
@@ -172,6 +183,7 @@ if (isset($_POST['condiction'])) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_check" rows="7" placeholder="Describe que síntomas tiene tu mascota!"></textarea>

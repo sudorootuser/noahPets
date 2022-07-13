@@ -23,7 +23,7 @@ if (isset($_POST['type'])) {
         header('Location:' . SERVERURL . 'physical-build/');
     }
 } ?>
-<div class="container-fluid condiction">
+<div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">

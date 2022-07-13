@@ -21,7 +21,7 @@ if (isset($_POST['estery'])) {
         header('Location:' . SERVERURL . 'raze/');
     }
 } ?>
-<div class="container-fluid condiction">
+<div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col">
             <?php

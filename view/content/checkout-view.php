@@ -20,7 +20,7 @@ if (isset($_POST['condiction'])) {
     header('Location:' . SERVERURL . 'checkout/');
     // }
 } ?>
-<div class="container-fluid condiction">
+<div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-1"></div>
         <div class="col">

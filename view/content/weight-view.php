@@ -23,7 +23,7 @@ if (isset($_POST['weight'])) {
         header('Location:' . SERVERURL . 'food-style/');
     }
 } ?>
-<div class="container-fluid date">
+<div class="container-fluid date" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">

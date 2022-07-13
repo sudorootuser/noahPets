@@ -6,49 +6,70 @@ $yo = new mainModel();
 if (isset($_POST['condiction'])) {
 
 
-    $check_pollo = isset($_POST['check_pollo']) ?  $_POST['check_pollo'] : '';
-    $check_pollo = isset($_POST['check_pollo']) ?  $_POST['check_pollo'] : '';
-    $check_res = isset($_POST['check_res']) ?  $_POST['check_res'] : '';
-    $check_pescado = isset($_POST['check_pescado']) ?  $_POST['check_pescado'] : '';
-    $check_pavo = isset($_POST['check_pavo']) ?  $_POST['check_pavo'] : '';
-    $check_zanahoria = isset($_POST['check_zanahoria']) ?  $_POST['check_zanahoria'] : '';
-    $check_remolacha = isset($_POST['check_remolacha']) ?  $_POST['check_remolacha'] : '';
-    $check_espinaca = isset($_POST['check_espinaca']) ?  $_POST['check_espinaca'] : '';
-    $check_zuquini = isset($_POST['check_zuquini']) ?  $_POST['check_zuquini'] : '';
+    $cond_medica = isset($_POST['cond_medica']);
+
+    $check_problem_digest = isset($_POST['check_problem_digest']) ?  $_POST['check_problem_digest'] : '';
+    $check_problem_renales = isset($_POST['check_problem_renales']) ?  $_POST['check_problem_renales'] : '';
+    $check_cancer = isset($_POST['check_cancer']) ?  $_POST['check_cancer'] : '';
+    $check_problem_card = isset($_POST['check_problem_card']) ?  $_POST['check_problem_card'] : '';
+    $check_obsesidad = isset($_POST['check_obsesidad']) ?  $_POST['check_obsesidad'] : '';
+    $check_problem_hepat = isset($_POST['check_problem_hepat']) ?  $_POST['check_problem_hepat'] : '';
+    $check_problem_articu = isset($_POST['check_problem_articu']) ?  $_POST['check_problem_articu'] : '';
+    $check_problem_piel = isset($_POST['check_problem_piel']) ?  $_POST['check_problem_piel'] : '';
+    $check_calc_oxal = isset($_POST['check_calc_oxal']) ?  $_POST['check_calc_oxal'] : '';
+    $check_calc_estruv = isset($_POST['check_calc_estruv']) ?  $_POST['check_calc_estruv'] : '';
+    $check_alerg_aliment = isset($_POST['check_alerg_aliment']) ?  $_POST['check_alerg_aliment'] : '';
+    $check_estren = isset($_POST['check_estren']) ?  $_POST['check_estren'] : '';
+
+    $check_chunt = isset($_POST['check_chunt']) ?  $_POST['check_chunt'] : '';
+    $check_pancreatitis = isset($_POST['check_pancreatitis']) ?  $_POST['check_pancreatitis'] : '';
+    $check_problem_articul = isset($_POST['check_problem_articul']) ?  $_POST['check_problem_articul'] : '';
     $check_otro = isset($_POST['check_otro']) ?  $_POST['check_otro'] : '';
-    $name_text = isset($_POST['name_text']) ?  $_POST['name_text'] : '';
+    $check_textarea = isset($_POST['check_textarea']) ?  $_POST['check_textarea'] : '';
 
 
-
-
-    $check_pollo = $yo->limpiar_cadena($check_pollo);
-    $check_res = $yo->limpiar_cadena($check_res);
-    $check_pescado = $yo->limpiar_cadena($check_pescado);
-    $check_pavo = $yo->limpiar_cadena($check_pavo);
-    $check_zanahoria = $yo->limpiar_cadena($check_zanahoria);
-    $check_remolacha = $yo->limpiar_cadena($check_remolacha);
-    $check_espinaca = $yo->limpiar_cadena($check_espinaca);
-    $check_zuquini = $yo->limpiar_cadena($check_zuquini);
+    $cond_medica = $yo->limpiar_cadena($cond_medica);
+    $check_problem_digest = $yo->limpiar_cadena($check_problem_digest);
+    $check_problem_renales = $yo->limpiar_cadena($check_problem_renales);
+    $check_cancer = $yo->limpiar_cadena($check_cancer);
+    $check_problem_card = $yo->limpiar_cadena($check_problem_card);
+    $check_obsesidad = $yo->limpiar_cadena($check_obsesidad);
+    $check_problem_hepat = $yo->limpiar_cadena($check_problem_hepat);
+    $check_problem_articu = $yo->limpiar_cadena($check_problem_articu);
+    $check_problem_piel = $yo->limpiar_cadena($check_problem_piel);
+    $check_calc_estruv = $yo->limpiar_cadena($check_calc_estruv);
+    $check_alerg_aliment = $yo->limpiar_cadena($check_alerg_aliment);
+    $check_estren = $yo->limpiar_cadena($check_estren);
+    $check_chunt = $yo->limpiar_cadena($check_chunt);
+    $check_pancreatitis = $yo->limpiar_cadena($check_pancreatitis);
+    $check_problem_articul = $yo->limpiar_cadena($check_problem_articul);
     $check_otro = $yo->limpiar_cadena($check_otro);
-    $name_text = $yo->limpiar_cadena($name_text);
+    $check_textarea = $yo->limpiar_cadena($check_textarea);
 
-    $_SESSION['type_intolerance'] = [
-        "check_pollo" => $check_pollo,
-        "check_res" => $check_res,
-        "check_pescado" => $check_pescado,
-        "check_pavo" => $check_pavo,
-        "check_zanahoria" => $check_zanahoria,
-        "check_remolacha" => $check_remolacha,
-        "check_espinaca" => $check_espinaca,
-        "check_zuquini" => $check_zuquini,
+    $_SESSION['medical_condition'] = [
+        "cond_medica" => $cond_medica,
+        "check_problem_digest" => $check_problem_digest,
+        "check_problem_renales" => $check_problem_renales,
+        "check_cancer" => $check_cancer,
+        "check_problem_card" => $check_problem_card,
+        "check_obsesidad" => $check_obsesidad,
+        "check_problem_hepat" => $check_problem_hepat,
+        "check_problem_articu" => $check_problem_articu,
+        "check_problem_piel" => $check_problem_piel,
+        "check_calc_estruv" => $check_calc_estruv,
+        "check_alerg_aliment" => $check_alerg_aliment,
+        "check_estren" => $check_estren,
+        "check_chunt" => $check_chunt,
+        "check_pancreatitis" => $check_pancreatitis,
+        "check_problem_articul" => $check_problem_articul,
         "check_otro" => $check_otro,
-        "name_text" => $name_text
+        "check_textarea" => $check_textarea
     ];
 
     header('Location:' . SERVERURL . 'associated-symptoms/');
 }
 ?>
-<div class="container-fluid condiction">
+<div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -67,7 +88,7 @@ if (isset($_POST['condiction'])) {
                 <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene diagnósticada al menos una condición médica</span>
                 <div class="row">
                     <div class="col">
-                        <select class="form-select form-select-condiction" name="type_intolerance">
+                        <select class="form-select form-select-condiction" name="cond_medica">
                             <option value="Sí">Sí</option>
                             <option value="No" selected>No</option>
                         </select>
@@ -80,20 +101,22 @@ if (isset($_POST['condiction'])) {
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Digestivos" id="type_food" name="check_poroblemas_digestivos" checked>
+                                <input class="form-check-input" type="checkbox" value="Problemas Digestivos" id="type_food" name="check_problem_digest" checked>
                                 <label class="form-check-label" for="type_food">
                                     Problemas Digestivos
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Renales" id="type_food" name="check_problemas_renales">
+                                <input class="form-check-input" type="checkbox" value="Problemas Renales" id="type_food" name="check_problem_ren">
                                 <label class="form-check-label" for="type_food">
                                     Problemas Renales
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Cáncer" id="type_food" name="check_cancer">
@@ -102,9 +125,10 @@ if (isset($_POST['condiction'])) {
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas cardiacos" id="type_food" name="check_problemas_cardiacos">
+                                <input class="form-check-input" type="checkbox" value="Problemas cardiacos" id="type_food" name="check_problem_card">
                                 <label class="form-check-label" for="type_food">
                                     Problemas Cardiacos
                                 </label>
@@ -121,25 +145,28 @@ if (isset($_POST['condiction'])) {
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Hepáticos" id="type_food" name="check_problemas_hepaticos">
+                                <input class="form-check-input" type="checkbox" value="Problemas Hepáticos" id="type_food" name="check_problem_hepat">
                                 <label class="form-check-label" for="type_food">
                                     Problemas Hepáticos
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="type_food" name="check_problemas_articulares">
+                                <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="type_food" name="check_problem_articu">
                                 <label class="form-check-label" for="type_food">
                                     Problemas Articulares
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas de Piel" id="type_food" name="check_problemas_piel">
+                                <input class="form-check-input" type="checkbox" value="Problemas de Piel" id="type_food" name="check_problem_piel">
                                 <label class="form-check-label" for="type_food">
                                     Problemas de Piel
                                 </label>
@@ -150,31 +177,34 @@ if (isset($_POST['condiction'])) {
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Cálculos de Oxalato" id="type_food" name="check_calculos_oxalato">
+                                <input class="form-check-input" type="checkbox" value="Cálculos de Oxalato" id="type_food" name="check_calc_oxal">
                                 <label class="form-check-label" for="type_food">
                                     Cálculos de Oxalato
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Calculos Estruvita" id="type_food" name="check_calculos_estruvita">
+                                <input class="form-check-input" type="checkbox" value="Calculos Estruvita" id="type_food" name="check_calc_estruv">
                                 <label class="form-check-label" for="type_food">
                                     Cálculos de Estruvita
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Alergía Alimentaría" id="type_food" name="check_alergia_alimentaría">
+                                <input class="form-check-input" type="checkbox" value="Alergía Alimentaría" id="type_food" name="check_alerg_aliment">
                                 <label class="form-check-label" for="type_food">
                                     Alergía Alimentaría
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Estreñimiento" id="type_food" name="check_estrenimiento">
+                                <input class="form-check-input" type="checkbox" value="Estreñimiento" id="type_food" name="check_estren">
                                 <label class="form-check-label" for="type_food">
                                     Estreñimiento
                                 </label>
@@ -182,6 +212,7 @@ if (isset($_POST['condiction'])) {
                         </div>
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="form-check">
@@ -191,6 +222,7 @@ if (isset($_POST['condiction'])) {
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Pancreatitis" id="type_food" name="check_pancreatitis">
@@ -199,14 +231,16 @@ if (isset($_POST['condiction'])) {
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="type_food" name="check_problemas_articulares">
+                                <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="type_food" name="check_problem_articul">
                                 <label class="form-check-label" for="type_food">
                                     Problemas Articulares
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-sm-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Otro" id="check_otro" name="check_otro" value="Otro" onchange="javascript:showContent()">
@@ -227,7 +261,7 @@ if (isset($_POST['condiction'])) {
                     <div class="col-2"></div>
                     <div class="col cont-button-g">
                         <div class="button-g">
-                            <button class="btn btn" type="submit" name="intolerance" value="intolerance">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             <br>
                             <br>
                         </div>

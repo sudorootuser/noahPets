@@ -6,23 +6,47 @@ $yo = new mainModel();
 if (isset($_POST['condiction'])) {
 
     $veterinary_check = $yo->limpiar_cadena($_POST['check_option']);
+
     $examen_file = $_FILES['examen_file']['name'];
 
-    $sessionSmg = "";
-
-    if ($veterinary_check == "" || $examen_file == "") {
+    if ($veterinary_check == "" || !isset($examen_file) || $examen_file == "") {
 
         $sessionSmg = "Todos los campos son obligatorios / El documento es obligatorio";
     } else {
 
-        $_SESSION['veterinary'] = [
-            "veterinary_check" => $veterinary_check,
-            "examen_file" => $examen_file
-        ];
-        header('Location:' . SERVERURL . 'additional-condition/');
+        $fileTmpPath = $_FILES['examen_file']['tmp_name'];
+        $filename = $_FILES['examen_file']['name'];
+        $fileSize = $_FILES['examen_file']['type'];
+        $fileType = $_FILES['examen_file']['size'];
+        $fileNameCmps = explode(".", $filename);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        $newFileName = md5(time() . $filename) . '.' . $fileExtension;
+
+        $allowedfileExtensions = array('doc', 'zip', 'rar', 'xls', 'png', 'jpg', 'jpng', 'xlsx');
+
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+
+            $uploadFileDir = './view/assets/documents/';
+            $dest_path = $uploadFileDir . $newFileName;
+
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+
+                $_SESSION['veterinary_qua'] = [
+                    "veterinary_check" => $veterinary_check,
+                    "newFileName" => $newFileName
+                ];
+
+                header('Location:' . SERVERURL . 'additional-condition/');
+            } else {
+                $sessionSmg = "Error!, el carge del documento no fue exitoso";
+            }
+        } else {
+            $sessionSmg = "La extención del documento no está permitida";
+        }
     }
 } ?>
-<div class="container-fluid condiction">
+<div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -37,7 +61,7 @@ if (isset($_POST['condiction'])) {
                 }
             }
             ?>
-            <form action="" method="post" class="forms-condiction" enctype="multipart/form-data">
+            <form action="#" method="POST" class="forms-condiction" enctype="multipart/form-data">
                 <span>¿Cómo califica la condición médica de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> su veterinario?</span>
                 <br>
                 <br>
@@ -72,9 +96,9 @@ if (isset($_POST['condiction'])) {
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" value="Perrito Feliz" id="type_food" name="check_option" checked>
-                            <label class="form-check-label" for="type_food" >
-                                Perrito Feliz
+                            <input class="form-check-input" type="radio" value="Perrito Felíz" id="type_food" name="check_option" checked>
+                            <label class="form-check-label" for="type_food">
+                                Perrito Felíz
                             </label>
                         </div>
                     </div>
