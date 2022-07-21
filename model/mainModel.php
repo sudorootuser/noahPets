@@ -76,14 +76,10 @@ class mainModel
         $cadena = str_replace(">", "", $cadena);
         $cadena = str_replace("<", "", $cadena);
         $cadena = str_replace("[", "", $cadena);
-        $cadena = str_replace(
-            "]",
-            "",
-            $cadena
-        );
+        $cadena = str_replace("]","",$cadena);
         $cadena = str_replace("^", "", $cadena);
         $cadena = str_replace("==", "", $cadena);
-        $cadena = str_replace(" ;", "", $cadena);
+        $cadena = str_replace(";", "", $cadena);
         $cadena = str_replace("::", "", $cadena);
         $cadena = stripslashes($cadena);
         $cadena = trim($cadena);

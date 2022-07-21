@@ -73,202 +73,204 @@ if (isset($_POST['condiction'])) {
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <?php
-            if (isset($sessionSmg)) {
-                if ($sessionSmg != '') {
-            ?>
-                    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                        <strong>Error! </strong><?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-            <?php
-                }
-            }
-            ?>
-            <form action="" method="post" class="forms-condiction">
-                <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene diagnósticada al menos una condición médica</span>
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select form-select-condiction" name="cond_medica">
-                            <option value="Sí">Sí</option>
-                            <option value="No" selected>No</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="checks" style="display:show;">
-                    <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> Cuál es la principal condición diagnósticada en Zoé</span>
-                    <br>
-                    <br>
+            <div style="padding: 3% 15% 0px 15%;">
+                <form action="" method="post" class="forms-condiction">
+                    <?php
+                    if (isset($sessionSmg)) {
+                        if ($sessionSmg != '') {
+                    ?>
+                            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                                <strong>Error! </strong><?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                    <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene diagnósticada al menos una condición médica</span>
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Digestivos" id="type_food" name="check_problem_digest" checked>
-                                <label class="form-check-label" for="type_food">
-                                    Problemas Digestivos
-                                </label>
+                        <div class="col">
+                            <select class="form-select-condiction" name="cond_medica">
+                                <option value="No" selected>No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="checks" style="display:none;">
+                        <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> Cuál es la principal condición diagnósticada en Zoé</span>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas Digestivos" id="Digestivos" name="check_problem_digest">
+                                    <label class="form-check-label" for="Digestivos">
+                                        Problemas Digestivos
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas Renales" id="Renales" name="check_problem_ren">
+                                    <label class="form-check-label" for="Renales">
+                                        Problemas Renales
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Cáncer" id="Cáncer" name="check_cancer">
+                                    <label class="form-check-label" for="Cáncer">
+                                        Cáncer
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas cardiacos" id="checkbox" name="check_problem_card">
+                                    <label class="form-check-label" for="checkbox">
+                                        Problemas Cardiacos
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Obsesidad" id="Obsesidad" name="check_obsesidad">
+                                    <label class="form-check-label" for="Obsesidad">
+                                        Obsesidad
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas Hepáticos" id="check_problem_hepat" name="check_problem_hepat">
+                                    <label class="form-check-label" for="check_problem_hepat">
+                                        Problemas Hepáticos
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="check_problem_articu" name="check_problem_articu">
+                                    <label class="form-check-label" for="check_problem_articu">
+                                        Problemas Articulares
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas de Piel" id="check_problem_piel" name="check_problem_piel">
+                                    <label class="form-check-label" for="check_problem_piel">
+                                        Problemas de Piel
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Renales" id="type_food" name="check_problem_ren">
-                                <label class="form-check-label" for="type_food">
-                                    Problemas Renales
-                                </label>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Cálculos de Oxalato" id="check_calc_oxal" name="check_calc_oxal">
+                                    <label class="form-check-label" for="check_calc_oxal">
+                                        Cálculos de Oxalato
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Calculos Estruvita" id="check_calc_estruv" name="check_calc_estruv">
+                                    <label class="form-check-label" for="check_calc_estruv">
+                                        Cálculos de Estruvita
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Alergía Alimentaría" id="check_alerg_aliment" name="check_alerg_aliment">
+                                    <label class="form-check-label" for="check_alerg_aliment">
+                                        Alergía Alimentaría
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Estreñimiento" id="check_estren" name="check_estren">
+                                    <label class="form-check-label" for="check_estren">
+                                        Estreñimiento
+                                    </label>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Cáncer" id="type_food" name="check_cancer">
-                                <label class="form-check-label" for="type_food">
-                                    Cáncer
-                                </label>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Shunt" id="check_chunt" name="check_chunt">
+                                    <label class="form-check-label" for="check_chunt">
+                                        Shunt
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas cardiacos" id="type_food" name="check_problem_card">
-                                <label class="form-check-label" for="type_food">
-                                    Problemas Cardiacos
-                                </label>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Pancreatitis" id="check_pancreatitis" name="check_pancreatitis">
+                                    <label class="form-check-label" for="check_pancreatitis">
+                                        Pancreatitis
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="check_problem_articul" name="check_problem_articul">
+                                    <label class="form-check-label" for="check_problem_articul">
+                                        Problemas Articulares
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Otro" id="check_otro" name="check_otro" value="Otro" onchange="javascript:showContent()">
+                                    <label class="form-check-label" for="check_otro">
+                                        Otro
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_check" rows="7" placeholder="Describe la principal condición diagnosticada de tu mascota!"></textarea>
                             </div>
                         </div>
                     </div>
-                    <br>
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Obsesidad" id="type_food" name="check_obsesidad">
-                                <label class="form-check-label" for="type_food">
-                                    Obsesidad
-                                </label>
+                        <div class="col-2"></div>
+                        <div class="col cont-button-g">
+                            <div class="button-g">
+                                <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                                <br>
+                                <br>
                             </div>
                         </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Hepáticos" id="type_food" name="check_problem_hepat">
-                                <label class="form-check-label" for="type_food">
-                                    Problemas Hepáticos
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="type_food" name="check_problem_articu">
-                                <label class="form-check-label" for="type_food">
-                                    Problemas Articulares
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas de Piel" id="type_food" name="check_problem_piel">
-                                <label class="form-check-label" for="type_food">
-                                    Problemas de Piel
-                                </label>
-                            </div>
-                        </div>
+                        <div class="col-2"></div>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Cálculos de Oxalato" id="type_food" name="check_calc_oxal">
-                                <label class="form-check-label" for="type_food">
-                                    Cálculos de Oxalato
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Calculos Estruvita" id="type_food" name="check_calc_estruv">
-                                <label class="form-check-label" for="type_food">
-                                    Cálculos de Estruvita
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Alergía Alimentaría" id="type_food" name="check_alerg_aliment">
-                                <label class="form-check-label" for="type_food">
-                                    Alergía Alimentaría
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Estreñimiento" id="type_food" name="check_estren">
-                                <label class="form-check-label" for="type_food">
-                                    Estreñimiento
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Shunt" id="type_food" name="check_chunt">
-                                <label class="form-check-label" for="type_food">
-                                    Shunt
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Pancreatitis" id="type_food" name="check_pancreatitis">
-                                <label class="form-check-label" for="type_food">
-                                    Pancreatitis
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Problemas Articulares" id="type_food" name="check_problem_articul">
-                                <label class="form-check-label" for="type_food">
-                                    Problemas Articulares
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Otro" id="check_otro" name="check_otro" value="Otro" onchange="javascript:showContent()">
-                                <label class="form-check-label" for="type_food">
-                                    Otro
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_check" rows="7" placeholder="Describe la principal condición diagnosticada de tu mascota!"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col cont-button-g">
-                        <div class="button-g">
-                            <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
         <div class="col-2"></div>
     </div>

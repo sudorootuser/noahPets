@@ -3,7 +3,6 @@ include "./model/mainModel.php";
 
 $yo = new mainModel();
 
-
 if (isset($_POST['condiction'])) {
 
 
@@ -70,145 +69,151 @@ if (isset($_POST['condiction'])) {
                 }
             }
             ?>
-            <form action="" method="post" class="forms-condiction">
-                <span>¿Qué síntomas ha tenido o tiene <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> asociadas a esta condición?</span>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <br>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Diarrea" id="type_food" name="check_diarrea">
-                                    <label class="form-check-label" for="type_food">
-                                        Diarrea
-                                    </label>
+            <div style="padding: 3% 15% 0px 15%;">
+                <form action="" method="post" class="forms-condiction">
+                    <span>¿Qué síntomas ha tenido o tiene <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> asociadas a esta condición?</span>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Diarrea" id="Diarrea" name="check_diarrea">
+                                        <label class="form-check-label" for="Diarrea">
+                                            Diarrea
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Vómito" id="Vómito" name="check_vomito">
+                                        <label class="form-check-label" for="Vómito">
+                                            Vómito
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Gases" id="Gases" name="check_gases">
+                                        <label class="form-check-label" for="Gases">
+                                            Gases
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Mal Aliento" id="check_mal_aliento" name="check_mal_aliento">
+                                        <label class="form-check-label" for="check_mal_aliento">
+                                            Mal Aliento
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Vómito" id="type_food" name="check_vomito">
-                                    <label class="form-check-label" for="type_food">
-                                        Vómito
-                                    </label>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Caída de Pelo" id="check_caida_pelo" name="check_caida_pelo">
+                                        <label class="form-check-label" for="check_caida_pelo">
+                                            Caída de Pelo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Picazon" id="Picazon" name="check_picazon">
+                                        <label class="form-check-label" for="Picazon">
+                                            Picazón
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Pelo Opaco" id="check_pelo_opaco" name="check_pelo_opaco">
+                                        <label class="form-check-label" for="check_pelo_opaco">
+                                            Pelo Opaco
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Conculsiones" id="check_convulsiones" name="check_convulsiones">
+                                        <label class="form-check-label" for="check_convulsiones">
+                                            Convulsiones
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Gases" id="type_food" name="check_gases">
-                                    <label class="form-check-label" for="type_food">
-                                        Gases
-                                    </label>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Dolor Articulas" id="check_dolor_articulas" name="check_dolor_articulas">
+                                        <label class="form-check-label" for="check_dolor_articulas">
+                                            Dolor Articulas
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Desánimo" id="Desánimo" name="check_desanimo">
+                                        <label class="form-check-label" for="Desánimo">
+                                            Desánimo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Ayuno Prolongado" id="Ayuno" name="check_ayuno_prol">
+                                        <label class="form-check-label" for="Ayuno">
+                                            Ayuno Prolongado
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Otro" id="check_otro" name="check_otro" value="Otro" onchange="javascript:showContent()">
+                                        <label class="form-check-label" for="check_otro">
+                                            Otro
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Mal Aliento" id="type_food" name="check_mal_aliento">
-                                    <label class="form-check-label" for="type_food">
-                                        Mal Aliento
-                                    </label>
+                            <div class="row">
+                                <div class="col-12">
+                                    <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_check" rows="7" placeholder="Describe que síntomas tiene tu mascota!"></textarea>
                                 </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Caída de Pelo" id="type_food" name="check_caida_pelo">
-                                    <label class="form-check-label" for="type_food">
-                                        Caída de Pelo
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Picazon" id="type_food" name="check_picazon">
-                                    <label class="form-check-label" for="type_food">
-                                        Picazón
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Pelo Opaco" id="type_food" name="check_pelo_opaco">
-                                    <label class="form-check-label" for="type_food">
-                                        Pelo Opaco
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Conculsiones" id="type_food" name="check_convulsiones">
-                                    <label class="form-check-label" for="type_food">
-                                        Convulsiones
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <br>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Dolor Articulas" id="type_food" name="check_dolor_articulas">
-                                    <label class="form-check-label" for="type_food">
-                                        Dolor Articulas
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Desánimo" id="type_food" name="check_desanimo">
-                                    <label class="form-check-label" for="type_food">
-                                        Desánimo
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Ayuno Prolongado" id="type_food" name="check_ayuno_prol">
-                                    <label class="form-check-label" for="type_food">
-                                        Ayuno Prolongado
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Otro" id="check_otro" name="check_otro" value="Otro" onchange="javascript:showContent()">
-                                    <label class="form-check-label" for="type_food">
-                                        Otro
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_check" rows="7" placeholder="Describe que síntomas tiene tu mascota!"></textarea>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col cont-button-yo">
-                        <div class="button-yo">
-                            <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
-                            <br>
-                            <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col cont-button-yo">
+                            <div class="button-yo">
+                                <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                                <br>
+                                <br>
+                            </div>
                         </div>
+                        <div class="col-1"></div>
                     </div>
-                    <div class="col-1"></div>
-                </div>
-                </span>
-            </form>
+                    </span>
+                </form>
+            </div>
         </div>
         <div class="col-2"></div>
     </div>
 </div>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('.form-select-condiction').change(function() {

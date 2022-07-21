@@ -52,125 +52,128 @@ if (isset($_POST['intolerance'])) {
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <?php
-            if (isset($sessionSmg)) {
-                if ($sessionSmg != '') {
-            ?>
-                    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                        <strong>Error! </strong><?php echo $sessionSmg; ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-            <?php
-                }
-            }
-            ?>
-            <form action="" method="post" class="forms-condiction">
-                <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene alguna intolerancia alimentaria</span>
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select form-select-condiction" name="type_intolerance">
-                            <option selected>Tipo</option>
-                            <option value="Sí">Sí</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="checks" style="display:none;">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Pollo" id="type_food" name="check_pollo" checked>
-                                <label class="form-check-label" for="type_food">
-                                    Pollo
-                                </label>
+            <div style="padding: 3% 15% 0px 15%;">
+                <form action="" method="post" class="forms-condiction" style="text-align: center; align-items:center ; align-content: center;">
+                    <?php
+                    if (isset($sessionSmg)) {
+                        if ($sessionSmg != '') {
+                    ?>
+                            <div class="alert alert-warning alert-dismissible fade show text-center alert-message " role="alert">
+                                <?php echo $sessionSmg; ?>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Res" id="type_food" name="check_res">
-                                <label class="form-check-label" for="type_food">
-                                    Res
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Pescado" id="type_food" name="check_pescado">
-                                <label class="form-check-label" for="type_food">
-                                    Pescado
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Pavo" id="type_food" name="check_pavo">
-                                <label class="form-check-label" for="type_food">
-                                    Pavo
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    <?php }
+                    } ?>
+                    <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene alguna intolerancia alimentaria</span>
+                    <br>
                     <br>
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Zanahoría" id="type_food" name="check_zanahoria">
-                                <label class="form-check-label" for="type_food">
-                                    Zanahoría
-                                </label>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm">
+                            <select class="form-select-condiction" name="type_intolerance">
+                                <option value="No" selected>No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <div id="checks" style="display:block;">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Pollo" id="Pollo" name="check_pollo" checked>
+                                    <label class="form-check-label" for="Pollo">
+                                        Pollo
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Res" id="Res" name="check_res">
+                                    <label class="form-check-label" for="Res">
+                                        Res
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Pescado" id="Pescado" name="check_pescado">
+                                    <label class="form-check-label" for="Pescado">
+                                        Pescado
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Pavo" id="Pavo" name="check_pavo">
+                                    <label class="form-check-label" for="Pavo">
+                                        Pavo
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Remolacha" id="type_food" name="check_remolacha">
-                                <label class="form-check-label" for="type_food">
-                                    Remolacha
-                                </label>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Zanahoría" id="Zanahoría" name="check_zanahoria">
+                                    <label class="form-check-label" for="Zanahoría">
+                                        Zanahoría
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Remolacha" id="Remolacha" name="check_remolacha">
+                                    <label class="form-check-label" for="Remolacha">
+                                        Remolacha
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Espinaca" id="Espinaca" name="check_espinaca">
+                                    <label class="form-check-label" for="Espinaca">
+                                        Espinaca
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Zuquíni" id="Zuquíni" name="check_zuquini">
+                                    <label class="form-check-label" for="Zuquíni">
+                                        Zuquíni
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Espinaca" id="type_food" name="check_espinaca">
-                                <label class="form-check-label" for="type_food">
-                                    Espinaca
-                                </label>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Zanahoría" id="otro_check" name="check_otro" value="Otro" onchange="javascript:showContent()">
+                                    <label class="form-check-label" for="otro_check">
+                                        Otro
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Zuquíni" id="type_food" name="check_zuquini">
-                                <label class="form-check-label" for="type_food">
-                                    Zuquíni
-                                </label>
+                            <div class="col-sm-8">
+                                <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="name_text" id="text_check" rows="7" placeholder="Describe la intolerancía de tu mascota aquí!"></textarea>
                             </div>
                         </div>
                     </div>
-                    <br>
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Zanahoría" id="otro_check" name="check_otro" value="Otro" onchange="javascript:showContent()">
-                                <label class="form-check-label" for="type_food">
-                                    Otro
-                                </label>
+                        <div class="col-2"></div>
+                        <div class="col cont-button-g">
+                            <div class="button-g">
+                                <button class="btn btn" type="submit" name="intolerance" value="intolerance">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                                <br>
+                                <br>
                             </div>
                         </div>
-                        <div class="col-sm-8">
-                            <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="name_text" id="text_check" rows="7" placeholder="Describe la intolerancía de tu mascota aquí!"></textarea>
-                        </div>
+                        <div class="col-2"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col cont-button-g">
-                        <div class="button-g">
-                            <button class="btn btn" type="submit" name="intolerance" value="intolerance">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
         <div class="col-2"></div>
     </div>
@@ -197,4 +200,9 @@ if (isset($_POST['intolerance'])) {
             element.style.display = 'none';
         }
     }
+    window.setTimeout(function() {
+        $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 3000);
 </script>

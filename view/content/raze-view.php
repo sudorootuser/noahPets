@@ -25,7 +25,8 @@ if (isset($_POST['raze'])) {
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-        <?php
+
+            <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
             ?>
@@ -36,31 +37,35 @@ if (isset($_POST['raze'])) {
                 }
             }
             ?>
-            <form action="" method="post" class="forms-condiction">
-                <span>La raza de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select-raze" name="type_raze" value="<?php echo  $type_raze = isset($type_raze) ? $type_raze : ' ' ?>">
-                            <option value="Akita" selected>Akita</option>
-                            <option value="American Pit Bull Terrier">American Pit Bull Terrier</option>
-                            <option value="Beagle">Beagle</option>
-                            <option value="Boston Terrier">Boston Terrier</option>
-                            <option value="Doberman">Doberman</option>
-                        </select>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col cont-button-g">
-                        <div class="button-g">
-                            <button class="btn btn" type="submit" name="raze" value="estery">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+            <div style="padding: 3% 15% 0px 15%;">
+                <form action="" method="post" class="forms-condiction">
+                    <span>La raza de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col">
+                            <select class="form-select-condiction" name="type_raze" value="<?php echo  $type_raze = isset($type_raze) ? $type_raze : ' ' ?>">
+                                <option value="Akita" selected>Akita</option>
+                                <option value="American Pit Bull Terrier">American Pit Bull Terrier</option>
+                                <option value="Beagle">Beagle</option>
+                                <option value="Boston Terrier">Boston Terrier</option>
+                                <option value="Doberman">Doberman</option>
+                            </select>
                         </div>
+                        <div class="col-3"></div>
                     </div>
-                    <div class="col-2"></div>
-                </div>
-                </span>
-            </form>
+                    <br>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col cont-button-g">
+                            <div class="button-g">
+                                <button class="btn btn" type="submit" name="raze" value="estery">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    </span>
+                </form>
+            </div>
         </div>
         <div class="col-2"></div>
     </div>

@@ -14,7 +14,7 @@ if (isset($_POST['condiction'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['additional'] = [
+        $_SESSION['additional_con'] = [
             "additional_check" => $additional_check
         ];
         header('Location:' . SERVERURL . 'loading/');
@@ -35,45 +35,47 @@ if (isset($_POST['condiction'])) {
                 }
             }
             ?>
-            <form action="" method="post" class="forms-condiction">
-                <span>¿<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene una condición médica adicional?</span>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="Sí" id="additional_check" name="additional_check">
-                            <label class="form-check-label" for="additional_check" style="font-size:28px;">
-                                SÍ
-                            </label>
+            <div style="padding: 3% 15% 0px 15%;">
+                <form action="" method="post" class="forms-condiction">
+                    <span>¿<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> tiene una condición médica adicional?</span>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="Sí" id="additional_check" name="additional_check">
+                                <label class="form-check-label" for="additional_check" style="font-size:28px;">
+                                    SÍ
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="No" id="additional_check" name="additional_check">
+                                <label class="form-check-label" for="additional_check" style="font-size:28px;">
+                                    NO
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="No" id="additional_check" name="additional_check">
-                            <label class="form-check-label" for="additional_check" style="font-size:28px;">
-                                NO
-                            </label>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_area" rows="7" placeholder="Describe la condición adicional de tu mascota!"></textarea>
                         </div>
                     </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-12">
-                        <textarea style="border: 2px solid #F07639; width: 100%; font-size: 25px; font-weight: 600; color: #7a7a7a; border-radius: 20px; display: none;" class="form-text" name="check_textarea" id="text_area" rows="7" placeholder="Describe la condición adicional de tu mascota!"></textarea>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col cont-button-g">
-                        <div class="button-g">
-                            <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                    <br>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col cont-button-g">
+                            <div class="button-g">
+                                <button class="btn btn" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            </div>
                         </div>
+                        <div class="col-2"></div>
                     </div>
-                    <div class="col-2"></div>
-                </div>
-                </span>
-            </form>
+                    </span>
+                </form>
+            </div>
         </div>
         <div class="col-2"></div>
     </div>

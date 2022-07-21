@@ -23,8 +23,8 @@ if (isset($_POST['food'])) {
 } ?>
 <div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
+        <div class="col-2"></div>
+        <div class="col-8">
             <?php
             if (isset($sessionSmg)) {
                 if ($sessionSmg != '') {
@@ -36,30 +36,37 @@ if (isset($_POST['food'])) {
                 }
             }
             ?>
-            <form action="" method="post" class="forms-condiction">
-                <span>Actualmente la comida que le doy a <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select-raze" name="food-style">
-                            <option value="Quisquilloso" selected>Quisquilloso</option>
-                            <option value="Normal">Normal</option>
-                            <option value="Muy glotón">Muy glotón</option>
-                        </select>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col cont-button-g">
-                        <div class="button-g">
-                            <button class="btn btn" type="submit" name="food" value="food">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+            <div style="padding: 3% 15% 0px 15%;">
+
+                <form action="" method="post" class="forms-condiction">
+                    <span>Actualmente la comida que le doy a <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col">
+                            <select class="form-select-condiction" name="food-style">
+                                <option value="Quisquilloso" selected>Quisquilloso</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Muy glotón">Muy glotón</option>
+                            </select>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
-                    <div class="col-1"></div>
-                </div>
-                </span>
-            </form>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col cont-button-g">
+                            <div class="button-g">
+                                <button class="btn btn" type="submit" name="food" value="food">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    </span>
+                </form>
+            </div>
         </div>
-        <div class="col-1"></div>
+        <div class="col-2"></div>
     </div>
 </div>

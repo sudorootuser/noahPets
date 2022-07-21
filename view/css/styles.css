@@ -11,6 +11,7 @@ body {
 
 .home img {
     background-repeat: no-repeat;
+    background-size: 100% 100%;
     width: 100%;
     height: 100%;
     margin-top: 15px;
@@ -19,7 +20,7 @@ body {
 .row span {
     color: #2f294e;
     margin-top: 60px;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -41,7 +42,7 @@ body {
     padding: 15px;
     border-radius: 25px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
     text-align: center
 }
@@ -61,15 +62,17 @@ body {
 
 
 .button-g button {
+    width: 45%;
     cursor: pointer;
     background: #F07639;
     padding: 20px;
     /* width: 45%; */
     border-radius: 25px;
     color: white;
-    font-size: 28px;
+    font-size: 20x;
     font-weight: 600;
     text-decoration: none;
+    margin-top: 45px;
 }
 
 .button-g button:hover {
@@ -99,7 +102,7 @@ body {
     width: 45%;
     border-radius: 25px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -135,23 +138,27 @@ body {
 
 /* style Yo */
 
-.forms-yo .form-text {
+.forms-yo .form-text,
+.form-text:focus {
     color: #7a7a7a;
     font-weight: 600;
-    font-weight: 28px;
-    border: 2px solid #F07639;
+    font-weight: 20px;
+    border: none;
+    border-bottom: 3px solid #F07639;
     border-radius: 10px;
     height: 35px;
+
 }
 
-.yo .forms-yo span {
+
+.forms-yo span {
     color: #7a7a7a;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-.yo .forms-yo .text-yo {
+.forms-yo .text-yo-title {
     color: #2f294e;
-    font-size: 28px;
+    font-weight: 600;
 }
 
 .forms-yo {
@@ -167,7 +174,7 @@ body {
     color: #7a7a7a;
     font-weight: 600;
     margin-top: 70px;
-    font-size: 28px;
+    font-size: 20px;
     margin-left: calc(100% - 75%);
 }
 
@@ -205,7 +212,7 @@ body {
     padding: 20px;
     border-radius: 25px;
     color: white;
-    font-size: 21px;
+    font-size: 20px;
     text-decoration: none;
 }
 
@@ -239,11 +246,21 @@ body {
     align-items: center;
     align-content: center;
     color: #7a7a7a;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
-    border: 2px solid #F07639;
+    border: none;
+    border-bottom: 3px solid #F07639;
+    /* border: 2px solid green; */
     border-radius: 10px;
     height: 40px;
+    width: 15%;
+}
+
+.form-select-my-pet:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #F07639;
 }
 
 .forms-my-pet {
@@ -254,9 +271,10 @@ body {
     color: #7a7a7a;
     font-weight: 600;
     font-weight: 28px;
-    border: 2px solid #F07639;
+    border: none;
+    border-bottom: 3px solid #F07639;
     border-radius: 10px;
-    height: 40px;
+    height: 35px;
 }
 
 .my-pet .forms-my-pet span {
@@ -269,7 +287,7 @@ body {
     padding: 20px;
     border-radius: 25px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
     width: 200px;
 }
@@ -304,7 +322,7 @@ body {
 
 .forms-condiction span {
     color: #7a7a7a;
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -313,31 +331,35 @@ body {
 }
 
 .form-select-condiction {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
     color: #ffff;
     cursor: pointer;
-    border: 2px solid #F07639;
+    /* border: 2px solid red; */
     background-color: #F07639;
     border-radius: 15px;
     height: 65px;
-    /* width: 200px; */
+    width: 50%;
     margin-bottom: 80px;
-    border: 2px solid red;
+    border: 2px solid #F07639;
 }
 
-.forms-my-pet .form-text {
-    color: #7a7a7a;
-    font-weight: 600;
-    font-weight: 28px;
-    border: 2px solid #F07639;
-    border-radius: 10px;
-    height: 40px;
+.form-select-condiction:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+}
+
+.form-text:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #F07639;
 }
 
 .my-pet .forms-my-pet span {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .forms-my-pet {
@@ -346,7 +368,7 @@ body {
 
 /* Race */
 .form-select-raze {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
     color: #7a7a7a;
@@ -355,6 +377,34 @@ body {
     height: 60px;
     width: 50%;
     margin-bottom: 80px;
+}
+
+.form-select-raze {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a7a7a;
+    cursor: pointer;
+    border: 2px solid #F07639;
+    /* background-color: #F07639; */
+    border-radius: 15px;
+    height: 50px;
+    width: 40%;
+    margin-bottom: 8px;
+    border: 2px solid #F07639;
+}
+
+.form-select-raze:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    /* border: none; */
+}
+
+.form-text:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #F07639;
 }
 
 /* End Race */
@@ -366,15 +416,33 @@ body {
 }
 
 .form-select-date {
-
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
-    color: #7a7a7a;
-    border: 2px solid #F07639;
+    color: #ffff;
+    cursor: pointer;
+    /* border: 2px solid red; */
+    background-color: #F07639;
     border-radius: 15px;
-    height: 60px;
-    width: 70%;
+    height: 65px;
+    width: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #F07639;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.9;
+    filter: invert(0.9);
+}
+
+.form-select-date:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
 }
 
 .forms-date {
@@ -384,24 +452,28 @@ body {
 
 .forms-date span {
     color: #7a7a7a;
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
 }
 
 /* Addictional Condiction */
 
-
 .form-check .form-check-input {
     background-image: url('../assets/img/Icons-pets-1.png');
     background-repeat: no-repeat;
-    /* border: 1px solid rgb(200, 105, 10); */
     border: none;
     cursor: pointer;
     border-radius: 20px;
-    margin: 5px;
-    width: 150px;
+    /* border: 2px solid blue; */
+    /* margin: 5px; */
+    width: 100%;
     height: 65px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
+}
+
+.form-check input:focus {
+    border: none;
+    background-color: #F07639;
 }
 
 .form-check input:checked {
@@ -410,13 +482,49 @@ body {
 }
 
 .form-check label {
+    text-align: center;
     margin-top: 15px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
-    /* border: 2px solid green; */
-    margin-left: 100;
+    /* margin-left: 100; */
     color: #7a7a7a;
+    /* border: 2px solid black; */
+}
 
+/* Wth */
+
+.form-select-wth {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffff;
+    cursor: pointer;
+    /* border: 2px solid red; */
+    background-color: #F07639;
+    border-radius: 15px;
+    height: 65px;
+    width: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #F07639;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.9;
+    filter: invert(0.9);
+}
+
+.form-select-wth:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+}
+
+.form-select-wth::placeholder {
+    color: #ffff;
 }
 
 /* Load */
@@ -428,12 +536,11 @@ body {
 .forms-condiction select {
     border: 2px solid #F07639;
     cursor: pointer;
-    /* background-color: #F07639; */
 }
 
 .forms-condiction-load span {
     color: #7a7a7a;
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -443,7 +550,7 @@ body {
 
 .forms-condiction-load span {
     color: #7a7a7a;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -469,7 +576,7 @@ body {
     margin-right: -45%;
     border-radius: 25px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -519,7 +626,7 @@ body {
 .food-diet .card-title {
     text-align: left;
     color: #2F294E;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -556,12 +663,81 @@ body {
 
 .form-select-vet {
 
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
     color: #7a7a7a;
     border: 2px solid #F07639;
     border-radius: 15px;
-    height: 55px;
-    /* width: 70%; */
+    height: auto;
+}
+
+/* Addictional Condiction */
+
+.form-check-fd .check-food {
+    background-image: url('../assets/img/Icons-pets-1.png');
+    /* background-color: #F07639; */
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 3px solid #F07639;
+    padding: 18px;
+    width: 90%;
+    height: 45px;
+    /* margin-left: 25px; */
+}
+
+.form-check-fd input:focus {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-fd input:checked {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-fd label {
+    text-align: center;
+    /* margin-top: 15px; */
+    font-size: 20px;
+    font-weight: 600;
+    /* margin-left: 100; */
+    color: #7a7a7a;
+    /* border: 2px solid black; */
+}
+
+.form-check-dt .check-food {
+    background-image: url('../assets/img/Icons-pets-1.png');
+    /* background-color: #F07639; */
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 3px solid #F07639;
+    padding: 18px;
+    width: 90%;
+    height: 45px;
+    /* margin-left: 25px; */
+}
+
+.form-check-dt input:focus {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-dt input:checked {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-dt label {
+    text-align: center;
+    /* margin-top: 15px; */
+    font-size: 20px;
+    font-weight: 600;
+    /* margin-left: 100; */
+    color: #7a7a7a;
+    /* border: 2px solid black; */
 }
