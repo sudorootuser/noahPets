@@ -1,7 +1,19 @@
 <?php
-var_dump($_SESSION['userData']);
-die; 
+// var_dump($_SESSION['userData']);
+// die; 
+// include_once '../controller/registerData.php';
+
+/*-------------- Instanciar al controlador ---------------- */
+
+include_once './controller/registerData.php';
+
+$ins_data = new registerData();
+
+/*-------------- Add Data ---------------- */
+echo $ins_data->addControllerData();
+
 $_SESSION['data_pet'];
+$_SESSION['userData'];
 
 ?>
 
@@ -22,7 +34,7 @@ $_SESSION['data_pet'];
                 }
                 ?>
                 <form action="" method="post" class="forms-condiction-load">
-                    <span>Estamos diseñando el mejor plan para <?php echo $_SESSION['mi_pet']['Name_Pet']; ?></span>
+                    <span>Estamos procesando su pago, en unos momentos serás redireccionado al botón de pago</span>
                     <br>
                     <span>por favor espera...</span>
                     <div class="row">

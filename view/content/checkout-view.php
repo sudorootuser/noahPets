@@ -23,16 +23,17 @@ if (isset($_POST['checkout'])) {
         $sessionSmg = "La contraseña no coincide";
     } else {
 
-        $_SESSION['userData'] = [
-            "nombres" => $nombres,
-            "apellidos" => $apellidos,
-            "password" => $password,
-            "passwd_2" => $passwd_2,
-            "direccion" => $direccion,
-            "apart_casa" => $apart_casa,
-            "apartamentro" => $apartamentro,
-            "ciudad" => $ciudad
+        $userData = [
+            'nombre' => $nombres,
+            'apellido' => $apellidos,
+            'password' => $password,
+            'passwd2' => $passwd_2,
+            'direccion' => $direccion,
+            'apartCasa' => $apart_casa,
+            'apartamento' => $apartamentro,
+            'ciudad' => $ciudad
         ];
+        $_SESSION['userData'] = $userData;
         header('Location:' . SERVERURL . 'to-pay/');
     }
 } ?>
