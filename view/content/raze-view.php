@@ -43,12 +43,18 @@ if (isset($_POST['raze'])) {
                     <div class="row">
                         <div class="col-3"></div>
                         <div class="col">
+
+                            <?php include_once './controller/registerData.php';
+
+                            $dataPet = new registerData();
+
+                            $data = $dataPet->consultaSimple("SELECT * FROM raza");
+
+                            ?>
                             <select class="form-select-condiction" name="type_raze" value="<?php echo  $type_raze = isset($type_raze) ? $type_raze : ' ' ?>">
-                                <option value="Akita" selected>Akita</option>
-                                <option value="American Pit Bull Terrier">American Pit Bull Terrier</option>
-                                <option value="Beagle">Beagle</option>
-                                <option value="Boston Terrier">Boston Terrier</option>
-                                <option value="Doberman">Doberman</option>
+                                <?php foreach ($data as $key => $row) { ?>
+                                    <option value="<?php echo $row['idRaza'] ?>" selected><?php echo $row['raza_nombre'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="col-3"></div>

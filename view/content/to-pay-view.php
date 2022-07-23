@@ -1,7 +1,4 @@
 <?php
-// var_dump($_SESSION['userData']);
-// die; 
-// include_once '../controller/registerData.php';
 
 /*-------------- Instanciar al controlador ---------------- */
 
@@ -12,8 +9,8 @@ $ins_data = new registerData();
 /*-------------- Add Data ---------------- */
 echo $ins_data->addControllerData();
 
-$_SESSION['data_pet'];
-$_SESSION['userData'];
+// $_SESSION['data_pet'];
+// $_SESSION['userData'];
 
 ?>
 

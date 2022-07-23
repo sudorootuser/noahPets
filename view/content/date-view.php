@@ -38,12 +38,15 @@ if (isset($_POST['date'])) {
                                 <?php echo $sessionSmg; ?>
                             </div>
                     <?php }
-                    } ?>
+                    } 
+                    
+                     $hoy = date("Y-m-d");
+                    ?>
                     <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> nacio el</span>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col">
-                            <input class="form-select-date" type="date" name="date_nacio" id="" value="<?php echo $date_nacio = isset($date_nacio) ? $date_nacio : ' ' ?>">
+                            <input class="form-select-date" type="date" name="date_nacio" id="" value="<?php echo $date_nacio = isset($date_nacio) ? $date_nacio : ' ' ?>" max="<?php echo $hoy;?>">
                             <br>
                             <label for="formFile" class="form-label">¿No estás seguro? Escribe un aproximado</label>
                         </div>

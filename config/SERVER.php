@@ -6,7 +6,8 @@ const DB = "forge";
 const USER = "root";
 const PASS = "";
 
-const SGBD = "mysqli:host" . SERVER . ";dbname=" . DB;
+
+const SGBD = "mysql:host=" . SERVER . ";dbname=" . DB;
 
 const METHOD = "AES-256-CBC";
 const SECRET_KEY = '$NoahPets@2022';
