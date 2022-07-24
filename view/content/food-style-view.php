@@ -39,17 +39,22 @@ if (isset($_POST['food'])) {
             <div style="padding: 3% 15% 0px 15%;">
 
                 <form action="" method="post" class="forms-condiction">
-                    <span>Actualmente la comida que le doy a <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> es</span>
+                    <span>Definiria el estilo de comer de <?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> como</span>
                     <br>
                     <br>
                     <br>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col">
-                            <select class="form-select-condiction" name="food-style">
-                                <option value="Quisquilloso" selected>Quisquilloso</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Muy glotón">Muy glotón</option>
+
+                            <?php include_once './controller/registerData.php';
+                            $dataPet = new registerData();
+                            $data = $dataPet->consultaSimple("SELECT * FROM estilocomida");
+                            ?>
+                            <select class="form-select-condiction" name="food-style" value="<?php echo  $food_style = isset($food_style) ? $food_style : ' ' ?>">
+                                <?php foreach ($data as $key => $row) { ?>
+                                    <option value="<?php echo $row['idEstilo'] ?>" selected><?php echo $row['estilo_nombre'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="col-sm-3"></div>

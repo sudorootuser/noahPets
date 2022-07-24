@@ -49,7 +49,6 @@ if (isset($_POST['raze'])) {
                             $dataPet = new registerData();
 
                             $data = $dataPet->consultaSimple("SELECT * FROM raza");
-
                             ?>
                             <select class="form-select-condiction" name="type_raze" value="<?php echo  $type_raze = isset($type_raze) ? $type_raze : ' ' ?>">
                                 <?php foreach ($data as $key => $row) { ?>

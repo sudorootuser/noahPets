@@ -76,11 +76,11 @@ if (isset($_POST['intolerance'])) {
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
-                    <div id="checks" style="display:block;">
+                    <div id="checks" style="display:none;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Pollo" id="Pollo" name="check_pollo" checked>
+                                    <input class="form-check-input" type="checkbox" value="Pollo" id="Pollo" name="check_pollo">
                                     <label class="form-check-label" for="Pollo">
                                         Pollo
                                     </label>

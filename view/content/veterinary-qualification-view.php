@@ -5,15 +5,15 @@ $yo = new mainModel();
 
 if (isset($_POST['condiction'])) {
 
-    $veterinary_check = $yo->limpiar_cadena($_POST['check_option']);
-
     $examen_file = $_FILES['examen_file']['name'];
 
 
-    if ($veterinary_check == "" || !isset($examen_file) || $examen_file == "") {
+    if (!isset($_POST['check_option']) || !isset($examen_file) || $examen_file == "") {
 
         $sessionSmg = "Todos los campos son obligatorios / El documento es obligatorio";
     } else {
+
+        $veterinary_check = $yo->limpiar_cadena($_POST['check_option']);
 
         $fileTmpPath = $_FILES['examen_file']['tmp_name'];
         $filename = $_FILES['examen_file']['name'];
@@ -24,7 +24,7 @@ if (isset($_POST['condiction'])) {
 
         $newFileName = md5(time() . $filename) . '.' . $fileExtension;
 
-        $allowedfileExtensions = array('doc','docx','zip', 'rar', 'xls', 'png', 'jpg', 'jpng', 'xlsx');
+        $allowedfileExtensions = array('jpg', 'png', 'gif', 'tiff', 'jpeg', 'pdf');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
 
@@ -96,7 +96,7 @@ if (isset($_POST['condiction'])) {
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Perrito Felíz" id="Perrito" name="check_option" checked>
+                                <input class="form-check-input" type="radio" value="Perrito Felíz" id="Perrito" name="check_option">
                                 <label class="form-check-label" for="Perrito">
                                     Perrito Felíz
                                 </label>

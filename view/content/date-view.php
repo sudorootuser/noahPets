@@ -40,7 +40,7 @@ if (isset($_POST['date'])) {
                     <?php }
                     } 
                     
-                     $hoy = date("Y-m-d");
+                    $hoy = date("Y-m-d");
                     ?>
                     <span><?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?> nacio el</span>
                     <div class="row">
