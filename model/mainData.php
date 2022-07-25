@@ -29,12 +29,14 @@ class addModelData extends mainModel
     /*---------------- Modelo agregar Data --------------------*/
     protected static function addDataPet($dataPet, $idClient)
     {
+
+
+
         foreach ($dataPet as $key => $pet) {
 
-            $sql = mainModel::conectar()->prepare("INSERT INTO mipet(mipet_nombreUs,mipet_ciudadUs,mipet_phoneUs,mipet_emailUs,mipet_celularUs,mipet_nombre,mipet_tipe,mipet_cond,mipet_esteril,mipet_raze,mipet_nacio,mipet_peso,mipet_pesoOp,mipet_style,mipet_concentrado,mipet_marca,mipet_pbBuild,mipet_pbActivity,mipet_typeIntolerance,mipet_tiPollo,mipet_tiRes,mipet_tiPes,mipet_tiPavo,mipet_tiZanahoria,mipet_tiRemolacha,mipet_tiEspinaca,mipet_tiZuquini,mipet_tiOtro,mipet_tiText,mipet_mcMedica,mipet_mcDigest,mipet_mcRenal,mipet_mcCancer,mipet_mcProCard,mipet_mcObesidad,mipet_mcProHepat,mipet_mcArticula,mipet_mcProblePiel,mipet_mcEstruv,mipet_mcAlergAliment,mipet_McEstreni,mipet_mcChunt,mipet_mcPancreatis,mipet_mcProArti,mipet_mcOto,mipet_mcText,mipet_asDiarrea,mipet_asVomito,mipet_asGases,mipet_asMalAliento,mipet_asCaidaPelo,mipet_asPicazon,mipet_asPeloOpa,mipet_asConvuls,mipet_asArticu,mipet_asDesanimo,mipet_asAyuno,mipet_asOtro,mipet_asTextArea,mipet_vqCheck,mipet_vqNaeFile,mipet_adCheck,mipet_idCliente)
+            $sql = mainModel::conectar()->prepare("INSERT INTO mipet(mipet_nombreUs,mipet_ciudadUs,mipet_phoneUs,mipet_emailUs,mipet_celularUs,mipet_nombre,mipet_tipe,mipet_cond,mipet_esteril,mipet_raze,mipet_nacio,mipet_peso,mipet_pesoOp,mipet_style,mipet_concentrado,mipet_marca,mipet_pbBuild,mipet_pbActivity,mipet_typeIntolerance,mipet_tiPollo,mipet_tiRes,mipet_tiPes,mipet_tiPavo,mipet_tiZanahoria,mipet_tiRemolacha,mipet_tiEspinaca,mipet_tiZuquini,mipet_tiOtro,mipet_tiText,mipet_mcMedica,mipet_mcDigest,mipet_mcRenal,mipet_mcCancer,mipet_mcProCard,mipet_mcObesidad,mipet_mcProHepat,mipet_mcArticula,mipet_mcProblePiel,mipet_mcEstruv,mipet_mcAlergAliment,mipet_McEstreni,mipet_mcChunt,mipet_mcPancreatis,mipet_mcProArti,mipet_mcOto,mipet_mcText,mipet_asDiarrea,mipet_asVomito,mipet_asGases,mipet_asMalAliento,mipet_asCaidaPelo,mipet_asPicazon,mipet_asPeloOpa,mipet_asConvuls,mipet_asArticu,mipet_asDesanimo,mipet_asAyuno,mipet_asOtro,mipet_asTextArea,mipet_vqCheck,mipet_vqNaeFile,mipet_adCheck,foodIdeal_check,FoodOtro_plan,dietCheck,dietOtroPlan,mipet_idCliente)
             VALUES
-            (:nombreUs,:ciudadUs,:phoneUs,:emailUs,:celularUs,:nombre,:tipe,:cond,:esteril,:raze,:nacio,:peso,:pesoOp,:style,:concentrado,:marca,:pbBuild,:pbActivity,:typeInto,:tiPollo,:tiRes,:tiPes,:tiPavo,:tiZanahoria,:tiRemolacha,:tiEspinaca,:tiZuquini,:tiOtro,:tiText,:mcMedica,:mcDigest,:mcRenal,:mcCancer,:mcProCard,:mcObesidad,:mcProHepat,:mcArticula,:mcProblePiel,:mcEstruv,:mcAlergAliment,:McEstreni,:mcChunt,:mcPancreatis,:mcProArti,:mcOto,:mcText,:asDiarrea,:asVomito,:asGases,:asMalAliento,:asCaidaPelo,:asPicazon,:asPeloOpa,:asConvuls,:asArticu,:asDesanimo,:asAyuno,:asOtro,:asTextArea,:vqCheck,:vqNaeFile,:adCheck,:idCliente)");
-
+            (:nombreUs,:ciudadUs,:phoneUs,:emailUs,:celularUs,:nombre,:tipe,:cond,:esteril,:raze,:nacio,:peso,:pesoOp,:style,:concentrado,:marca,:pbBuild,:pbActivity,:typeInto,:tiPollo,:tiRes,:tiPes,:tiPavo,:tiZanahoria,:tiRemolacha,:tiEspinaca,:tiZuquini,:tiOtro,:tiText,:mcMedica,:mcDigest,:mcRenal,:mcCancer,:mcProCard,:mcObesidad,:mcProHepat,:mcArticula,:mcProblePiel,:mcEstruv,:mcAlergAliment,:McEstreni,:mcChunt,:mcPancreatis,:mcProArti,:mcOto,:mcText,:asDiarrea,:asVomito,:asGases,:asMalAliento,:asCaidaPelo,:asPicazon,:asPeloOpa,:asConvuls,:asArticu,:asDesanimo,:asAyuno,:asOtro,:asTextArea,:vqCheck,:vqNaeFile,:adCheck,:adIdealCheck,:adOtroPlan,:adDietCheck,:adDietOtroPlan,:idCliente)");
 
 
             $sql->bindParam(":nombreUs", $pet['Nombre']);
@@ -99,6 +101,14 @@ class addModelData extends mainModel
             $sql->bindParam(":vqCheck", $pet['VqCheck']);
             $sql->bindParam(":vqNaeFile", $pet['VqNaeFile']);
             $sql->bindParam(":adCheck", $pet['AdCheck']);
+            // Alimento y suplementos
+            $sql->bindParam(":adIdealCheck", $_SESSION['food_check'][$_SESSION['id']]['ideal_check']);
+            $sql->bindParam(":adOtroPlan", $_SESSION['food_check'][$_SESSION['id']]['cuidado_check']);
+
+            // Plan idealf
+            $sql->bindParam(":adDietCheck", $_SESSION['diet'][$_SESSION['id']]['ideal_check']);
+            $sql->bindParam(":adDietOtroPlan", $_SESSION['diet'][$_SESSION['id']]['otra_plan']);
+
             $sql->bindParam(":idCliente", $idClient);
 
 
