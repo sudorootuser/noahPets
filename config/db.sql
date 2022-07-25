@@ -31,9 +31,11 @@ CREATE TABLE `cliente` (
   `cliente_apartamentro` varchar(80) DEFAULT NULL,
   `cliente_ciudad` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
+
+insert  into `cliente`(`idCliente`,`cliente_nombre`,`cliente_apellido`,`cliente_password`,`cliente_passwd2`,`cliente_direccion`,`cliente_apart_casa`,`cliente_apartamentro`,`cliente_ciudad`) values (133,'Juan','123456789','Administrador','Administrador','Carrera 75L bis 62 H #66 Sur','sadassad','Cundinamarca','Bogotá'),(134,'Juan','Administrador','Administrador','Administrador','Carrera 75L bis 62 H #66 Sur','Cassaaa','Cundinamarca','Bogotá');
 
 /*Table structure for table `estilocomida` */
 
@@ -131,6 +133,10 @@ CREATE TABLE `mipet` (
   `mipet_vqCheck` blob DEFAULT NULL,
   `mipet_vqNaeFile` blob DEFAULT NULL,
   `mipet_adCheck` blob DEFAULT NULL,
+  `foodIdeal_check` varchar(10) DEFAULT NULL,
+  `FoodOtro_plan` varchar(10) DEFAULT NULL,
+  `dietCheck` varchar(50) DEFAULT NULL,
+  `dietOtroPlan` varchar(50) DEFAULT NULL,
   `mipet_idCliente` int(11) NOT NULL,
   PRIMARY KEY (`idMipet`),
   KEY `mipet_idCliente` (`mipet_idCliente`),
@@ -141,9 +147,11 @@ CREATE TABLE `mipet` (
   CONSTRAINT `mipet_ibfk_2` FOREIGN KEY (`mipet_raze`) REFERENCES `raza` (`idRaza`),
   CONSTRAINT `mipet_ibfk_3` FOREIGN KEY (`mipet_style`) REFERENCES `estilocomida` (`idEstilo`),
   CONSTRAINT `mipet_ibfk_4` FOREIGN KEY (`mipet_concentrado`) REFERENCES `tipocomida` (`idComida`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `mipet` */
+
+insert  into `mipet`(`idMipet`,`mipet_nombreUs`,`mipet_ciudadUs`,`mipet_phoneUs`,`mipet_emailUs`,`mipet_celularUs`,`mipet_nombre`,`mipet_tipe`,`mipet_cond`,`mipet_esteril`,`mipet_raze`,`mipet_nacio`,`mipet_peso`,`mipet_pesoOp`,`mipet_style`,`mipet_concentrado`,`mipet_marca`,`mipet_pbBuild`,`mipet_pbActivity`,`mipet_typeIntolerance`,`mipet_tiPollo`,`mipet_tiRes`,`mipet_tiPes`,`mipet_tiPavo`,`mipet_tiZanahoria`,`mipet_tiRemolacha`,`mipet_tiEspinaca`,`mipet_tiZuquini`,`mipet_tiOtro`,`mipet_tiText`,`mipet_mcMedica`,`mipet_mcDigest`,`mipet_mcRenal`,`mipet_mcCancer`,`mipet_mcProCard`,`mipet_mcObesidad`,`mipet_mcProHepat`,`mipet_mcArticula`,`mipet_mcProblePiel`,`mipet_mcEstruv`,`mipet_mcAlergAliment`,`mipet_McEstreni`,`mipet_mcChunt`,`mipet_mcPancreatis`,`mipet_mcProArti`,`mipet_mcOto`,`mipet_mcText`,`mipet_asDiarrea`,`mipet_asVomito`,`mipet_asGases`,`mipet_asMalAliento`,`mipet_asCaidaPelo`,`mipet_asPicazon`,`mipet_asPeloOpa`,`mipet_asConvuls`,`mipet_asArticu`,`mipet_asDesanimo`,`mipet_asAyuno`,`mipet_asOtro`,`mipet_asTextArea`,`mipet_vqCheck`,`mipet_vqNaeFile`,`mipet_adCheck`,`foodIdeal_check`,`FoodOtro_plan`,`dietCheck`,`dietOtroPlan`,`mipet_idCliente`) values (7,'Camilo','Bogotá','3227405024','rrejuancho1999@gmail.com','3227405024','Carlitos','Perro','Hembra','No',2,'2022-07-25','34','60',2,2,'3','Ideal','Activa',NULL,'Pollo','Res','Pescado','Pavo','Zanahoría','Remolacha','Espinaca','Zuquíni','Zanahoría','sdsadasdaadasda','1','Problemas Digestivos','','Cáncer','Problemas cardiacos','Obsesidad','Problemas Hepáticos','Problemas Articulares','Problemas de Piel','Calculos Estruvita','Alergía Alimentaría','Estreñimiento','Shunt','Pancreatitis','Problemas Articulares','Otro','aasxasdasd','Diarrea','Vómito','Gases','Mal Aliento','Caída de Pelo','Picazon','Pelo Opaco','Conculsiones','Dolor Articulas','Desánimo','Ayuno Prolongado','Otro','xczxczx','Moderada','37fc27c11cf73b65c3b493b1d3c723f2.pdf','Sí',NULL,NULL,NULL,NULL,133),(8,'Camilo','Bogotá','3227405024','rrejuancho1999@gmail.com','3227405024','Carlitos','Perro','Hembra','No',2,'2022-07-25','34','60',2,2,'3','Ideal','Activa',NULL,'Pollo','Res','Pescado','Pavo','Zanahoría','Remolacha','Espinaca','Zuquíni','Zanahoría','sdsadasdaadasda','1','Problemas Digestivos','','Cáncer','Problemas cardiacos','Obsesidad','Problemas Hepáticos','Problemas Articulares','Problemas de Piel','Calculos Estruvita','Alergía Alimentaría','Estreñimiento','Shunt','Pancreatitis','Problemas Articulares','Otro','aasxasdasd','Diarrea','Vómito','Gases','Mal Aliento','Caída de Pelo','Picazon','Pelo Opaco','Conculsiones','Dolor Articulas','Desánimo','Ayuno Prolongado','Otro','xczxczx','Moderada','37fc27c11cf73b65c3b493b1d3c723f2.pdf','No','CUIDADO DI','PAVO','Ideal Topper Plan','Topper Plan Otro',134);
 
 /*Table structure for table `raza` */
 
