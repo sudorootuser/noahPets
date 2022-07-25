@@ -33,7 +33,7 @@ CREATE TABLE `cliente` (
   PRIMARY KEY (`idCliente`),
   KEY `cliente_apartamentro` (`cliente_apartamentro`),
   CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`cliente_apartamentro`) REFERENCES `departamento` (`idDepartamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
 
@@ -49,7 +49,7 @@ CREATE TABLE `departamento` (
 
 /*Data for the table `departamento` */
 
-insert  into `departamento`(`idDepartamento`,`departamento_nombre`) values (1,'Bogotá'),(2,'Medellín'),(3,'Barranquilla'),(4,'Tunja'),(5,'Bucaramanga'),(6,'Ibagué');
+insert  into `departamento`(`idDepartamento`,`departamento_nombre`) values (1,'Bogotá'),(2,'Bolívar'),(3,'Antioquia'),(4,'Atlántico'),(5,'Caldas'),(6,'San Andrés y Providencia');
 
 /*Table structure for table `estilocomida` */
 
@@ -161,7 +161,7 @@ CREATE TABLE `mipet` (
   CONSTRAINT `mipet_ibfk_2` FOREIGN KEY (`mipet_raze`) REFERENCES `raza` (`idRaza`),
   CONSTRAINT `mipet_ibfk_3` FOREIGN KEY (`mipet_style`) REFERENCES `estilocomida` (`idEstilo`),
   CONSTRAINT `mipet_ibfk_4` FOREIGN KEY (`mipet_concentrado`) REFERENCES `tipocomida` (`idComida`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `mipet` */
 
