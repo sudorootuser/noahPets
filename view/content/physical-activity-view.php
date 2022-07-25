@@ -15,7 +15,7 @@ if (isset($_POST['activity'])) {
 
         $physical_activity = $yo->limpiar_cadena($_POST['physical-activity']);
 
-        $_SESSION['physical_activity'] = [
+        $_SESSION['physical_activity'][$_SESSION['id']] = [
             "physical_activity" => $physical_activity
         ];
         header('Location:' . SERVERURL . 'alimentary-intolerance/');
@@ -32,7 +32,7 @@ if (isset($_POST['activity'])) {
             <div>
                 <form action="" method="post" class="forms-condiction">
 
-                    <h2>El nivel de actividad física de <span class="color-test-h2">'<?php echo $_SESSION['mi_pet']['Name_Pet']; ?>'</span> es</h2>
+                    <h2>El nivel de actividad física de <span class="color-test-h2">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span> es</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {

@@ -15,7 +15,7 @@ if (isset($_POST['condiction'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['food_check'] = [
+        $_SESSION['food_check'][$_SESSION['id']] = [
             "ideal_check" => $ideal_check,
             "cuidado_check" => $cuidado_check
         ];
@@ -42,7 +42,7 @@ if (isset($_POST['condiction'])) {
                     <?php }
                     } ?>
                     <p class="text-20">Teniendo en cuenta la información entregada, diseñamos
-                        varias opciones perfectas para <span class="color-test-h2">'<?php echo $_SESSION['mi_pet']['Name_Pet']; ?>'</span>.
+                        varias opciones perfectas para <span class="color-test-h2">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span>.
                         <br>Selecciona la que más te guste
                     <p>
 

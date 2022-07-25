@@ -47,7 +47,7 @@ if (isset($_POST['condiction'])) {
         $check_otro = $yo->limpiar_cadena($check_otro);
         $check_textarea = $yo->limpiar_cadena($check_textarea);
 
-        $_SESSION['associated_sympt'] = [
+        $_SESSION['associated_sympt'][$_SESSION['id']] = [
             "check_diarrea" => $check_diarrea,
             "check_vomito" => $check_vomito,
             "check_gases" => $check_gases,
@@ -77,7 +77,7 @@ if (isset($_POST['condiction'])) {
         <div class="col-9">
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <h2>Qué síntomas ha tenido o tiene <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> asociadas a esta condición?</h2>
+                    <h2>Qué síntomas ha tenido o tiene <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> asociadas a esta condición?</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {

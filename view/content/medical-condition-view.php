@@ -47,7 +47,7 @@ if (isset($_POST['condiction'])) {
         $check_otro = $yo->limpiar_cadena($check_otro);
         $check_textarea = $yo->limpiar_cadena($check_textarea);
 
-        $_SESSION['medical_condition'] = [
+        $_SESSION['medical_condition'][$_SESSION['id']] = [
             "cond_medica" => $cond_medica,
             "check_problem_digest" => $check_problem_digest,
             "check_problem_renales" => $check_problem_renales,
@@ -68,7 +68,7 @@ if (isset($_POST['condiction'])) {
         ];
     } else {
 
-        $_SESSION['medical_condition'] = [
+        $_SESSION['medical_condition'][$_SESSION['id']] = [
             "cond_medica" => $cond_medica,
             "check_problem_digest" => "",
             "check_problem_renales" => "",
@@ -104,7 +104,7 @@ if (isset($_POST['condiction'])) {
             <div>
                 <form action="" method="post" class="forms-condiction">
 
-                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> tiene diagnósticada al menos una condición médica</h2>
+                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> tiene diagnósticada al menos una condición médica</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -126,7 +126,7 @@ if (isset($_POST['condiction'])) {
                         </div>
                     </div>
                     <div id="checks" style="display:none;">
-                        <p class="text-20">Cuál es la principal condición diagnósticada en <span class="color-test-h5">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'.</span></p>
+                        <p class="text-20">Cuál es la principal condición diagnósticada en <span class="color-test-h5">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'.</span></p>
                         <br>
                         <br>
                         <div class="row">
@@ -287,13 +287,13 @@ if (isset($_POST['condiction'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>alimentary-intolerance/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

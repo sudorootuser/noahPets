@@ -33,7 +33,7 @@ if (isset($_POST['intolerance'])) {
         $check_otro = $yo->limpiar_cadena($check_otro);
         $name_text = $yo->limpiar_cadena($name_text);
 
-        $_SESSION['type_intolerance'] = [
+        $_SESSION['type_intolerance'][$_SESSION['id']] = [
             "type_intolerance" => $type_intolerance,
             "check_pollo" => $check_pollo,
             "check_res" => $check_res,
@@ -48,7 +48,7 @@ if (isset($_POST['intolerance'])) {
         ];
     } else {
 
-        $_SESSION['type_intolerance'] = [
+        $_SESSION['type_intolerance'][$_SESSION['id']] = [
 
             "type_intolerance" => $type_intolerance,
             "check_pollo" => "",
@@ -80,7 +80,7 @@ if (isset($_POST['intolerance'])) {
             <div>
                 <form action="" method="post" class="forms-condiction" style="text-align: center; align-items:center ; align-content: center;">
 
-                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> tiene alguna intolerancia alimentaria</h2>
+                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> tiene alguna intolerancia alimentaria</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -200,13 +200,13 @@ if (isset($_POST['intolerance'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>physical-activity/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="intolerance" value="intolerance">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

@@ -16,7 +16,7 @@ if (isset($_POST['weight'])) {
         $sessionSmg = "El peso es obligatorio !";
     } else {
 
-        $_SESSION['wight_peso'] = [
+        $_SESSION['wight_peso'][$_SESSION['id']] = [
             "wight_peso" => $wight_peso,
             "wight_peso_op" => $wight_peso_op
         ];
@@ -34,7 +34,7 @@ if (isset($_POST['weight'])) {
             <div>
                 <form action="" method="post" class="forms-yo text-center">
 
-                    <h2>La raza de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> pesa</h2>
+                    <h2>La raza de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> pesa</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -49,12 +49,12 @@ if (isset($_POST['weight'])) {
 
                         <div class="col-sm">
                             <label for="formFile" class="form-label">Peso Actual Aproximado</label>
-                            <input class="form-text" type="number" name="wight_peso" value="<?php echo $wight_peso = isset($wight_peso) ? $wight_peso : ' ' ?>" placeholder="Kilos"> .Kg
+                            <input class="form-text" type="number" name="wight_peso" value="<?php echo $wight_peso = isset($_SESSION['wight_peso'][$_SESSION['id']]['wight_peso']) ? $_SESSION['wight_peso'][$_SESSION['id']]['wight_peso'] : ' ' ?>" placeholder="Kilos"> .Kg
 
                             <br>
                             <br>
-                            <label for="formFile" class="form-label">El peso ideal de <?php echo $_SESSION['mi_pet']['Name_Pet']; ?> es</label>
-                            <input class="form-text" type="number" name="wight_peso_op" value="<?php echo $wight_peso_op = isset($wight_peso_op) ? $wight_peso_op : ' ' ?>" placeholder="Kilos"> .Kg (opcional)
+                            <label for="formFile" class="form-label">El peso ideal de <?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?> es</label>
+                            <input class="form-text" type="number" name="wight_peso_op" value="<?php echo $wight_peso_op = isset($_SESSION['wight_peso'][$_SESSION['id']]['wight_peso_op']) ? $_SESSION['wight_peso'][$_SESSION['id']]['wight_peso_op'] : ' ' ?>" placeholder="Kilos"> .Kg (opcional)
                             <br>
                         </div>
 

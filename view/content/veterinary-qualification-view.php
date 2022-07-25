@@ -35,7 +35,7 @@ if (isset($_POST['condiction'])) {
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
 
-                $_SESSION['veterinary_qua'] = [
+                $_SESSION['veterinary_qua'][$_SESSION['id']] = [
                     "veterinary_check" => $veterinary_check,
                     "newFileName" => $newFileName
                 ];
@@ -61,7 +61,7 @@ if (isset($_POST['condiction'])) {
             <div>
                 <form action="#" method="POST" class="forms-condiction" enctype="multipart/form-data">
 
-                    <h2>Cómo califica la condición médica de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> segun su veterinario?</h2>
+                    <h2>Cómo califica la condición médica de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> segun su veterinario?</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -131,7 +131,7 @@ if (isset($_POST['condiction'])) {
                     </div>
                     <br>
                     <br>
-                    <p>Por favor adjunta los exámenes médicos más recientes de <span class="color-test-h5">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span></p>
+                    <p>Por favor adjunta los exámenes médicos más recientes de <span class="color-test-h5">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span></p>
                     <br>
                     <br>
                     <div class="row">

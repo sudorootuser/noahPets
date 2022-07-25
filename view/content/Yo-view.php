@@ -6,9 +6,11 @@ $yo = new mainModel();
 if (empty($_SESSION['id'])) {
 
     $_SESSION['id'] = 1;
+} else {
+    $_SESSION['id'];
 }
 
-if (isset($_POST['yo'])) {
+if (isset($_POST['yo'][$_SESSION['id']])) {
 
     $sessionSmg = "";
 
@@ -26,7 +28,7 @@ if (isset($_POST['yo'])) {
         $sessionSmg = "<b>Los terminos y condiciones son obligatorios</b>";
     } else {
 
-        $_SESSION['yo'] = [
+        $_SESSION['yo'][$_SESSION['id']] = [
             "NombreYo" => $nombre,
             "CiudadYo" => $ciudad,
             "phone" => $phone,
@@ -62,14 +64,18 @@ if (isset($_POST['yo'])) {
                 <div style="padding: 0% 10% 0px 15%;">
                     <div class="row">
                         <div class="col form-yo">
-                            <span style="text-align: left;">Mi nombe es <input type="text" class="form-text" name="nombre" value=" <?php echo $nombre = isset($_SESSION['yo']['NombreYo']) ? $_SESSION['yo']['NombreYo'] : ' ' ?>" required> ,vivo en la ciudad de <input type="text" class="form-text" name="ciudad" value="<?php echo $ciudad = isset($_SESSION['yo']['CiudadYo']) ? $_SESSION['yo']['CiudadYo'] : ' ' ?>" required></span>
+                            <span style="text-align: left;">Mi nombe es 
+                            <input type="text" class="form-text" name="nombre" 
+                            value=" <?php echo $nombre = isset($_SESSION['yo'][$_SESSION['id']]['NombreYo']) ? $_SESSION['yo'][$_SESSION['id']]['NombreYo'] : ' ' ?>" required>
+                             ,vivo en la ciudad de 
+                            <input type="text" class="form-text" name="ciudad" value="<?php echo $ciudad = isset($_SESSION['yo'][$_SESSION['id']]['CiudadYo']) ? $_SESSION['yo'][$_SESSION['id']]['CiudadYo'] : ' ' ?>" required></span>
 
                             <span style="margin-top: 35px;">
-                                Pueden contactarme para ampliar la información de mi mascota, <input type="number" class="form-text" name="phone" value="<?php echo $phone = isset($_SESSION['yo']['phone']) ? $_SESSION['yo']['phone'] : ' ' ?>">
+                                Pueden contactarme para ampliar la información de mi mascota, <input type="number" class="form-text" name="phone" value="<?php echo $phone = isset($_SESSION['yo'][$_SESSION['id']]['phone']) ? $_SESSION['yo'][$_SESSION['id']]['phone'] : ' ' ?>">
                             </span>
 
                             <span>
-                                al correo eletrónico <input type="email" class="form-text" name="email" value=" <?php echo $email = isset($_SESSION['yo']['EmailYo']) ? $_SESSION['yo']['EmailYo'] : ' ' ?>" required> o también al teléfono <input type="number" class="form-text" name="celular" value="<?php echo $celular = isset($_SESSION['yo']['CelularYo']) ? $_SESSION['yo']['CelularYo'] : ' ' ?>" required>
+                                al correo eletrónico <input type="email" class="form-text" name="email" value=" <?php echo $email = isset($_SESSION['yo'][$_SESSION['id']]['EmailYo']) ? $_SESSION['yo'][$_SESSION['id']]['EmailYo'] : ' ' ?>" required> o también al teléfono <input type="number" class="form-text" name="celular" value="<?php echo $celular = isset($_SESSION['yo'][$_SESSION['id']]['CelularYo']) ? $_SESSION['yo'][$_SESSION['id']]['CelularYo'] : ' ' ?>" required>
                             </span>
                         </div>
                     </div>

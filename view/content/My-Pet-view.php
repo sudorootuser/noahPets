@@ -16,7 +16,7 @@ if (isset($_POST['mi-pet'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['mi_pet'] = [
+        $_SESSION['mi_pet'][$_SESSION['id']] = [
             "Name_Pet" => $name_pet,
             "Pet_Type" => $pet_type
         ];
@@ -35,7 +35,7 @@ if (isset($_POST['mi-pet'])) {
             <div>
                 <form action="" method="post" class="forms-my-pet">
 
-                    <p class="form-yo font-size-26">Hola <span class="nombre-User">'<?php echo $_SESSION['yo']['NombreYo']; ?>'</span> . Ahora cuéntanos de tu mascota.</p>
+                    <p class="form-yo font-size-26">Hola <span class="nombre-User">'<?php echo $_SESSION['yo'][$_SESSION['id']]['NombreYo']; ?>'</span> . Ahora cuéntanos de tu mascota.</p>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -48,7 +48,7 @@ if (isset($_POST['mi-pet'])) {
                     }
                     ?>
                     <p class="text-my-pet margin-80">Mi masota se llama
-                        <input type="text" class="form-text" name="name_pet" value="<?php echo $name_pet = isset($name_pet) ? $name_pet : ' ' ?>" required> y es un
+                        <input type="text" class="form-text" name="name_pet" value="<?php echo $name_pet = isset($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']) ? $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'] : ' ' ?>" required> y es un
                         <select class="form-select-my-pet" name="pet_type" required>
                             <option selected>Seleccione.</option>
                             <option value="Gato">Gato</option>
@@ -58,13 +58,13 @@ if (isset($_POST['mi-pet'])) {
 
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>Yo/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br><br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="mi-pet" value="mi-pet">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

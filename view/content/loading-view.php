@@ -15,7 +15,7 @@
                 }
                 ?>
                 <form action="" method="post" class="forms-condiction-load">
-                    <h2>Estamos diseñando el mejor plan para <span class="color-test-h2">'<?php echo $_SESSION['mi_pet']['Name_Pet']; ?>'</span></h2>
+                    <h2>Estamos diseñando el mejor plan para <span class="color-test-h2">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span></h2>
                     <br>
                     <p class="text-20">por favor espera...</p>
                     <div class="row">

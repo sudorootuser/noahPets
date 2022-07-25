@@ -5,7 +5,7 @@ CREACIÓN DE CONSTANTES PARA LA NAVEGACIÓN EN LA PÁGINA WEB
  -----------*/
 //const SERVERURL = "https://testadlive.com/noah_client/";
 
-const SERVERURL = "http://localhost/programs/noah_client/";
+const SERVERURL = "http://localhost/noahpets/";
 
 const COMPANY = "Noah Pets";
 

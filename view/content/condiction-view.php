@@ -13,7 +13,7 @@ if (isset($_POST['condiction'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['condiction'] = [
+        $_SESSION['condiction'][$_SESSION['id']] = [
             "Type_Cond" => $type_cond
         ];
         header('Location:' . SERVERURL . 'esterilized/');
@@ -30,7 +30,7 @@ if (isset($_POST['condiction'])) {
         <div class="col-9">
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> es</h2>
+                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> es</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -55,13 +55,13 @@ if (isset($_POST['condiction'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>My-Pet/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br><br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

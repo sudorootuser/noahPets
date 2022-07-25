@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.4.21-MariaDB : Database - forge
+MySQL - 5.5.5-10.4.22-MariaDB : Database - forge
 *********************************************************************
 */
 
@@ -31,11 +31,9 @@ CREATE TABLE `cliente` (
   `cliente_apartamentro` varchar(80) DEFAULT NULL,
   `cliente_ciudad` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
-
-insert  into `cliente`(`idCliente`,`cliente_nombre`,`cliente_apellido`,`cliente_password`,`cliente_passwd2`,`cliente_direccion`,`cliente_apart_casa`,`cliente_apartamentro`,`cliente_ciudad`) values (129,'Juan','Administrador','1234','1234','Carrera 75L bis 62 H #66 Sur','sadassad','Cundinamarca','Bogotá');
 
 /*Table structure for table `estilocomida` */
 
@@ -89,6 +87,7 @@ CREATE TABLE `mipet` (
   `mipet_marca` varchar(50) DEFAULT NULL,
   `mipet_pbBuild` varchar(50) DEFAULT NULL,
   `mipet_pbActivity` varchar(50) DEFAULT NULL,
+  `mipet_typeIntolerance` varchar(15) DEFAULT NULL,
   `mipet_tiPollo` varchar(50) DEFAULT NULL,
   `mipet_tiRes` varchar(50) DEFAULT NULL,
   `mipet_tiPes` varchar(50) DEFAULT NULL,
@@ -142,11 +141,9 @@ CREATE TABLE `mipet` (
   CONSTRAINT `mipet_ibfk_2` FOREIGN KEY (`mipet_raze`) REFERENCES `raza` (`idRaza`),
   CONSTRAINT `mipet_ibfk_3` FOREIGN KEY (`mipet_style`) REFERENCES `estilocomida` (`idEstilo`),
   CONSTRAINT `mipet_ibfk_4` FOREIGN KEY (`mipet_concentrado`) REFERENCES `tipocomida` (`idComida`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `mipet` */
-
-insert  into `mipet`(`idMipet`,`mipet_nombreUs`,`mipet_ciudadUs`,`mipet_phoneUs`,`mipet_emailUs`,`mipet_celularUs`,`mipet_nombre`,`mipet_tipe`,`mipet_cond`,`mipet_esteril`,`mipet_raze`,`mipet_nacio`,`mipet_peso`,`mipet_pesoOp`,`mipet_style`,`mipet_concentrado`,`mipet_marca`,`mipet_pbBuild`,`mipet_pbActivity`,`mipet_tiPollo`,`mipet_tiRes`,`mipet_tiPes`,`mipet_tiPavo`,`mipet_tiZanahoria`,`mipet_tiRemolacha`,`mipet_tiEspinaca`,`mipet_tiZuquini`,`mipet_tiOtro`,`mipet_tiText`,`mipet_mcMedica`,`mipet_mcDigest`,`mipet_mcRenal`,`mipet_mcCancer`,`mipet_mcProCard`,`mipet_mcObesidad`,`mipet_mcProHepat`,`mipet_mcArticula`,`mipet_mcProblePiel`,`mipet_mcEstruv`,`mipet_mcAlergAliment`,`mipet_McEstreni`,`mipet_mcChunt`,`mipet_mcPancreatis`,`mipet_mcProArti`,`mipet_mcOto`,`mipet_mcText`,`mipet_asDiarrea`,`mipet_asVomito`,`mipet_asGases`,`mipet_asMalAliento`,`mipet_asCaidaPelo`,`mipet_asPicazon`,`mipet_asPeloOpa`,`mipet_asConvuls`,`mipet_asArticu`,`mipet_asDesanimo`,`mipet_asAyuno`,`mipet_asOtro`,`mipet_asTextArea`,`mipet_vqCheck`,`mipet_vqNaeFile`,`mipet_adCheck`,`mipet_idCliente`) values (2,'10','10','10','10','10','10','Perro','Hembra','No',3,'2018-12-31','45','45',0,0,'Hills','Sobrepeso','Muy Activa','Pollo','Res','Pescado','','','','','','','','1','','','Cáncer','','','','','','','','','','','','','','','','','','','Picazon','Pelo Opaco','','','','','','','Moderada','99c0fc0c28a22c504ded53009e2ac892.docx','No',129),(3,'Camilo','Bogotá','3227405024','rrejuancho1999@gmail.com','3227405024','aaaaaaa','Gato','Hembra','No',3,'2018-12-25','5325','25',0,0,'Monello','Sobrepeso','Activa','Pollo','','','','','Remolacha','','','','','1','','','Cáncer','','','','','','','','','','','','','','','','','','','','','','','Desánimo','Ayuno Prolongado','','','Perrito Sentado','4eb4c9dbaa7bef27e1aefd4d014400a1.xlsx','No',129);
 
 /*Table structure for table `raza` */
 

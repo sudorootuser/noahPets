@@ -15,7 +15,7 @@ if (isset($_POST['condiction'])) {
 
         $additional_check = $yo->limpiar_cadena($_POST['additional_check']);
 
-        $_SESSION['additional_con'] = [
+        $_SESSION['additional_con'][$_SESSION['id']] = [
             "additional_check" => $additional_check
         ];
         header('Location:' . SERVERURL . 'loading/');
@@ -32,7 +32,7 @@ if (isset($_POST['condiction'])) {
 
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> tiene una condición médica adicional?</h2>
+                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> tiene una condición médica adicional?</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {

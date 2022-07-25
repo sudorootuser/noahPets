@@ -15,7 +15,7 @@ if (isset($_POST['build'])) {
 
         $physical_build = $yo->limpiar_cadena($_POST['physical-build']);
 
-        $_SESSION['physical_build'] = [
+        $_SESSION['physical_build'][$_SESSION['id']] = [
             "physical_build" => $physical_build
         ];
         header('Location:' . SERVERURL . 'physical-activity/');
@@ -31,7 +31,7 @@ if (isset($_POST['build'])) {
         <div class="col-9">
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <h2>La contextura física de <span class="color-test-h2">'<?php echo $_SESSION['mi_pet']['Name_Pet']; ?>'</span> es</h2>
+                    <h2>La contextura física de <span class="color-test-h2">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span> es</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -68,7 +68,7 @@ if (isset($_POST['build'])) {
                             <div class="row">
                                 <div class="col text-center">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Delgado" value="<?php echo $physical_build = isset($physical_build) ? $physical_build : ' ' ?>">
+                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Delgado" value="<?php echo $physical_build = isset($_SESSION['physical_build'][$_SESSION['id']]['physical_build']) ? $_SESSION['physical_build'][$_SESSION['id']]['physical_build'] : ' ' ?>">
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ if (isset($_POST['build'])) {
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Ideal" value="<?php echo $physical_build = isset($physical_build) ? $physical_build : ' ' ?>">
+                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Ideal" value="<?php echo $physical_build = isset($_SESSION['physical_build'][$_SESSION['id']]['physical_build']) ? $_SESSION['physical_build'][$_SESSION['id']]['physical_build'] : ' ' ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-1"></div>
@@ -121,7 +121,7 @@ if (isset($_POST['build'])) {
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Sobrepeso" value="<?php echo $physical_build = isset($physical_build) ? $physical_build : ' ' ?>">
+                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Sobrepeso" value="<?php echo $physical_build = isset($_SESSION['physical_build'][$_SESSION['id']]['physical_build']) ? $_SESSION['physical_build'][$_SESSION['id']]['physical_build'] : ' ' ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-1"></div>

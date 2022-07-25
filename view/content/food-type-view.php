@@ -16,7 +16,7 @@ if (isset($_POST['type'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['food_type'] = [
+        $_SESSION['food_type'][$_SESSION['id']] = [
             "concentrado" => $concentrado,
             "marca" => $marca,
         ];
@@ -44,7 +44,7 @@ if (isset($_POST['type'])) {
             ?>
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <h2>Actualmente la comida que le doy a <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> es</h2>
+                    <h2>Actualmente la comida que le doy a <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> es</h2>
                     <p class="text-20">Por favor seleccione la comida que le da a su mascota.</p>
                     <div class="row">
                         <div class="col-12">
@@ -52,7 +52,7 @@ if (isset($_POST['type'])) {
                             $dataPet = new registerData();
                             $data = $dataPet->consultaSimple("SELECT * FROM tipocomida");
                             ?>
-                            <select class="form-select-condiction" name="concentrado" value="<?php echo  $concentrado = isset($concentrado) ? $concentrado : ' ' ?>">
+                            <select class="form-select-condiction" name="concentrado" value="<?php echo  $concentrado = isset($_SESSION['food_type'][$_SESSION['id']]['concentrado']) ? $_SESSION['food_type'][$_SESSION['id']]['concentrado'] : ' ' ?>">
                                 <?php foreach ($data as $key => $row) { ?>
                                     <option value="<?php echo $row['idComida'] ?>" selected><?php echo $row['comida_nombre'] ?></option>
                                 <?php } ?>
@@ -64,7 +64,7 @@ if (isset($_POST['type'])) {
                             $dataPet = new registerData();
                             $data = $dataPet->consultaSimple("SELECT * FROM marca");
                             ?>
-                            <select class="form-select-condiction" name="marca" value="<?php echo  $concentrado = isset($concentrado) ? $concentrado : ' ' ?>">
+                            <select class="form-select-condiction" name="marca" value="<?php echo  $concentrado = isset($_SESSION['food_type'][$_SESSION['id']]['marca']) ? $_SESSION['food_type'][$_SESSION['id']]['marca'] : ' ' ?>">
                                 <?php foreach ($data as $key => $row) { ?>
                                     <option value="<?php echo $row['idMarca'] ?>" selected><?php echo $row['marca_nombre'] ?></option>
                                 <?php } ?>
@@ -73,12 +73,12 @@ if (isset($_POST['type'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>food-style/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="type" value="type">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ if (isset($_POST['condiction'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['diet'] = [
+        $_SESSION['diet'][$_SESSION['id']] = [
             "ideal_check" => $ideal_check,
             "otra_plan" => $otra_plan
         ];
@@ -38,7 +38,7 @@ if (isset($_POST['condiction'])) {
                         <?php }
                     }
                     ?>
-                    <p><span class="color-test-h1">'<?php echo $_SESSION['mi_pet']['Name_Pet']; ?>'</span>, necesita consumir
+                    <p><span class="color-test-h1">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span>, necesita consumir
                         <select class="form-select-raze-diet" name="marca">
                             <option value="Monello" selected>150 Gramos</option>
                             <option value="Chunky">130 Gramos</option>
@@ -112,7 +112,7 @@ if (isset($_POST['condiction'])) {
                     <br>
                     <div class="row">
                         <div class="col">
-                            <p><span class="color-test-h2">'<?php echo $_SESSION['mi_pet']['Name_Pet']; ?>'</span> necesita consumir
+                            <p><span class="color-test-h2">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span> necesita consumir
                                 <select class="form-select-raze-diet" name="marca">
                                     <option value="Monello" selected>150 Gramos</option>
                                     <option value="Chunky">130 Gramos</option>

@@ -14,7 +14,7 @@ if (isset($_POST['estery'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['esterilizad'] = [
+        $_SESSION['esterilizad'][$_SESSION['id']] = [
             "esterilizad" => $esterilizad
         ];
 
@@ -33,10 +33,10 @@ if (isset($_POST['estery'])) {
 
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <?php if ($_SESSION['condiction']['Type_Cond'] == 'Macho') { ?>
-                        <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> esta castrado</h2>
+                    <?php if ($_SESSION['condiction'][$_SESSION['id']]['Type_Cond'] == 'Macho') { ?>
+                        <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> esta castrado</h2>
                     <?php } else { ?>
-                        <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> esta esterilizada</h2>
+                        <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> esta esterilizada</h2>
                         <?php }
 
                     if (isset($sessionSmg)) {
@@ -63,13 +63,13 @@ if (isset($_POST['estery'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>condiction/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br><br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="estery" value="estery">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

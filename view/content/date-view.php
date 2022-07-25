@@ -18,7 +18,7 @@ if (isset($_POST['date'])) {
         $sessionSmg = "La fecha no puede superar el día actual";
     } else {
 
-        $_SESSION['date_nacio'] = [
+        $_SESSION['date_nacio'][$_SESSION['id']] = [
             "date_nacio" => $date_nacio
         ];
         header('Location:' . SERVERURL . 'weight/');
@@ -35,7 +35,7 @@ if (isset($_POST['date'])) {
             <div>
                 <form action="" method="post" class="forms-date">
 
-                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> nació el</h2>
+                    <h2><span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> nació el</h2>
                     <p class="text-20">Por favor seleccione la fecha de nacimiento de su mascota.</p>
                     <?php
                     if (isset($sessionSmg)) {
@@ -50,7 +50,7 @@ if (isset($_POST['date'])) {
                     <div class="row">
 
                         <div class="col">
-                            <input class="form-select-date" type="date" name="date_nacio" id="" value="<?php echo $date_nacio = isset($date_nacio) ? $date_nacio : ' ' ?>" max="<?php echo $hoy; ?>">
+                            <input class="form-select-date" type="date" name="date_nacio" id="" value="<?php echo $date_nacio = isset($_SESSION['date_nacio'][$_SESSION['id']]['date_nacio']) ? $_SESSION['date_nacio'][$_SESSION['id']]['date_nacio'] : ' ' ?>" max="<?php echo $hoy; ?>">
                             <br>
                             <label for="formFile" class="form-label">¿No estás seguro? Escribe un aproximado</label>
                         </div>
@@ -58,13 +58,13 @@ if (isset($_POST['date'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>raze/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br><br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="date" value="date">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>

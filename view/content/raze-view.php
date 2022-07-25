@@ -14,7 +14,7 @@ if (isset($_POST['raze'])) {
         $sessionSmg = "Todos los campos son obligatorios";
     } else {
 
-        $_SESSION['type_raze'] = [
+        $_SESSION['type_raze'][$_SESSION['id']] = [
             "type_raze" => $type_raze
         ];
         header('Location:' . SERVERURL . 'date/');
@@ -32,7 +32,7 @@ if (isset($_POST['raze'])) {
 
             <div>
                 <form action="" method="post" class="forms-condiction">
-                    <h2>La raza de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet']['Name_Pet']); ?>'</span> es</h2>
+                    <h2>La raza de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> es</h2>
                     <?php
                     if (isset($sessionSmg)) {
                         if ($sessionSmg != '') {
@@ -54,7 +54,7 @@ if (isset($_POST['raze'])) {
 
                             $data = $dataPet->consultaSimple("SELECT * FROM raza");
                             ?>
-                            <select class="form-select-condiction" name="type_raze" value="<?php echo  $type_raze = isset($type_raze) ? $type_raze : ' ' ?>">
+                            <select class="form-select-condiction" name="type_raze" value="<?php echo  $type_raze = isset($_SESSION['type_raze'][$_SESSION['id']]['type_raze']) ? $_SESSION['type_raze'][$_SESSION['id']]['type_raze'] : ' ' ?>">
                                 <?php foreach ($data as $key => $row) { ?>
                                     <option value="<?php echo $row['idRaza'] ?>" selected><?php echo $row['raza_nombre'] ?></option>
                                 <?php } ?>
@@ -63,13 +63,13 @@ if (isset($_POST['raze'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
+                            <div class="button-g text-center margin-80 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>esterilized/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                             <br><br>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50">
+                            <div class="button-g text-center margin-80">
                                 <button class="btn withe-l" type="submit" name="raze" value="raze">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>
