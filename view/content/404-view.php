@@ -1,7 +1,19 @@
-<div class="full-box container-404">
-    <div>
-        <p class="text-center"><i class="fas fa-rocket fa-10x"></i></p>
-        <h1 class="text-center">ERROR 404</h1>
-        <p class="lead text-center">Página no encontrada</p>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center">
+            <h1 class="display-1 fw-bold">404</h1>
+            <p class="fs-3"> <span class="text-danger">Opps!</span> Página no encontrada.</p>
+            <p class="lead">
+                La página que estas buscando no existre.
+            </p>
+            <a href="<?php echo SERVERURL ?>home/" class="btn btn-primary">Ir al Inicio</a>
+        </div>
     </div>
-</div>
+</body>
