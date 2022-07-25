@@ -71,7 +71,7 @@ if (isset($_POST['yo'][$_SESSION['id']])) {
                             <input type="text" class="form-text" name="ciudad" value="<?php echo $ciudad = isset($_SESSION['yo'][$_SESSION['id']]['CiudadYo']) ? $_SESSION['yo'][$_SESSION['id']]['CiudadYo'] : ' ' ?>" required></span>
 
                             <span style="margin-top: 35px;">
-                                Pueden contactarme para ampliar la información de mi mascota, <input type="number" class="form-text" name="phone" value="<?php echo $phone = isset($_SESSION['yo'][$_SESSION['id']]['phone']) ? $_SESSION['yo'][$_SESSION['id']]['phone'] : ' ' ?>">
+                                Pueden contactarme para ampliar la información de mi mascota, <input type="number" class="form-text" name="phone" value="<?php echo $phone = isset($_SESSION['yo'][$_SESSION['id']]['phone']) ? $_SESSION['yo'][$_SESSION['id']]['phone'] : ' ' ?>" required>
                             </span>
 
                             <span>

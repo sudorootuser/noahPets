@@ -91,12 +91,20 @@ if (isset($_POST['checkout'])) {
                         <input type="text" class="form-text-checkout" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apartamento / Casa" name="apart/casa" value="<?php echo $data = isset($apart_casa) ? $apart_casa : '' ?>">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <input type="text" class="form-text-checkout" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Departamento" placeholder="apartamentro " name="apartamentro" value="<?php echo $data = isset($apartamentro) ? $apartamentro : '' ?>">
-                    </div>
+                <div class="row">                    
                     <div class="col-6">
                         <input type="text" class="form-text-checkout" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ciudad" name="ciudad" value="<?php echo $data = isset($ciudad) ? $ciudad : '' ?>">
+                    </div>
+                    <div class="col-6">
+                        <?php include_once './controller/registerData.php';
+                        $dataPet = new registerData();
+                        $data = $dataPet->consultaSimple("SELECT * FROM departamento");
+                        ?>
+                        <select class="form-text-checkout-dp" name="apartamentro">
+                            <?php foreach ($data as $key => $row) { ?>
+                                <option value="<?php echo $row['idDepartamento'] ?>" selected><?php echo $row['departamento_nombre'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <br>

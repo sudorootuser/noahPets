@@ -48,7 +48,7 @@ if (isset($_POST['mi-pet'])) {
                     }
                     ?>
                     <p class="text-my-pet margin-80">Mi masota se llama
-                        <input type="text" class="form-text" name="name_pet" value="<?php echo $name_pet = isset($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']) ? $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'] : ' ' ?>" > y es un
+                        <input type="text" class="form-text" name="name_pet" value="<?php echo $name_pet = isset($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']) ? $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'] : ' ' ?>" required> y es un
                         <select class="form-select-my-pet" name="pet_type" required>
                             <option selected>Seleccione.</option>
                             <option value="Gato">Gato</option>

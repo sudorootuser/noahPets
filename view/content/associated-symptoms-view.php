@@ -31,7 +31,7 @@ if (isset($_POST['condiction'])) {
 
     if ($count <= 0) {
 
-        $sessionSmg = "Todos los campos son obligatorios !";
+        $sessionSmg = "Debe seleccionar al menos un !";
     } else {
         $check_diarrea = $yo->limpiar_cadena($check_diarrea);
         $check_vomito = $yo->limpiar_cadena($check_vomito);

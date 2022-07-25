@@ -37,6 +37,20 @@ CREATE TABLE `cliente` (
 
 insert  into `cliente`(`idCliente`,`cliente_nombre`,`cliente_apellido`,`cliente_password`,`cliente_passwd2`,`cliente_direccion`,`cliente_apart_casa`,`cliente_apartamentro`,`cliente_ciudad`) values (133,'Juan','123456789','Administrador','Administrador','Carrera 75L bis 62 H #66 Sur','sadassad','Cundinamarca','Bogotá'),(134,'Juan','Administrador','Administrador','Administrador','Carrera 75L bis 62 H #66 Sur','Cassaaa','Cundinamarca','Bogotá');
 
+/*Table structure for table `departamento` */
+
+DROP TABLE IF EXISTS `departamento`;
+
+CREATE TABLE `departamento` (
+  `idDepartamento` int(11) NOT NULL AUTO_INCREMENT,
+  `departamento_nombre` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`idDepartamento`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+/*Data for the table `departamento` */
+
+insert  into `departamento`(`idDepartamento`,`departamento_nombre`) values (1,'Bogotá'),(2,'Medellín'),(3,'Barranquilla'),(4,'Tunja'),(5,'Bucaramanga'),(6,'Ibagué');
+
 /*Table structure for table `estilocomida` */
 
 DROP TABLE IF EXISTS `estilocomida`;
