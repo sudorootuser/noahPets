@@ -20,51 +20,51 @@ if (isset($_POST['condiction'])) {
     $check_otro = isset($_POST['check_otro']) ?  $_POST['check_otro'] : '';
     $check_textarea = isset($_POST['check_textarea']) ?  $_POST['check_textarea'] : '';
 
-    $array = array($check_diarrea, $check_vomito, $check_gases, $check_mal_aliento, $check_caida_pelo, $check_picazon, $check_pelo_opaco, $check_convulsiones, $check_dolor_articulas, $check_desanimo, $check_ayuno_prol, $check_otro, $check_textarea);
+    // $array = array($check_diarrea, $check_vomito, $check_gases, $check_mal_aliento, $check_caida_pelo, $check_picazon, $check_pelo_opaco, $check_convulsiones, $check_dolor_articulas, $check_desanimo, $check_ayuno_prol, $check_otro, $check_textarea);
 
-    $count = 0;
-    foreach ($array as $row) {
-        if ($row != "") {
-            $count += 1;
-        }
-    }
+    // $count = 0;
+    // foreach ($array as $row) {
+    //     if ($row != "") {
+    //         $count += 1;
+    //     }
+    // }
 
-    if ($count <= 0) {
+    // if ($count <= 0) {
 
-        $sessionSmg = "Debe seleccionar al menos un !";
-    } else {
-        $check_diarrea = $yo->limpiar_cadena($check_diarrea);
-        $check_vomito = $yo->limpiar_cadena($check_vomito);
-        $check_gases = $yo->limpiar_cadena($check_gases);
-        $check_mal_aliento = $yo->limpiar_cadena($check_mal_aliento);
-        $check_caida_pelo = $yo->limpiar_cadena($check_caida_pelo);
-        $check_picazon = $yo->limpiar_cadena($check_picazon);
-        $check_pelo_opaco = $yo->limpiar_cadena($check_pelo_opaco);
-        $check_convulsiones = $yo->limpiar_cadena($check_convulsiones);
-        $check_dolor_articulas = $yo->limpiar_cadena($check_dolor_articulas);
-        $check_desanimo = $yo->limpiar_cadena($check_desanimo);
-        $check_ayuno_prol = $yo->limpiar_cadena($check_ayuno_prol);
-        $check_otro = $yo->limpiar_cadena($check_otro);
-        $check_textarea = $yo->limpiar_cadena($check_textarea);
+    //     $sessionSmg = "Debe seleccionar al menos un !";
+    // } else {
+    $check_diarrea = $yo->limpiar_cadena($check_diarrea);
+    $check_vomito = $yo->limpiar_cadena($check_vomito);
+    $check_gases = $yo->limpiar_cadena($check_gases);
+    $check_mal_aliento = $yo->limpiar_cadena($check_mal_aliento);
+    $check_caida_pelo = $yo->limpiar_cadena($check_caida_pelo);
+    $check_picazon = $yo->limpiar_cadena($check_picazon);
+    $check_pelo_opaco = $yo->limpiar_cadena($check_pelo_opaco);
+    $check_convulsiones = $yo->limpiar_cadena($check_convulsiones);
+    $check_dolor_articulas = $yo->limpiar_cadena($check_dolor_articulas);
+    $check_desanimo = $yo->limpiar_cadena($check_desanimo);
+    $check_ayuno_prol = $yo->limpiar_cadena($check_ayuno_prol);
+    $check_otro = $yo->limpiar_cadena($check_otro);
+    $check_textarea = $yo->limpiar_cadena($check_textarea);
 
-        $_SESSION['associated_sympt'][$_SESSION['id']] = [
-            "check_diarrea" => $check_diarrea,
-            "check_vomito" => $check_vomito,
-            "check_gases" => $check_gases,
-            "check_mal_aliento" => $check_mal_aliento,
-            "check_caida_pelo" => $check_caida_pelo,
-            "check_picazon" => $check_picazon,
-            "check_pelo_opaco" => $check_pelo_opaco,
-            "check_convulsiones" => $check_convulsiones,
-            "check_dolor_articulas" => $check_dolor_articulas,
-            "check_desanimo" => $check_desanimo,
-            "check_ayuno_prol" => $check_ayuno_prol,
-            "check_otro" => $check_otro,
-            "check_textarea" => $check_textarea
-        ];
+    $_SESSION['associated_sympt'][$_SESSION['id']] = [
+        "check_diarrea" => $check_diarrea,
+        "check_vomito" => $check_vomito,
+        "check_gases" => $check_gases,
+        "check_mal_aliento" => $check_mal_aliento,
+        "check_caida_pelo" => $check_caida_pelo,
+        "check_picazon" => $check_picazon,
+        "check_pelo_opaco" => $check_pelo_opaco,
+        "check_convulsiones" => $check_convulsiones,
+        "check_dolor_articulas" => $check_dolor_articulas,
+        "check_desanimo" => $check_desanimo,
+        "check_ayuno_prol" => $check_ayuno_prol,
+        "check_otro" => $check_otro,
+        "check_textarea" => $check_textarea
+    ];
 
-        header('Location:' . SERVERURL . 'veterinary-qualification/');
-    }
+    header('Location:' . SERVERURL . 'veterinary-qualification/');
+    // }
 }
 ?>
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
