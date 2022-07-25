@@ -10,8 +10,8 @@ if (empty($_SESSION['id'])) {
     $_SESSION['id'];
 }
 
-if (isset($_POST['yo'][$_SESSION['id']])) {
-
+if (isset($_POST['yo'])) {
+   
     $sessionSmg = "";
 
     $nombre = $yo->limpiar_cadena($_POST['nombre']);
@@ -64,11 +64,10 @@ if (isset($_POST['yo'][$_SESSION['id']])) {
                 <div style="padding: 0% 10% 0px 15%;">
                     <div class="row">
                         <div class="col form-yo">
-                            <span style="text-align: left;">Mi nombe es 
-                            <input type="text" class="form-text" name="nombre" 
-                            value=" <?php echo $nombre = isset($_SESSION['yo'][$_SESSION['id']]['NombreYo']) ? $_SESSION['yo'][$_SESSION['id']]['NombreYo'] : ' ' ?>" required>
-                             ,vivo en la ciudad de 
-                            <input type="text" class="form-text" name="ciudad" value="<?php echo $ciudad = isset($_SESSION['yo'][$_SESSION['id']]['CiudadYo']) ? $_SESSION['yo'][$_SESSION['id']]['CiudadYo'] : ' ' ?>" required></span>
+                            <span style="text-align: left;">Mi nombe es
+                                <input type="text" class="form-text" name="nombre" value=" <?php echo $nombre = isset($_SESSION['yo'][$_SESSION['id']]['NombreYo']) ? $_SESSION['yo'][$_SESSION['id']]['NombreYo'] : ' ' ?>" required>
+                                ,vivo en la ciudad de
+                                <input type="text" class="form-text" name="ciudad" value="<?php echo $ciudad = isset($_SESSION['yo'][$_SESSION['id']]['CiudadYo']) ? $_SESSION['yo'][$_SESSION['id']]['CiudadYo'] : ' ' ?>" required></span>
 
                             <span style="margin-top: 35px;">
                                 Pueden contactarme para ampliar la información de mi mascota, <input type="number" class="form-text" name="phone" value="<?php echo $phone = isset($_SESSION['yo'][$_SESSION['id']]['phone']) ? $_SESSION['yo'][$_SESSION['id']]['phone'] : ' ' ?>" required>
