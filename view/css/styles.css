@@ -1,0 +1,1102 @@
+/* Style Home  */
+body {
+    font-family: 'Roboto';
+}
+
+.home {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.home img {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+}
+
+/*style home*/
+.row h2 {
+    color: #2f294e;
+    margin-top: 60px;
+    font-weight: 600;
+    font-size: 3rem;
+    font-family: Noah;
+}
+
+.row h5 {
+    color: grey;
+    font-weight: 600;
+    font-size: 1.60rem;
+    font-family: Noah, Arial, Helvetica, sans-serif;
+}
+
+/*style menuInterno*/
+.item-menu {
+    font-family: Noah;
+    font-size: 20px;
+}
+
+.spacin-item {
+    margin-right: 12px;
+}
+
+.spacin-ul {
+    margin-left: 15px;
+    margin-bottom: 6px;
+}
+
+.Huella {
+    width: 20px;
+    height: 20px;
+}
+
+.content-huella {
+    background-color: #F07639;
+    border-radius: 50px;
+    text-align: center;
+    padding: 3px;
+    width: 130px;
+    color: white !important;
+}
+
+
+/*
+font size
+*/
+
+@font-face {
+    font-family: Noah;
+    src: url('../assets/fonts/champagne.ttf');
+}
+
+.row span {
+    color: #2f294e;
+    margin-top: 60px;
+
+    font-weight: 600;
+
+}
+
+.row p {
+    color: #7a7a7a;
+    margin-top: 40px;
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+.button-home {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+.button-home a .pet-img {
+    margin-top: -5px;
+    width: 35px;
+    height: 35px
+}
+
+/* Botón Global */
+.color-r {
+    border: 2px solid red;
+}
+
+.color-b {
+    border: 2px solid blue;
+}
+
+.cont-button-g {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.cont-button-g-Left {
+    text-align: left !important;
+}
+
+.withe {
+    width: 20% !important;
+}
+
+.withe-l {
+    width: 40% !important;
+}
+
+.regresar a {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.button-g a {
+    width: 41%;
+    height: 20%;
+    cursor: pointer;
+    background: #F07639;
+    padding: 7px;
+    border-radius: 50rem;
+    font-family: Noah !important;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 45px;
+}
+
+.button-g a:hover {
+    background: #F07639 !important;
+    color: white;
+}
+
+.button-g button {
+    width: 30%;
+    height: 20%;
+    cursor: pointer;
+    background: #F07639;
+    padding: 7px;
+    border-radius: 50rem;
+    font-family: Noah !important;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 45px;
+}
+
+.button-g button:hover {
+    background: #F07639 !important;
+    color: white;
+}
+
+.button-g button .mi-yo-img,
+a .mi-yo-img {
+    margin-top: -5px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+
+}
+
+/* Home */
+.cont-button-home {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+.button-home a {
+    cursor: pointer;
+    background: #F07639;
+    padding: 13px;
+    width: 45%;
+    border-radius: 45px;
+    color: white;
+    font-size: 1.063rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.button-home a:hover {
+    background-color: #F07639;
+    color: white;
+}
+
+.button-home a .mi-home-img {
+    margin-top: -5px;
+    margin-left: 1px;
+    width: 20px;
+    height: 20px
+}
+
+/* End style Home  */
+
+/* Style Nav Bar */
+
+.nav_img {
+    width: 53.484px;
+    height: 70px;
+}
+
+.navbar li {
+    margin-top: 40px;
+    margin-left: 30px;
+}
+
+/* End style Nav Bar */
+
+/* style Yo */
+
+.forms-yo .form-text,
+.form-text:focus {
+    color: #7a7a7a;
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid #F07639;
+    border-radius: 10px;
+    height: 35px;
+    margin: 13px 0px 9px 4px;
+    text-align: center;
+
+}
+
+
+.forms-yo span {
+    color: #7a7a7a;
+    font-size: 20px;
+}
+
+.forms-yo .text-yo-title {
+    color: #2f294e;
+    font-weight: 600;
+}
+
+.forms-yo {
+    margin: 60px 0 60px 0;
+}
+
+.yo-img img {
+    max-width: 386px;
+    height: auto;
+}
+
+.order-title {
+    margin: 50px 0px 0px 109px !important;
+    font-size: 24px !important;
+    font-family: Noah !important;
+    font-size: 2.60rem !important;
+    color: #F07639 !important;
+}
+
+.form-yo {
+    color: black !important;
+    font-family: Noah;
+    font-size: 2.60rem !important;
+}
+
+.text-my-pet {
+    font-family: Noah;
+    font-size: 20px !important;
+    color: black !important;
+}
+
+.form-yo span {
+    font-family: Noah !important;
+    font-weight: bold;
+    line-height: 1.5;
+    color: black;
+}
+
+.form-check-yo {
+    color: black;
+    font-weight: bold;
+    margin-top: 70px;
+    font-size: 20px;
+    font-family: Noah;
+    /*margin-left: calc(100% - 75%);*/
+}
+
+/* add background color when the checkbox is checked */
+.form-check-yo input:checked {
+    border: none;
+    background-color: #F07639;
+}
+
+/* on mouse-over, add border color */
+.form-check-yo:hover input {
+    border: none;
+    cursor: pointer;
+}
+
+.form-check-yo .aceptTerms {
+    background-image: url(../assets/img/Icons-pets-1.png);
+    width: 31px;
+    height: 31px;
+    border: none;
+    margin: 0px 10px 2px 0px;
+    /* margin-right: 10px; */
+
+}
+
+.cont-button-yo {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.button-yo button {
+    cursor: pointer;
+    background: #F07639;
+    padding: 20px;
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.button-yo button:hover {
+    background-color: #F07639;
+    color: white;
+}
+
+.button-yo button .mi-yo-img {
+    margin-top: -5px;
+    margin-left: 10px;
+    width: 35px;
+    height: 35px
+}
+
+/* Style Yo */
+
+
+/* My pets */
+.My-Pet {
+    align-items: center;
+    align-content: center;
+}
+
+.My-Pet span {
+    color: #7a7a7a;
+}
+
+.form-select-my-pet {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    color: #7a7a7a;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid #F07639;
+    /* border: 2px solid green; */
+    border-radius: 10px;
+    height: 40px;
+    width: 25%;
+}
+
+.form-select-my-pet:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #F07639;
+}
+
+.forms-my-pet .form-text {
+    color: #7a7a7a;
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid #F07639;
+    margin: 0px 10px 0px 10px;
+    border-radius: 10px;
+    height: 35px;
+    width: 25%;
+}
+
+.forms-checkout .form-text-checkout {
+    color: #7a7a7a;
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid #F07639;
+    margin: 53px 0px 0px 0px;
+    border-radius: 10px;
+    height: 35px;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.margin-80 {
+    margin-top: 100px !important;
+}
+
+.margin-50 {
+    margin-top: 10px !important;
+}
+
+.my-pet .forms-my-pet span {
+    font-size: 25px;
+}
+
+.button-my-pet button {
+    cursor: pointer;
+    background: #F07639;
+    padding: 20px;
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    width: 200px;
+}
+
+.button-my-pet button .button-my-pet button .mi-pet-img {
+    margin-top: -5px;
+    margin-left: 10px;
+    width: 35px;
+    height: 35px
+}
+
+.cont-button-mi-pet {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    padding-top: 100px;
+}
+
+/* End my pets */
+
+/* Condiction */
+.condiction {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.forms-condiction {
+    text-align: center;
+}
+
+.forms-condiction span {
+    color: #7a7a7a;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.forms-condiction .col {
+    /* margin-top: 45px;*/
+}
+
+.form-select-condiction {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 35px;
+    width: 50%;
+    border: 2px solid #F07639;
+}
+
+.form-select-condiction:focus {
+    border: 1px solid #F07639;
+
+}
+
+.form-text:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #F07639;
+}
+
+.my-pet .forms-my-pet span {
+    font-size: 20px;
+}
+
+.forms-my-pet {
+    text-align: center;
+}
+
+.pet-img-form {
+    width: 160px !important;
+    height: 160px;
+}
+
+.nombre-User {
+    color: #F07639 !important;
+}
+
+/* Race */
+.form-select-raze {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a7a7a;
+    border: 2px solid #F07639;
+    border-radius: 15px;
+    height: 60px;
+    width: 50%;
+    margin-bottom: 80px;
+}
+
+.form-select-raze-diet {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a7a7a;
+    border: 2px solid #F07639;
+    border-radius: 15px;
+    height: auto;
+    width: 20%;
+    margin-bottom: 80px;
+}
+
+.form-select-raze {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a7a7a;
+    cursor: pointer;
+    border: 2px solid #F07639;
+    /* background-color: #F07639; */
+    border-radius: 15px;
+    height: 50px;
+    width: 40%;
+    margin-bottom: 8px;
+    border: 2px solid #F07639;
+}
+
+.form-select-raze:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    /* border: none; */
+}
+
+.form-text:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #F07639;
+}
+
+/* End Race */
+
+/* Date */
+.forms-date .row {
+    padding-top: 45px;
+
+}
+
+.form-select-date {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 35px;
+    width: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #F07639;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.6;
+    filter: invert(1);
+    color-scheme: dark;
+}
+
+.form-select-date:focus {
+    border: 1px solid #F07639;
+    outline: none;
+
+}
+
+.forms-date {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.forms-date span {
+    color: #7a7a7a;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Addictional Condiction */
+
+.form-check .form-check-input {
+    background-image: url('../assets/img/Icons-pets-1.png');
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 30%;
+    height: 35px;
+    font-family: Noah;
+    float: none !important;
+    margin-left: 0px !important;
+}
+
+
+.form-check input:checked {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check label {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    font-family: Noah;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #7a7a7a;
+
+}
+
+/* Wth */
+
+.form-select-wth {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 35px;
+    width: 10%;
+    margin-bottom: 10px;
+    border: 2px solid #F07639;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.9;
+    filter: invert(0.9);
+}
+
+.form-select-wth:focus {
+    border: 1px solid #F07639;
+    outline: none;
+    border: none;
+}
+
+.form-select-wth::placeholder {
+    color: #fff;
+}
+
+/* Load */
+.forms-condiction-load {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.forms-condiction select {
+    border: 2px solid #F07639;
+    cursor: pointer;
+}
+
+.forms-condiction-load span {
+    color: #7a7a7a;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.forms-condiction-load .col {
+    margin-top: 35px;
+}
+
+.forms-condiction-load span {
+    color: #7a7a7a;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Another pet */
+
+.another-pet img {
+    width: 400px;
+    height: 100%;
+}
+
+.cont-button-p {
+    padding-top: 60px;
+    text-align: center;
+    align-items: center;
+}
+
+
+.button-p button {
+    cursor: pointer;
+    background: #F07639;
+    padding: 20px;
+    width: 45%;
+    margin-right: -45%;
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.button-p button:hover {
+    background-color: #F07639;
+    color: white;
+}
+
+.button-p button .mi-yo-img {
+    margin-top: -5px;
+    margin-left: 10px;
+    width: 26px;
+    height: 26px
+}
+
+/* End Another Pet */
+
+/* Food */
+
+.food-balance .card {
+    cursor: pointer;
+    width: 100%;
+    padding: 30px 30px 0 30px;
+    border-radius: 35px;
+    border: 2px solid #F07639;
+}
+
+.food-balance .card-body a {
+    width: 150px;
+    border-radius: 15px;
+}
+
+/* End Food */
+
+/* Diet */
+
+.food-diet .card {
+
+    /* padding: 5px; */
+    border-radius: 35px;
+    border: 2px solid #F07639;
+    background-color: #F07639;
+    margin-bottom: 40px;
+}
+
+.food-diet .card-title {
+    text-align: left;
+    color: #2F294E;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.food-diet .card-text {
+    color: #fff;
+    /* font-size: 28px;  */
+    font-weight: 500;
+}
+
+.food-diet img {
+    width: 180px !important;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+/* Chekc Out */
+.ver_password {
+    position: absolute;
+    right: 5px;
+    font-weight: 600;
+    border: 2px solid #F07639;
+    background-color: #F07639;
+    border-bottom: 3px solid #F07639;
+    margin: 51px 0 0px 0px;
+    /* border-radius: 10px; */
+    height: 38px;
+    width: 35px;
+    padding: 5px;
+}
+
+.input-group button:hover {
+    border: 2px solid #F07639;
+    background-color: #F07639;
+    counter-reset: #ffff;
+}
+
+.input-group button:focus {
+    border: 2px solid #F07639;
+    background-color: #F07639;
+    counter-reset: #ffff;
+}
+
+.forms-checkout .form-text-checkout-pass {
+    color: #7a7a7a;
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid #F07639;
+    margin: 53px 0px 0px 0px;
+    border-radius: 10px;
+    height: 35px;
+    width: 86%;
+    padding: 10px;
+}
+
+.forms-checkout input {
+    border: 2px solid #F07639;
+    margin-top: 30px;
+    border-radius: 15px;
+    height: 65px;
+}
+
+.forms-checkout span {
+    text-align: left;
+}
+
+.forms-checkout input:focus {
+    border: 2px solid #F07639;
+}
+
+/* Veterinary */
+
+.form-select-vet {
+
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #7a7a7a;
+    border: 2px solid #F07639;
+    border-radius: 15px;
+    height: auto;
+}
+
+/* Addictional Condiction */
+
+.form-check-fd .check-food {
+    background-image: url('../assets/img/Icons-pets-1.png');
+    /* background-color: #F07639; */
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 3px solid #F07639;
+    padding: 18px;
+    width: 90%;
+    height: 45px;
+    /* margin-left: 25px; */
+}
+
+.form-check-fd input:focus {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-fd input:checked {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-fd label {
+    text-align: center;
+    /* margin-top: 15px; */
+    font-size: 20px;
+    font-weight: 600;
+    /* margin-left: 100; */
+    color: #7a7a7a;
+    /* border: 2px solid black; */
+}
+
+.form-check-dt .check-food {
+    background-image: url('../assets/img/Icons-pets-1.png');
+    /* background-color: #F07639; */
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 3px solid #F07639;
+    padding: 18px;
+    width: 90%;
+    height: 45px;
+    /* margin-left: 25px; */
+}
+
+.form-check-dt input:focus {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-dt input:checked {
+    border: none;
+    background-color: #F07639;
+}
+
+.form-check-dt label {
+    text-align: center;
+    /* margin-top: 15px; */
+    font-size: 20px;
+    font-weight: 600;
+    /* margin-left: 100; */
+    color: #7a7a7a;
+    /* border: 2px solid black; */
+}
+
+/*jonathan*/
+
+.contentImage {
+    background-image: url("../assets/img/dog-banner.png");
+    background-size: cover;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+    background-attachment: fixed;
+}
+
+.fondo-image-div {
+    background-image: url("../assets/img/Yo-dog.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+
+}
+
+.font-size-26 {
+    font-size: 2.20rem !important;
+}
+
+.color-test-h2 {
+    color: #F07639 !important;
+    font-size: 2.7rem !important;
+}
+
+.color-test-h5 {
+    color: #F07639 !important;
+    font-size: 1.8rem !important;
+}
+
+.color-test-h1 {
+    color: #F07639 !important;
+    font-size: 1.8rem !important;
+}
+
+.text-20 {
+    font-size: 25px !important;
+    font-family: Noah;
+}
+
+.form-label {
+    font-family: Noah !important;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.img-contextura {
+    width: 40%;
+}
+
+.text-contextura-label {
+    font-family: Noah !important;
+    font-size: 1.6rem !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+}
+
+.form-textarea {
+    border: 2px solid #F07639;
+    width: 100%;
+    font-size: 20px;
+    font-family: Noah;
+    font-weight: 600;
+    color: #7a7a7a;
+    border-radius: 6px;
+    display: none;
+    padding: 11px;
+}
+
+
+.badge-diet {
+    font-family: Noah !important;
+    border: solid 1.5px #F07639;
+    border-radius: 20px;
+}
+
+.custom-diet {
+    color: black !important;
+    margin-top: 28px !important;
+    font-weight: 900 !important;
+    font-family: Noah;
+}
+
+.texto-custom-diet {
+    font-family: Noah !important;
+}
+
+.texto-custom-diet-sub {
+    font-family: Noah !important;
+    width: 160px !important;
+}
+
+.card-img-top {
+    width: 70%;
+    height: 70%;
+    margin: 0px 30px 0px 30px
+}
+
+.card-img-top-custom {
+    width: 70% !important;
+    height: 70% !important;
+    margin: 60px 30px 0px 30px !important;
+}
+
+.form-check-label {
+    font-size: 1rem !important;
+    font-family: Noah !important;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.check-custom-food {
+    width: 30% !important;
+    background-size: 21px 21px !important;
+    border: 1px solid #F07639 !important;
+}
+
+.title-plan {
+    color: black !important;
+    font-family: Noah;
+    font-size: 60px !important;
+    font-weight: 900;
+    margin-left: 16px;
+    margin-bottom: 0px;
+}
+
+.text-plan {
+    color: white !important;
+    font-family: Noah !important;
+    font-size: 16px !important;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 16px;
+    margin-top: 0px !important;
+}
+
+.text-plan-white {
+    color: black !important;
+    font-family: Noah !important;
+    font-size: 16px !important;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 16px;
+    margin-top: 0px !important;
+}
+
+.price-plan {
+    color: black !important;
+    font-family: Noah;
+    font-size: 50px !important;
+    margin-left: 16px;
+}
+
+.hr-line {
+    border: solid 6px #F07639;
+    background-color: #F07639;
+    border-radius: 12px;
+    color: #F07639;
+}
+
+.hr-line-white {
+    border: solid 6px white;
+    background-color: white;
+    border-radius: 12px;
+    color: white;
+}
