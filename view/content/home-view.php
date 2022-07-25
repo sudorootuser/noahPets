@@ -9,7 +9,6 @@ include_once './view/inc/NavBarInicial.php';
 
     </div>	
 
-<!--<img src="./view/assets/img/dog-banner.png" alt="">-->
     <div class="row">
         <h2>Vamos a construir algo maravilloso y único</h2>
         <h5>Tu mascota te agradecerá los 3 minutos <br>
