@@ -1,8 +1,22 @@
 <?php
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+// Condición para procesar la data del formulario
 if (isset($_POST['condiction'])) {
 
     $sessionSmg = "";
@@ -23,7 +37,7 @@ if (isset($_POST['condiction'])) {
             $_SESSION['data_pet'][$_SESSION['id']] = [
                 'Nombre' => $_SESSION['yo'][$_SESSION['id']]['NombreYo'],
                 'Ciudad' => $_SESSION['yo'][$_SESSION['id']]['CiudadYo'],
-                'Phone' => $_SESSION['yo'][$_SESSION['id']]['phone'],
+                'Phone' => "No aplica",
                 'Email' => $_SESSION['yo'][$_SESSION['id']]['EmailYo'],
                 'Celular' => $_SESSION['yo'][$_SESSION['id']]['CelularYo'],
                 // Finaliza el 1 Modulo
@@ -97,20 +111,24 @@ if (isset($_POST['condiction'])) {
                 // Finaliza el 14 Modulo
                 'VqCheck' => $_SESSION['veterinary_qua'][$_SESSION['id']]['veterinary_check'],
                 'VqNaeFile' => $_SESSION['veterinary_qua'][$_SESSION['id']]['newFileName'],
+                'extenFile' => $_SESSION['veterinary_qua'][$_SESSION['id']]['extenFile'],
                 // Finaliza el 15 Modulo
                 'AdCheck' => $_SESSION['additional_con'][$_SESSION['id']]['additional_check']
                 // Finaliza el 16 Modulo
             ];
 
-            $_SESSION['id'] += 1;
+            $_SESSION['id'] += 1; ?>
 
-            header('Location:' . SERVERURL . 'Yo/');
+            <script>
+                window.location.replace("<?php echo SERVERURL . 'Yo/' ?>");
+            </script>
+        <?php
         } else {
 
             $_SESSION['data_pet'][$_SESSION['id']] = [
                 'Nombre' => $_SESSION['yo'][$_SESSION['id']]['NombreYo'],
                 'Ciudad' => $_SESSION['yo'][$_SESSION['id']]['CiudadYo'],
-                'Phone' => $_SESSION['yo'][$_SESSION['id']]['phone'],
+                'Phone' => 'No aplica',
                 'Email' => $_SESSION['yo'][$_SESSION['id']]['EmailYo'],
                 'Celular' => $_SESSION['yo'][$_SESSION['id']]['CelularYo'],
                 // Finaliza el 1 Modulo
@@ -137,6 +155,7 @@ if (isset($_POST['condiction'])) {
                 // Finaliza el 10 Modulo
                 'PaActivity' => $_SESSION['physical_activity'][$_SESSION['id']]['physical_activity'],
                 // Finaliza el 11 Modulo
+                'TiPollo' => $_SESSION['type_intolerance'][$_SESSION['id']]['type_intolerance'],
                 'TiPollo' => $_SESSION['type_intolerance'][$_SESSION['id']]['check_pollo'],
                 'TiRes' => $_SESSION['type_intolerance'][$_SESSION['id']]['check_res'],
                 'TiPes' => $_SESSION['type_intolerance'][$_SESSION['id']]['check_pescado'],
@@ -182,15 +201,19 @@ if (isset($_POST['condiction'])) {
                 // Finaliza el 14 Modulo
                 'VqCheck' => $_SESSION['veterinary_qua'][$_SESSION['id']]['veterinary_check'],
                 'VqNaeFile' => $_SESSION['veterinary_qua'][$_SESSION['id']]['newFileName'],
+                'extenFile' => $_SESSION['veterinary_qua'][$_SESSION['id']]['extenFile'],
                 // Finaliza el 15 Modulo
                 'AdCheck' => $_SESSION['additional_con'][$_SESSION['id']]['additional_check']
                 // Finaliza el 16 Modulo
-            ];
-            header('Location:' . SERVERURL . 'food/');
+            ]; ?>
+            <script>
+                window.location.replace("<?php echo SERVERURL . 'food/' ?>");
+            </script>
+<?php
         }
     }
-}
-?>
+} ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -236,12 +259,18 @@ if (isset($_POST['condiction'])) {
                         </div>
                     </div>
                     <br>
-
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-50 regresar">
-                                <a class="btn" href="<?php echo SERVERURL; ?>veterinary-qualification/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
-                            </div>
+                            <?php if ($_SESSION['medical_condition'][$_SESSION['id']]['cond_medica'] == 'No') { ?>
+                                <div class="button-g text-center margin-50 regresar">
+                                    <a class="btn" href="<?php echo SERVERURL; ?>medical-condition/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                                </div>
+                            <?php } else { ?>
+
+                                <div class="button-g text-center margin-50 regresar">
+                                    <a class="btn" href="<?php echo SERVERURL; ?>additional-condition/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                                </div>
+                            <?php } ?>
                             <br>
                         </div>
                         <div class="col-6 cont-button-g">
@@ -256,7 +285,10 @@ if (isset($_POST['condiction'])) {
         <div class="col-1"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

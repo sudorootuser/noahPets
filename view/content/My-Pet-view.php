@@ -1,26 +1,49 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Validación para mostrar la data si ya guardo en sesion
+if (isset($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'])) {
+    $name_pet = $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'];
+}
+
+if (isset($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'])) {
+    $pet_type = $_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'];
+} else {
+    $pet_type = 'No aplica';
+}
+
+// Condición para procesar la data del formulario
 if (isset($_POST['mi-pet'])) {
+
+    $sessionSmg = "";
 
     $name_pet = $yo->limpiar_cadena($_POST['name_pet']);
     $pet_type = $yo->limpiar_cadena($_POST['pet_type']);
 
+    // Se valida que los campos no esten vacios
+    if ($name_pet == ''  || $pet_type == '') {
 
-    $sessionSmg = "";
-
-    if ($name_pet == ""  || $pet_type == 'Seleccione.') {
-
-        $sessionSmg = "Todos los campos son obligatorios";
+        $sessionSmg = "Debe escribir el nombre y seleccionar el tipo de mascota";
     } else {
 
         $_SESSION['mi_pet'][$_SESSION['id']] = [
             "Name_Pet" => $name_pet,
             "Pet_Type" => $pet_type
-        ];
-        header('Location:' . SERVERURL . 'condiction/');
+        ]; ?>
+
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'condiction/' ?>");
+        </script>
+<?php
     }
 }
 ?>
@@ -45,14 +68,16 @@ if (isset($_POST['mi-pet'])) {
                             </div>
                     <?php
                         }
-                    }
-                    ?>
+                    } ?>
+
                     <p class="text-my-pet margin-80">Mi masota se llama
-                        <input type="text" class="form-text" name="name_pet" value="<?php echo $name_pet = isset($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']) ? $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet'] : ' ' ?>" required> y es un
+
+                        <input type="text" class="form-text" name="name_pet" value="<?php echo $name_pet =  !empty($name_pet) ? $name_pet : '' ?>" required> y es un
+
                         <select class="form-select-my-pet" name="pet_type" required>
-                            <option selected>Seleccione.</option>
-                            <option value="Gato">Gato</option>
-                            <option value="Perro">Perro</option>
+                            <option value="">Seleccione...</option>
+                            <option value="Gato" <?php echo $Gato =  $pet_type == 'Gato' ? 'selected' : '' ?>>Gato</option>
+                            <option value="Perro" <?php echo $Perro =  $pet_type == 'Perro' ? 'selected' : '' ?>>Perro</option>
                         </select>
                     </p>
 
@@ -75,7 +100,10 @@ if (isset($_POST['mi-pet'])) {
         </div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

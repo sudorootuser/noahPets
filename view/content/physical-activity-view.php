@@ -1,10 +1,24 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
-
 $yo = new mainModel();
 
-if (isset($_POST['activity'])) {
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
 
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+$lo_out->pesoMetabolico();
+
+// Validación para mostrar la data si ya guardo en sesion
+if (isset($_SESSION['physical_activity'][$_SESSION['id']]['physical_activity'])) {
+    $physical_activity = $_SESSION['physical_activity'][$_SESSION['id']]['physical_activity'];
+} else {
+    $physical_activity = 'No aplica';
+}
+
+// Condición para procesar la data del formulario
+if (isset($_POST['activity'])) {
 
     $sessionSmg = "";
 
@@ -17,10 +31,16 @@ if (isset($_POST['activity'])) {
 
         $_SESSION['physical_activity'][$_SESSION['id']] = [
             "physical_activity" => $physical_activity
-        ];
-        header('Location:' . SERVERURL . 'alimentary-intolerance/');
+        ]; ?>
+
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'snackConsumption/' ?>");
+        </script>
+
+<?php
     }
 } ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -46,10 +66,10 @@ if (isset($_POST['activity'])) {
                     <div class="row text-center">
                         <div class="col">
                             <div class="row">
-                                <div id="poc_At_og" class="col-12" style="display:none;">
+                                <div id="poc_At_og" class="col-12" <?php echo $physical_activity == 'Poco Activo' ? 'style="display:block;"' : 'style="display:none;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/poco_activo_og.png" alt="" srcset="">
                                 </div>
-                                <div id="poc_At_wt" class="col-12" style="display:block;">
+                                <div id="poc_At_wt" class="col-12" <?php echo $physical_activity == 'Poco Activo' ? 'style="display:none;"' : 'style="display:block;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/poco_activo_wt.png" alt="" srcset="">
                                 </div>
                             </div>
@@ -61,15 +81,15 @@ if (isset($_POST['activity'])) {
                                 </div>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Poco Activo">
+                                <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Poco Activo" <?php echo $physical_activity == 'Poco Activo' ? 'checked' : '' ?>>
                             </div>
                         </div>
                         <div class="col">
                             <div class="row">
-                                <div id="activa_og" class="col-12" style="display:none;">
+                                <div id="activa_og" class="col-12" <?php echo $physical_activity == 'Activa' ? 'style="display:block;"' : 'style="display:none;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/activa_og.png" alt="" srcset="">
                                 </div>
-                                <div id="activa_wt" class="col-12" style="display:block;">
+                                <div id="activa_wt" class="col-12" <?php echo $physical_activity == 'Activa' ? 'style="display:none;"' : 'style="display:block;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/activa_wt.png" alt="" srcset="">
                                 </div>
                             </div>
@@ -82,15 +102,15 @@ if (isset($_POST['activity'])) {
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Activa">
+                                <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Activa" <?php echo $physical_activity == 'Activa' ? 'checked' : '' ?>>
                             </div>
                         </div>
                         <div class="col">
                             <div class="row">
-                                <div id="m_activa_wt" class="col-12" style="display:block;">
+                                <div id="m_activa_wt" class="col-12" <?php echo $physical_activity == 'Muy activo' ? 'style="display:none;"' : 'style="display:block;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/muy_activa_wt.png" alt="" srcset="">
                                 </div>
-                                <div id="m_activa_og" class="col-12" style="display:none;">
+                                <div id="m_activa_og" class="col-12" <?php echo $physical_activity == 'Muy activo' ? 'style="display:block;"' : 'style="display:none;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/muy_activa_og.png" alt="" srcset="">
                                 </div>
                             </div>
@@ -103,7 +123,7 @@ if (isset($_POST['activity'])) {
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Muy Activa">
+                                <input class="form-check-input" type="radio" name="physical-activity" id="physical-activity1" value="Muy Activa" <?php echo $physical_activity == 'Muy Activa' ? 'checked' : '' ?>>
                             </div>
                         </div>
                     </div>
@@ -127,7 +147,10 @@ if (isset($_POST['activity'])) {
         <div class="col-2"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para mostrar las diferentes selecciones
     $(document).ready(function() {
         $(".form-check-input").click(function(evento) {
 
@@ -169,6 +192,8 @@ if (isset($_POST['activity'])) {
             }
         });
     });
+
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

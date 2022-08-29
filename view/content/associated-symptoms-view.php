@@ -1,10 +1,23 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
-if (isset($_POST['condiction'])) {
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
 
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Validación para mostrar la data si ya guardo en sesion
+if (isset($_SESSION['associated_sympt'][$_SESSION['id']])) {
+    $cond_name = $_SESSION['associated_sympt'][$_SESSION['id']];
+}
+
+
+// Condición para procesar la data del formulario
+if (isset($_POST['condiction'])) {
 
     $check_diarrea = isset($_POST['check_diarrea']) ?  $_POST['check_diarrea'] : '';
     $check_vomito = isset($_POST['check_vomito']) ?  $_POST['check_vomito'] : '';
@@ -20,53 +33,60 @@ if (isset($_POST['condiction'])) {
     $check_otro = isset($_POST['check_otro']) ?  $_POST['check_otro'] : '';
     $check_textarea = isset($_POST['check_textarea']) ?  $_POST['check_textarea'] : '';
 
-    // $array = array($check_diarrea, $check_vomito, $check_gases, $check_mal_aliento, $check_caida_pelo, $check_picazon, $check_pelo_opaco, $check_convulsiones, $check_dolor_articulas, $check_desanimo, $check_ayuno_prol, $check_otro, $check_textarea);
+    $array = array($check_diarrea, $check_vomito, $check_gases, $check_mal_aliento, $check_caida_pelo, $check_picazon, $check_pelo_opaco, $check_convulsiones, $check_dolor_articulas, $check_desanimo, $check_ayuno_prol, $check_otro, $check_textarea);
 
-    // $count = 0;
-    // foreach ($array as $row) {
-    //     if ($row != "") {
-    //         $count += 1;
-    //     }
-    // }
+    $count = 0;
+    foreach ($array as $row) {
+        if ($row != "") {
+            $count += 1;
+        }
+    }
 
-    // if ($count <= 0) {
+    if ($count <= 0) {
 
-    //     $sessionSmg = "Debe seleccionar al menos un !";
-    // } else {
-    $check_diarrea = $yo->limpiar_cadena($check_diarrea);
-    $check_vomito = $yo->limpiar_cadena($check_vomito);
-    $check_gases = $yo->limpiar_cadena($check_gases);
-    $check_mal_aliento = $yo->limpiar_cadena($check_mal_aliento);
-    $check_caida_pelo = $yo->limpiar_cadena($check_caida_pelo);
-    $check_picazon = $yo->limpiar_cadena($check_picazon);
-    $check_pelo_opaco = $yo->limpiar_cadena($check_pelo_opaco);
-    $check_convulsiones = $yo->limpiar_cadena($check_convulsiones);
-    $check_dolor_articulas = $yo->limpiar_cadena($check_dolor_articulas);
-    $check_desanimo = $yo->limpiar_cadena($check_desanimo);
-    $check_ayuno_prol = $yo->limpiar_cadena($check_ayuno_prol);
-    $check_otro = $yo->limpiar_cadena($check_otro);
-    $check_textarea = $yo->limpiar_cadena($check_textarea);
+        $sessionSmg = "Debe seleccionar al menos una opción";
+    } else {
 
-    $_SESSION['associated_sympt'][$_SESSION['id']] = [
-        "check_diarrea" => $check_diarrea,
-        "check_vomito" => $check_vomito,
-        "check_gases" => $check_gases,
-        "check_mal_aliento" => $check_mal_aliento,
-        "check_caida_pelo" => $check_caida_pelo,
-        "check_picazon" => $check_picazon,
-        "check_pelo_opaco" => $check_pelo_opaco,
-        "check_convulsiones" => $check_convulsiones,
-        "check_dolor_articulas" => $check_dolor_articulas,
-        "check_desanimo" => $check_desanimo,
-        "check_ayuno_prol" => $check_ayuno_prol,
-        "check_otro" => $check_otro,
-        "check_textarea" => $check_textarea
-    ];
+        $check_diarrea = $yo->limpiar_cadena($check_diarrea);
+        $check_vomito = $yo->limpiar_cadena($check_vomito);
+        $check_gases = $yo->limpiar_cadena($check_gases);
+        $check_mal_aliento = $yo->limpiar_cadena($check_mal_aliento);
+        $check_caida_pelo = $yo->limpiar_cadena($check_caida_pelo);
+        $check_picazon = $yo->limpiar_cadena($check_picazon);
+        $check_pelo_opaco = $yo->limpiar_cadena($check_pelo_opaco);
+        $check_convulsiones = $yo->limpiar_cadena($check_convulsiones);
+        $check_dolor_articulas = $yo->limpiar_cadena($check_dolor_articulas);
+        $check_desanimo = $yo->limpiar_cadena($check_desanimo);
+        $check_ayuno_prol = $yo->limpiar_cadena($check_ayuno_prol);
+        $check_otro = $yo->limpiar_cadena($check_otro);
+        $check_textarea = $yo->limpiar_cadena($check_textarea);
 
-    header('Location:' . SERVERURL . 'veterinary-qualification/');
-    // }
-}
-?>
+
+
+        $_SESSION['associated_sympt'][$_SESSION['id']] = [
+            "check_diarrea" => $check_diarrea,
+            "check_vomito" => $check_vomito,
+            "check_gases" => $check_gases,
+            "check_mal_aliento" => $check_mal_aliento,
+            "check_caida_pelo" => $check_caida_pelo,
+            "check_picazon" => $check_picazon,
+            "check_pelo_opaco" => $check_pelo_opaco,
+            "check_convulsiones" => $check_convulsiones,
+            "check_dolor_articulas" => $check_dolor_articulas,
+            "check_desanimo" => $check_desanimo,
+            "check_ayuno_prol" => $check_ayuno_prol,
+            "check_otro" => $check_otro,
+            "check_textarea" => $check_textarea
+        ]; ?>
+
+
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'veterinary-qualification/' ?>");
+        </script>
+<?php
+    }
+} ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -87,16 +107,16 @@ if (isset($_POST['condiction'])) {
                             </div>
                     <?php
                         }
-                    }
-                    ?>
+                    } ?>
                     <p class="text-20">Por favor seleccione los sintomas que tiene su mascota.</p>
                     <div class="row">
                         <div class="col-sm-12">
                             <br>
+                            <!-- Primera session -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Diarrea" id="Diarrea" name="check_diarrea"><br>
+                                        <input class="form-check-input" type="checkbox" value="Diarrea" id="Diarrea" name="check_diarrea" <?php echo !empty($cond_name['check_diarrea']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="Diarrea">
                                             Diarrea
                                         </label>
@@ -105,7 +125,7 @@ if (isset($_POST['condiction'])) {
 
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Vómito" id="Vómito" name="check_vomito"><br>
+                                        <input class="form-check-input" type="checkbox" value="Vómito" id="Vómito" name="check_vomito" <?php echo !empty($cond_name['check_vomito']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="Vómito">
                                             Vómito
                                         </label>
@@ -114,7 +134,7 @@ if (isset($_POST['condiction'])) {
 
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Gases" id="Gases" name="check_gases"><br>
+                                        <input class="form-check-input" type="checkbox" value="Gases" id="Gases" name="check_gases" <?php echo !empty($cond_name['check_gases']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="Gases">
                                             Gases
                                         </label>
@@ -123,20 +143,19 @@ if (isset($_POST['condiction'])) {
 
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Mal Aliento" id="check_mal_aliento" name="check_mal_aliento"><br>
+                                        <input class="form-check-input" type="checkbox" value="Mal Aliento" id="check_mal_aliento" name="check_mal_aliento" <?php echo !empty($cond_name['check_mal_aliento']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="check_mal_aliento">
                                             Mal Aliento
                                         </label>
                                     </div>
                                 </div>
                             </div>
-
                             <br>
-
+                            <!-- Primera session -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Caída de Pelo" id="check_caida_pelo" name="check_caida_pelo"><br>
+                                        <input class="form-check-input" type="checkbox" value="Caída de Pelo" id="check_caida_pelo" name="check_caida_pelo" <?php echo !empty($cond_name['check_caida_pelo']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="check_caida_pelo">
                                             Caída de Pelo
                                         </label>
@@ -144,7 +163,7 @@ if (isset($_POST['condiction'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Picazon" id="Picazon" name="check_picazon"><br>
+                                        <input class="form-check-input" type="checkbox" value="Picazon" id="Picazon" name="check_picazon" <?php echo !empty($cond_name['check_picazon']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="Picazon">
                                             Picazón
                                         </label>
@@ -152,7 +171,7 @@ if (isset($_POST['condiction'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Pelo Opaco" id="check_pelo_opaco" name="check_pelo_opaco"><br>
+                                        <input class="form-check-input" type="checkbox" value="Pelo Opaco" id="check_pelo_opaco" name="check_pelo_opaco" <?php echo !empty($cond_name['check_pelo_opaco']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="check_pelo_opaco">
                                             Pelo Opaco
                                         </label>
@@ -160,20 +179,19 @@ if (isset($_POST['condiction'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Conculsiones" id="check_convulsiones" name="check_convulsiones"><br>
+                                        <input class="form-check-input" type="checkbox" value="Conculsiones" id="check_convulsiones" name="check_convulsiones" <?php echo !empty($cond_name['check_convulsiones']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="check_convulsiones">
                                             Convulsiones
                                         </label>
                                     </div>
                                 </div>
                             </div>
-
                             <br>
-
+                            <!-- Primera session -->
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Dolor Articulas" id="check_dolor_articulas" name="check_dolor_articulas"><br>
+                                        <input class="form-check-input" type="checkbox" value="Dolor Articulas" id="check_dolor_articulas" name="check_dolor_articulas" <?php echo !empty($cond_name['check_dolor_articulas']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="check_dolor_articulas">
                                             Dolor Articulas
                                         </label>
@@ -181,7 +199,7 @@ if (isset($_POST['condiction'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Desánimo" id="Desánimo" name="check_desanimo"><br>
+                                        <input class="form-check-input" type="checkbox" value="Desánimo" id="Desánimo" name="check_desanimo" <?php echo !empty($cond_name['check_desanimo']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="Desánimo">
                                             Desánimo
                                         </label>
@@ -189,7 +207,7 @@ if (isset($_POST['condiction'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Ayuno Prolongado" id="Ayuno" name="check_ayuno_prol"><br>
+                                        <input class="form-check-input" type="checkbox" value="Ayuno Prolongado" id="Ayuno" name="check_ayuno_prol" <?php echo !empty($cond_name['check_ayuno_prol']) ? 'checked' : '' ?>><br>
                                         <label class="form-check-label" for="Ayuno">
                                             Ayuno Prolongado
                                         </label>
@@ -204,7 +222,6 @@ if (isset($_POST['condiction'])) {
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-12">
                                     <textarea class="form-textarea" name="check_textarea" id="text_check" rows="7" placeholder="Describe que síntomas tiene tu mascota!"></textarea>
@@ -233,7 +250,9 @@ if (isset($_POST['condiction'])) {
     </div>
 </div>
 
+<!-- Inicio del escript -->
 <script type="text/javascript">
+    // Función para mostrar los tipos de intolerancias
     $(document).ready(function() {
         $('.form-select-condiction').change(function() {
             var valorCambiado = $(this).val();
@@ -246,6 +265,7 @@ if (isset($_POST['condiction'])) {
         });
     });
 
+    // Función para mostrar el campo de otro
     function showContent() {
         element = document.getElementById("text_check");
         check = document.getElementById("check_otro");
@@ -255,6 +275,8 @@ if (isset($_POST['condiction'])) {
             element.style.display = 'none';
         }
     }
+
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

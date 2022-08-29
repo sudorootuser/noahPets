@@ -13,7 +13,7 @@
             <p class="lead">
                 La página que estas buscando no existre.
             </p>
-            <a href="<?php echo SERVERURL ?>home/" class="btn btn-primary">Ir al Inicio</a>
+            <a href="<?php echo SERVERURL ?>./index/" class="btn btn-primary">Ir al Inicio</a>
         </div>
     </div>
 </body>

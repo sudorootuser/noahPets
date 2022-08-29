@@ -1,4 +1,10 @@
 <?php
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
 /*-------------- Instanciar al controlador ---------------- */
 
 include_once './controller/registerData.php';
@@ -6,7 +12,10 @@ include_once './controller/registerData.php';
 $ins_data = new registerData();
 
 /*-------------- Add Data ---------------- */
-echo $ins_data->addControllerData();
+$out = $ins_data->addControllerData();
+
+session_unset();
+session_destroy();
 ?>
 
 <body onload="redireccionar()">

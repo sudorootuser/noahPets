@@ -1,26 +1,46 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
+include_once './controller/registerData.php';
 
+// Se instancian nuevos objectos y se crea una nueva clase
 $yo = new mainModel();
 
-if (isset($_POST['raze'])) {
+$dataPet = new registerData();
 
-    $type_raze = $yo->limpiar_cadena($_POST['type_raze']);
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+
+// Consulta de todas las razas
+$data = $dataPet->consultaSimple("SELECT * FROM raza WHERE idRaza !=0 ORDER BY raza_nombre ASC");
+
+// Condición para procesar la data del formulario
+if (isset($_POST['raze'])) {
 
     $sessionSmg = "";
 
+    $type_raze = $yo->limpiar_cadena($_POST['type_raze']);
+
     if ($type_raze == "") {
 
-        $sessionSmg = "Todos los campos son obligatorios";
+        $sessionSmg = "Debe seleccinar la Raza de su mascota";
     } else {
 
         $_SESSION['type_raze'][$_SESSION['id']] = [
             "type_raze" => $type_raze
-        ];
-        header('Location:' . SERVERURL . 'date/');
+        ]; ?>
+
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'date/' ?>");
+        </script>
+<?php
     }
-}
-?>
+} ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -42,21 +62,13 @@ if (isset($_POST['raze'])) {
                             </div>
                     <?php
                         }
-                    }
-                    ?>
+                    } ?>
                     <p class="text-20">Por favor seleccione una la raza de su mascota.</p>
                     <div class="row">
                         <div class="col">
-
-                            <?php include_once './controller/registerData.php';
-
-                            $dataPet = new registerData();
-
-                            $data = $dataPet->consultaSimple("SELECT * FROM raza");
-                            ?>
-                            <select class="form-select-condiction" name="type_raze" value="<?php echo  $type_raze = isset($_SESSION['type_raze'][$_SESSION['id']]['type_raze']) ? $_SESSION['type_raze'][$_SESSION['id']]['type_raze'] : ' ' ?>">
+                            <select class="form-select-condiction" name="type_raze">
                                 <?php foreach ($data as $key => $row) { ?>
-                                    <option value="<?php echo $row['idRaza'] ?>" selected><?php echo $row['raza_nombre'] ?></option>
+                                    <option value="<?php echo $row['idRaza'] ?>"><?php echo $row['raza_nombre'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -81,7 +93,10 @@ if (isset($_POST['raze'])) {
         <div class="col-2"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

@@ -1,8 +1,16 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Condición para procesar la data del formulario
 if (isset($_POST['type'])) {
 
     $concentrado = $yo->limpiar_cadena($_POST['concentrado']);
@@ -19,10 +27,15 @@ if (isset($_POST['type'])) {
         $_SESSION['food_type'][$_SESSION['id']] = [
             "concentrado" => $concentrado,
             "marca" => $marca,
-        ];
-        header('Location:' . SERVERURL . 'physical-build/');
+        ]; ?>
+
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'physical-build/' ?>");
+        </script>
+<?php
     }
 } ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -73,12 +86,12 @@ if (isset($_POST['type'])) {
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-80 regresar">
+                            <div class="button-g text-center margin-50 regresar">
                                 <a class="btn" href="<?php echo SERVERURL; ?>food-style/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                             </div>
                         </div>
                         <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-80">
+                            <div class="button-g text-center margin-50">
                                 <button class="btn withe-l" type="submit" name="type" value="type">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                             </div>
                         </div>
@@ -90,7 +103,10 @@ if (isset($_POST['type'])) {
         <div class="col-2"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

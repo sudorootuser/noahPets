@@ -1,3 +1,10 @@
+<?php
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion(); ?>
+
 <body onload="redireccionar()">
     <div class="container-fluid condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
         <div class="row">
@@ -16,7 +23,6 @@
                 ?>
                 <form action="" method="post" class="forms-condiction-load">
                     <h2>Estamos diseñando el mejor plan para <span class="color-test-h2">'<?php echo $_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']; ?>'</span></h2>
-                    <br>
                     <p class="text-20">por favor espera...</p>
                     <div class="row">
                         <div class="col-4">

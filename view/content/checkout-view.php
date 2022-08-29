@@ -1,9 +1,18 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Condición para procesar la data del formulario
 if (isset($_POST['checkout'])) {
+    $sessionSmg = "";
 
     $nombres = $yo->limpiar_cadena($_POST['nombres']);
     $apellidos = $yo->limpiar_cadena($_POST['apellidos']);
@@ -13,8 +22,6 @@ if (isset($_POST['checkout'])) {
     $apart_casa = $yo->limpiar_cadena($_POST['apart/casa']);
     $apartamentro = $yo->limpiar_cadena($_POST['apartamentro']);
     $ciudad = $yo->limpiar_cadena($_POST['ciudad']);
-
-    $sessionSmg = "";
 
     if ($nombres == "" || $apellidos == "" || $password == "" || $passwd_2 == "" || $direccion == "" || $apart_casa == "" || $ciudad == "" || $apartamentro == "") {
 
@@ -33,10 +40,14 @@ if (isset($_POST['checkout'])) {
             'apartamento' => $apartamentro,
             'ciudad' => $ciudad
         ];
-        $_SESSION['userData'] = $userData;
-        header('Location:' . SERVERURL . 'to-pay/');
+        $_SESSION['userData'] = $userData; ?>
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'to-pay/' ?>");
+        </script>
+<?php
     }
 } ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -45,11 +56,10 @@ if (isset($_POST['checkout'])) {
             </div>
         </div>
         <div class="col-9">
-            <form action="" method="post" class="forms-checkout">
+            <form action="" method="post" class="forms-checkout" autocomplete="off">
                 <?php
                 if (isset($sessionSmg)) {
-                    if ($sessionSmg != '') {
-                ?>
+                    if ($sessionSmg != '') { ?>
                         <div class="alert alert-warning alert-dismissible fade show text-center alert-message mt-3" role="alert">
                             <?php echo $sessionSmg; ?>
                         </div>
@@ -91,7 +101,7 @@ if (isset($_POST['checkout'])) {
                         <input type="text" class="form-text-checkout" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apartamento / Casa" name="apart/casa" value="<?php echo $data = isset($apart_casa) ? $apart_casa : '' ?>">
                     </div>
                 </div>
-                <div class="row">                    
+                <div class="row">
                     <div class="col-6">
                         <input type="text" class="form-text-checkout" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ciudad" name="ciudad" value="<?php echo $data = isset($ciudad) ? $ciudad : '' ?>">
                     </div>
@@ -101,8 +111,9 @@ if (isset($_POST['checkout'])) {
                         $data = $dataPet->consultaSimple("SELECT * FROM departamento");
                         ?>
                         <select class="form-text-checkout-dp" name="apartamentro">
+                            <option value="" selected>Seleccione el departamento...</option>
                             <?php foreach ($data as $key => $row) { ?>
-                                <option value="<?php echo $row['idDepartamento'] ?>" selected><?php echo $row['departamento_nombre'] ?></option>
+                                <option value="<?php echo $row['idDepartamento'] ?>"><?php echo $row['departamento_nombre'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -126,6 +137,8 @@ if (isset($_POST['checkout'])) {
         <div class="col-1"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script type="text/javascript">
     function mostrarPassword() {
         var cambio = document.getElementById("password");
@@ -149,6 +162,7 @@ if (isset($_POST['checkout'])) {
         }
     }
 
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

@@ -2,12 +2,11 @@
 <?php
 session_unset();
 session_destroy();
-include_once './view/inc/NavBarInicial.php';
 ?>
 <div class="container-fluid home" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="contentImage">
 
-    </div>	
+    </div>
 
     <div class="row">
         <h2>Vamos a construir algo maravilloso y único</h2>

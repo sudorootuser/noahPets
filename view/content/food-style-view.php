@@ -1,8 +1,16 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Condición para procesar la data del formulario
 if (isset($_POST['food'])) {
 
     $food_style = $yo->limpiar_cadena($_POST['food-style']);
@@ -16,11 +24,15 @@ if (isset($_POST['food'])) {
 
         $_SESSION['food_style'][$_SESSION['id']] = [
             "food_style" => $food_style,
-        ];
-        header('Location:' . SERVERURL . 'food-type/');
+        ]; ?>
+
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'food-type/' ?>");
+        </script>
+<?php
     }
-}
-?>
+} ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -34,23 +46,22 @@ if (isset($_POST['food'])) {
                     <h2>Definiria el estilo de comer de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> como</h2>
                     <?php
                     if (isset($sessionSmg)) {
-                        if ($sessionSmg != '') {
-                    ?>
+                        if ($sessionSmg != '') { ?>
+
                             <div class="alert alert-warning alert-dismissible fade show text-center alert-message " role="alert">
                                 <?php echo $sessionSmg; ?>
                             </div>
                     <?php
                         }
-                    }
-                    ?>
+                    } ?>
                     <p class="text-20">Por favor seleccione la forma de comer de su mascota.</p>
                     <div class="row">
                         <div class="col">
 
                             <?php include_once './controller/registerData.php';
                             $dataPet = new registerData();
-                            $data = $dataPet->consultaSimple("SELECT * FROM estilocomida");
-                            ?>
+                            $data = $dataPet->consultaSimple("SELECT * FROM estilocomida"); ?>
+
                             <select class="form-select-condiction" name="food-style" value="<?php echo  $food_style = isset($_SESSION['food_style'][$_SESSION['id']]['food_style']) ? $_SESSION['food_style'][$_SESSION['id']]['food_style'] : ' ' ?>">
                                 <?php foreach ($data as $key => $row) { ?>
                                     <option value="<?php echo $row['idEstilo'] ?>" selected><?php echo $row['estilo_nombre'] ?></option>
@@ -77,7 +88,10 @@ if (isset($_POST['food'])) {
         <div class="col-2"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();

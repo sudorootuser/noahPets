@@ -1,7 +1,4 @@
-<?php
-$url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-
-?>
+<?php $url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="container">

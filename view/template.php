@@ -1,6 +1,4 @@
-<?php
-session_start(['name' => 'SPM']);
-?>
+<?php session_start(['name' => 'SPM']); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,6 +6,9 @@ session_start(['name' => 'SPM']);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./view/assets/img/icon_nav.png">
+    <link rel="shortcut icon" href="../view/assets/img/icon_nav.png">
+
     <title><?php echo COMPANY; ?></title>
 
     <!-- fonts -->
@@ -30,6 +31,7 @@ session_start(['name' => 'SPM']);
     $views = $IV->get_controller_views();
 
     if ($views == "home" || $views == "404") {
+
         require_once "./view/content/" . $views . "-view.php";
     } else { ?>
         <!-- Main Container -->
@@ -37,16 +39,14 @@ session_start(['name' => 'SPM']);
         <?php include './view/inc/NavBar.php'; ?>
 
         <!-- Content All pages -->
-        <?php
+    <?php
         include "./view/inc/Script.php";
-    
+
         include $views;
     } ?>
     <!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
-
-
 </body>
 
 </html>

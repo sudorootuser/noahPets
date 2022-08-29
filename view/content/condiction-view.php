@@ -1,25 +1,44 @@
 <?php
+// Conexión a la db y funciones
 include "./model/mainModel.php";
 
 $yo = new mainModel();
 
+// Se valida que las sessiones esten iniciadas
+include_once './controller/controllerOperaction.php';
+
+$lo_out = new controllerOperation();
+$lo_out->serrar_sesion();
+
+// Validación para mostrar la data si ya guardo en sesion
+if (isset($_SESSION['condiction'][$_SESSION['id']]['Type_Cond'])) {
+    $type_cond = $_SESSION['condiction'][$_SESSION['id']]['Type_Cond'];
+} else {
+    $type_cond = 'No aplica';
+}
+
+// Condición para procesar la data del formulario
 if (isset($_POST['condiction'])) {
 
-    $type_cond = $yo->limpiar_cadena($_POST['type']);
     $sessionSmg = "";
+
+    $type_cond = $yo->limpiar_cadena($_POST['type']);
 
     if ($type_cond == "") {
 
-        $sessionSmg = "Todos los campos son obligatorios";
+        $sessionSmg = "Debe seleccionar el Genero de tu mascota!";
     } else {
 
         $_SESSION['condiction'][$_SESSION['id']] = [
             "Type_Cond" => $type_cond
-        ];
-        header('Location:' . SERVERURL . 'esterilized/');
+        ]; ?>
+        <script>
+            window.location.replace("<?php echo SERVERURL . 'esterilized/' ?>");
+        </script>
+<?php
     }
-}
-?>
+} ?>
+
 <div class="container condiction" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
     <div class="row">
         <div class="col-3">
@@ -46,12 +65,11 @@ if (isset($_POST['condiction'])) {
                     <div class="row">
                         <div class="col">
                             <select class="form-select-condiction" name="type">
-                                <option value="" class="inpt_cond">Seleccione.</option>
-                                <option value="Macho" class="inpt_cond">Macho</option>
-                                <option value="Hembra">Hembra</option>
+                                <option value="">Seleccione...</option>
+                                <option value="Macho" <?php echo $Macho =  $type_cond == 'Macho' ? 'selected' : '' ?>>Macho</option>
+                                <option value="Hembra" <?php echo $Hembra =  $type_cond == 'Hembra' ? 'selected' : '' ?>>Hembra</option>
                             </select>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-6 cont-button-g">
@@ -72,7 +90,10 @@ if (isset($_POST['condiction'])) {
         <div class="col-2"></div>
     </div>
 </div>
+
+<!-- Inicio del escript -->
 <script>
+    // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
         $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();
