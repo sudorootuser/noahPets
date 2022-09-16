@@ -6,9 +6,6 @@ include "./controller/controllerOperaction.php";
 $yo = new mainModel();
 
 $mi = new controllerOperation();
-// $mi->caloriasDieta();die;
-
-// $mi->contexturFisica();
 
 $mi->contexturFisica();
 

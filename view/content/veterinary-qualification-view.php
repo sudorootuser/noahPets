@@ -47,7 +47,7 @@ if (isset($_POST['condiction'])) {
 
         $newFileName = md5(time() . $filename) . '.' . $fileExtension;
 
-        $allowedfileExtensions = array('pdf','png');
+        $allowedfileExtensions = array('pdf', 'jpg');
 
         // echo $extenFile;die;
         if (empty($extenFile)) {
@@ -57,7 +57,6 @@ if (isset($_POST['condiction'])) {
             } else {
                 $file_true = true;
             }
-
         } else {
 
             $fileExtension = $extenFile;
