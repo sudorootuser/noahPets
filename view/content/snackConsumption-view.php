@@ -52,46 +52,46 @@ if (isset($_POST['snack'])) {
             </div>
         </div>
         <div class="col-9">
-            <div>
-                <form action="" method="post" class="forms-condiction">
-                    <h2>Definiria el consumo de Snack de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> como</h2>
-                    <?php
-                    if (isset($sessionSmg)) {
-                        if ($sessionSmg != '') {
-                    ?>
-                            <div class="alert alert-warning alert-dismissible fade show text-center alert-message " role="alert">
-                                <?php echo $sessionSmg; ?>
-                            </div>
-                    <?php
-                        }
+            <form action="" method="post" class="forms-condiction">
+                <h2>Definiria el consumo de Snack de <span class="color-test-h2">'<?php echo ucfirst($_SESSION['mi_pet'][$_SESSION['id']]['Name_Pet']); ?>'</span> como</h2>
+                <?php
+                if (isset($sessionSmg)) {
+                    if ($sessionSmg != '') {
+                ?>
+                        <div class="alert alert-warning alert-dismissible fade show text-center alert-message " role="alert">
+                            <?php echo $sessionSmg; ?>
+                        </div>
+                <?php
                     }
-                    ?>
-                    <p class="text-20">Por favor seleccione el consumo de Snacks de su mascota.</p>
-                    <div class="row">
-                        <div class="col">
-                            <select class="form-select-condiction" name="type_snack">
-                                <option value="">Seleccione...</option>
-                                <option value="Bastante" <?php echo $snacks == 'Bastante' ? 'selected' : '' ?>>Bastante</option>
+                }
+                ?>
+                <p class="text-20">Por favor seleccione el consumo de Snacks de su mascota.</p>
+                <div class="row">
+                    <div class="col">
+                        <select class="form-select-condiction" name="type_snack">
+                            <option value="">Seleccione...</option>
+                            <option value="Bastante" <?php echo $snacks == 'Bastante' ? 'selected' : '' ?>>Bastante</option>
+                            <?php if ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] != 'Poco Activo' and $_SESSION['physical_build'][$_SESSION['id']]['physical_build'] != 'Ideal') { ?>
                                 <option value="Ocasional" <?php echo $snacks == 'Ocasional' ? 'selected' : '' ?>>Ocasional</option>
-                                <option value="Nunca" <?php echo $snacks == 'Nunca' ? 'selected' : '' ?>>Nunca</option>
-                            </select>
+                            <?php } ?>
+                            <option value="Nunca" <?php echo $snacks == 'Nunca' ? 'selected' : '' ?>>Nunca</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 cont-button-g">
+                        <div class="button-g text-center margin-80 regresar">
+                            <a class="btn" href="<?php echo SERVERURL; ?>physical-activity/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                        </div>
+                        <br><br>
+                    </div>
+                    <div class="col-6 cont-button-g">
+                        <div class="button-g text-center margin-80">
+                            <button class="btn withe-l" type="submit" name="snack" value="snack">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-80 regresar">
-                                <a class="btn" href="<?php echo SERVERURL; ?>physical-activity/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
-                            </div>
-                            <br><br>
-                        </div>
-                        <div class="col-6 cont-button-g">
-                            <div class="button-g text-center margin-80">
-                                <button class="btn withe-l" type="submit" name="snack" value="snack">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
         <div class="col-2"></div>
     </div>
