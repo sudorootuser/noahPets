@@ -33,7 +33,7 @@ CREATE TABLE `cliente` (
   PRIMARY KEY (`idCliente`),
   KEY `cliente_apartamentro` (`cliente_apartamentro`),
   CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`cliente_apartamentro`) REFERENCES `departamento` (`idDepartamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
 

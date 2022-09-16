@@ -660,12 +660,22 @@ if (isset($_POST['condiction'])) {
         <?php } ?>
         <br>
         <div class="row">
-            <div class="col-6 cont-button-g">
+           <?php  
+            if($_SESSION['medical_condition'][$_SESSION['id']]['cond_medica'] == 'Sí'){ ?>
+                <div class="col-6 cont-button-g">
                 <div class="button-g text-center margin-50 regresar">
-                    <a class="btn" href="<?php echo SERVERURL; ?>veterinary-qualification/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                    <a class="btn" href="<?php echo SERVERURL; ?>veterinary-qualification/"> Atras <img class='mi-yo-img' src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
                 </div>
                 <br>
             </div>
+            <?php }else{ ?>
+            <div class="col-6 cont-button-g">
+                <div class="button-g text-center margin-50 regresar">
+                    <a class="btn" href="<?php echo SERVERURL; ?>medical-condition/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                </div>
+                <br>
+            </div>
+            <?php }?>
             <div class="col-6 cont-button-g">
                 <div class="button-g text-center margin-50">
                     <button class="btn withe-l" type="submit" name="condiction" value="condiction">Siguiente <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></button>

@@ -10,13 +10,14 @@ include_once './controller/controllerOperaction.php';
 $lo_out = new controllerOperation();
 $lo_out->serrar_sesion();
 
-// Validación para mostrar la data si ya guardo en sesion
-if (isset($_SESSION['veterinary_qua'][$_SESSION['id']]['veterinary_check'])) {
+// Validación para mostrar la data si ya guardar en sesion
+if (!empty($_SESSION['veterinary_qua'][$_SESSION['id']]['veterinary_check'])) {
 
     $veterinary_check = $_SESSION['veterinary_qua'][$_SESSION['id']]['veterinary_check'];
     $examen_file = $_SESSION['veterinary_qua'][$_SESSION['id']]['newFileName'];
     $extenFile = $_SESSION['veterinary_qua'][$_SESSION['id']]['extenFile'];
 } else {
+
     $veterinary_check = '';
     $extenFile = '';
     $examen_file = '';
@@ -28,7 +29,6 @@ if (isset($_POST['condiction'])) {
     if (empty($examen_file)) {
         $examen_file = $_FILES['examen_file']['name'];
     }
-
     if (empty($_POST['check_option'])) {
 
         $sessionSmg = "Debe seleccionar al menos una condición medica!";
@@ -47,20 +47,24 @@ if (isset($_POST['condiction'])) {
 
         $newFileName = md5(time() . $filename) . '.' . $fileExtension;
 
-        $allowedfileExtensions = array('pdf');
+        $allowedfileExtensions = array('pdf','png');
 
+        // echo $extenFile;die;
         if (empty($extenFile)) {
+
             if (!in_array($fileExtension, $allowedfileExtensions)) {
-                $sessionSmg = "La extención del documento (<b>" . $filename . " <b>) no está permitida";
+                $sessionSmg = "La extención del documento (<b>" . $filename . " </b>) no está permitida, (Extenciones permitidas <b>PDF y JPG</b>)";
             } else {
                 $file_true = true;
             }
+
         } else {
+
             $fileExtension = $extenFile;
             $file_true = true;
         }
 
-        if ($file_true == true) {
+        if (!empty($file_true)) {
 
             $uploadFileDir = './view/assets/documents/';
             $dest_path = $uploadFileDir . $newFileName;
@@ -248,7 +252,7 @@ if (isset($_POST['condiction'])) {
 <script>
     // Función para cerrar la ventana de alerta
     window.setTimeout(function() {
-        $(".alert-message").fadeTo(500, 0).slideUp(500, function() {
+        $(".alert-message").fadeTo(600, 0).slideUp(600, function() {
             $(this).remove();
         });
     }, 3000);

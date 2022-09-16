@@ -9,6 +9,8 @@ $yo = new mainModel();
 include_once './controller/controllerOperaction.php';
 
 $lo_out = new controllerOperation();
+// $lo_out->peso
+
 $lo_out->serrar_sesion();
 
 

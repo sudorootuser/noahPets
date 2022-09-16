@@ -6,10 +6,11 @@ include "./controller/controllerOperaction.php";
 $yo = new mainModel();
 
 $mi = new controllerOperation();
+// $mi->caloriasDieta();die;
+
+// $mi->contexturFisica();
 
 $mi->contexturFisica();
-
-// $mi->caloriasDieta();die;
 
 // Condición para procesar la data del formulario
 if (isset($_POST['condiction'])) {
