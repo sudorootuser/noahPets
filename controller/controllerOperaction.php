@@ -58,6 +58,7 @@ class controllerOperation
 
             $val = controllerOperation::nivelActividad($factor);
 
+            
             $contexturaFisica = $val * $ideal;
 
             controllerOperation::consumoSnacks($contexturaFisica);
@@ -439,7 +440,6 @@ class controllerOperation
                 $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
                 $var = round($energi);
                 $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-                
             } else if ($dieta == 'BCarne y leguminosas') {
                 $Kalorias = 2140;
 
