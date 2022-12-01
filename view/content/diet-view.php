@@ -7,7 +7,6 @@ $yo = new mainModel();
 
 $mi = new controllerOperation();
 
-echo $mi->contexturFisica();die;
 $mi->contexturFisica();
 
 // Condición para procesar la data del formulario
