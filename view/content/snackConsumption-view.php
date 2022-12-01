@@ -13,6 +13,8 @@ $lo_out = new controllerOperation();
 
 $lo_out->serrar_sesion();
 
+$physical_activity = $_SESSION['physical_activity'][$_SESSION['id']]['physical_activity'];
+$physical_build = $_SESSION['physical_build'][$_SESSION['id']]['physical_build'];
 
 // Validación para mostrar la data si ya guardo en sesion
 if (isset($_SESSION['snacks'][$_SESSION['id']]['snacks'])) {
@@ -70,18 +72,39 @@ if (isset($_POST['snack'])) {
                     <div class="col">
                         <select class="form-select-condiction" name="type_snack">
                             <option value="">Seleccione...</option>
-                            <option value="Bastante" <?php echo $snacks == 'Bastante' ? 'selected' : '' ?>>Bastante</option>
-                            <?php if ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] != 'Poco Activo' and $_SESSION['physical_build'][$_SESSION['id']]['physical_build'] != 'Ideal') { ?>
-                                <option value="Ocasional" <?php echo $snacks == 'Ocasional' ? 'selected' : '' ?>>Ocasional</option>
-                            <?php } ?>
-                            <option value="Nunca" <?php echo $snacks == 'Nunca' ? 'selected' : '' ?>>Nunca</option>
+                            <?php if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') { ?>
+                                <!-- Validación para controlar que sea un perro -->
+                                <option value="Bastante" <?php echo $snacks == 'Bastante' ? 'selected' : '' ?>>Bastante</option>
+                                <?php if (!($physical_build == "Ideal" && $physical_activity == "Poco Activo")) { ?>
+                                    <option value="Ocasional" <?php echo $snacks == 'Ocasional' ? 'selected' : '' ?>>Ocasional</option>
+                                <?php } ?>
+                                <option value="Nunca" <?php echo $snacks == 'Nunca' ? 'selected' : '' ?>>Nunca</option>
+                                <?php } else {
+
+                                // Condición para validar que es un gato y el tipo de condicion fisica y condicionar el tipo de snack
+                                if ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] != 'Delgado') { ?>
+
+                                    <option value="Nunca" <?php echo $snacks == 'Nunca' ? 'selected' : '' ?>>Nunca</option>
+                                <?php } else { ?>
+
+                                    <option value="Bastante" <?php echo $snacks == 'Bastante' ? 'selected' : '' ?>>Bastante</option>
+                                    <?php if (!($physical_build == "Ideal" && $physical_activity == "Poco Activo")) { ?>
+                                        <option value="Ocasional" <?php echo $snacks == 'Ocasional' ? 'selected' : '' ?>>Ocasional</option>
+                                    <?php } ?>
+                                    <option value="Nunca" <?php echo $snacks == 'Nunca' ? 'selected' : '' ?>>Nunca</option>
+                            <?php  }
+                            } ?>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 cont-button-g">
                         <div class="button-g text-center margin-80 regresar">
-                            <a class="btn" href="<?php echo SERVERURL; ?>physical-activity/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                            <?php if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') { ?>
+                                <a class="btn" href="<?php echo SERVERURL; ?>physical-activity/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                            <?php } else { ?>
+                                <a class="btn" href="<?php echo SERVERURL; ?>physical-build/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                            <?php } ?>
                         </div>
                         <br><br>
                     </div>

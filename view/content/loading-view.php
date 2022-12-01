@@ -26,13 +26,13 @@ $lo_out->serrar_sesion(); ?>
                     <p class="text-20">por favor espera...</p>
                     <div class="row">
                         <div class="col-4">
-                            <img style="width: 100%;" src="../view/assets/img/load-1.png" alt="" srcset="">
+                            <img style="width: 85%;" src="../view/assets/img/load-1.png" alt="" srcset="">
                         </div>
                         <div class="col-4">
-                            <img style="width: 100%;" src="../view/assets/img/load-2.png" alt="" srcset="">
+                            <img style="width: 85%;" src="../view/assets/img/load-2.png" alt="" srcset="">
                         </div>
                         <div class="col-4">
-                            <img style="width: 100%;" src="../view/assets/img/load-3.png" alt="" srcset="">
+                            <img style="width: 85%;" src="../view/assets/img/load-3.png" alt="" srcset="">
                         </div>
                     </div>
                     <br><br>

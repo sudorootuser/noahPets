@@ -9,10 +9,8 @@ class mainModel
     protected static function conectar()
     {
 
-
         // Conexión al seridor
     //   $conexion =new PDO('mysql:host=localhost;dbname=vjgsyizffsuv_forge', 'vjgsyizffsuv_noah_client', 'PepiJona1122');
-
 
         // Conexión local
         $conexion = new PDO(SGBD, USER, PASS);
@@ -21,19 +19,6 @@ class mainModel
 
         return $conexion;
 
-        /* $conexion = new PDO(SGBD, USER, PASS);
-    
-        try {
-            print_r('Hola');
-        // $conexion->exec("SET CHARACTER SET utf8");
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        return $conexion;
-        
-        }catch(PDOException $e)
-        {
-            echo "La conexión ha fallado: " . $e->getMessage();
-        }*/
     }
     /*--------------- Función ejecutar consultas simples ---------------------*/
     protected static function ejecutar_cosulta_simple($consulta)

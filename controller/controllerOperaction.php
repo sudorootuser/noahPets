@@ -8,13 +8,29 @@ class controllerOperation
     {
         // Se condiciona los valores del peso dependiendo de la opción en tipo de mascota
         // se declara una constante la cual se usa para sacar el peso metabólico
-        $potencia = 0.75; //Se crea una constante de la potencia
 
+        if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') {
+
+            // condicion para contrtolar si la mascota es un perro
+            $potencia = 0.75; //Se crea una constante de la potencia
+
+        } else {
+            // condicion para contrtolar si la mascota es un gato
+
+            // condicion para validar que tipo de condición corporal es.
+            if ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] == "Delgado") {
+
+                $potencia = 0.67; //Se crea una constante de la potencia
+            } else {
+
+                $potencia = 0.4; //Se crea una constante de la potencia
+            }
+        }
         $peso = $_SESSION['wight_peso'][$_SESSION['id']]['wight_peso'];
 
         $resul_potencia = ($peso ** $potencia);
 
-        $pesoMetabolico = round($resul_potencia, 2, PHP_ROUND_HALF_UP);
+        $pesoMetabolico = $resul_potencia;
 
         return $_SESSION['pesoMetabolico'][$_SESSION['id']] = $pesoMetabolico;
     }
@@ -26,7 +42,6 @@ class controllerOperation
         // Se condiciona los valores del peso dependiendo de la opción en tipo de mascota
         $raza = $_SESSION['type_raze'][$_SESSION['id']]['type_raze'];
 
-
         if ($raza == '2') {
 
             $factor = 200;
@@ -35,18 +50,31 @@ class controllerOperation
             $factor = 105;
         } else {
 
-            $factor = 130;
+            // Condición para validar el factor correspondiente al tipo de mascota, si es gato o perro
+            if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] == 'Gato') {
+
+                if ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] == "Delgado") {
+                    $factor = 100;
+                } else {
+                    $factor = 130;
+                }
+            } else {
+                $factor = 130;
+            }
         }
 
         if ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] == 'Delgado') {
 
-            $delgado = 1.15;
+            if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] == 'Gato') {
 
-            $val = controllerOperation::nivelActividad($factor);
+                $contexturaFisica = $factor;
+            } else {
+                $delgado = 1.15;
 
-            $contexturaFisica = $val * $delgado;
+                $val = controllerOperation::nivelActividad($factor);
 
-
+                $contexturaFisica = $val * $delgado;
+            }
             controllerOperation::consumoSnacks($contexturaFisica);
 
             return  $_SESSION['contexturaFisica_otro'][$_SESSION['id']] = $contexturaFisica;
@@ -54,12 +82,16 @@ class controllerOperation
             exit();
         } elseif ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] == 'Ideal') {
 
-            $ideal = 1;
+            if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] == 'Gato') {
 
-            $val = controllerOperation::nivelActividad($factor);
+                $contexturaFisica = $factor;
+            } else {
+                $ideal = 1;
 
-            $contexturaFisica = $val * $ideal;
+                $val = controllerOperation::nivelActividad($factor);
 
+                $contexturaFisica = $val * $ideal;
+            }
             controllerOperation::consumoSnacks($contexturaFisica);
 
             return  $_SESSION['contexturaFisica_otro'][$_SESSION['id']] = $contexturaFisica;
@@ -67,12 +99,17 @@ class controllerOperation
             exit();
         } elseif ($_SESSION['physical_build'][$_SESSION['id']]['physical_build'] == 'Sobrepeso') {
 
-            $sobrepeso = 0.85;
+            if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] == 'Gato') {
 
-            $val = controllerOperation::nivelActividad($factor);
+                $contexturaFisica = $factor;
+            } else {
 
-            $contexturaFisica = $val * $sobrepeso;
+                $sobrepeso = 0.85;
 
+                $val = controllerOperation::nivelActividad($factor);
+
+                $contexturaFisica = $val * $sobrepeso;
+            }
 
             controllerOperation::consumoSnacks($contexturaFisica);
 
@@ -120,12 +157,13 @@ class controllerOperation
     // Funcion para obtener el consumo de snacks
     public function consumoSnacks($nivelSActividad)
     {
+        controllerOperation::pesoMetabolico();
 
         if ($_SESSION['snacks'][$_SESSION['id']]['snacks'] == 'Bastante') {
 
             $result_snacks = $nivelSActividad * 0.95;
 
-            $requirimiento_energia = ($result_snacks * $_SESSION['pesoMetabolico'][$_SESSION['id']]);
+            $requirimiento_energia = $result_snacks * $_SESSION['pesoMetabolico'][$_SESSION['id']];
 
             $_SESSION['requirimient_energi'][$_SESSION['id']] = ($requirimiento_energia);
 
@@ -167,253 +205,304 @@ class controllerOperation
         if ($_SESSION['medical_condition'][$_SESSION['id']]['cond_medica'] == 'Sí') {
             $dieta = $_SESSION['food_check'][$_SESSION['id']]['cuidado_check'];
 
-            if ($dieta == 'BCahorros cuidado digestivo') {
-                $Kalorias = 2219;
+            if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') {
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cachorros Digestiva";
+                if ($dieta == 'BCahorros cuidado digestivo') {
+                    $Kalorias = 2200;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cachorros Digestiva";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado Digestivo') {
-                $Kalorias = 2482;
+                    $energi = $_SESSION['requirimient_energi'][$_SESSION['id']];
+                    $var = $energi;
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Digestivo";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado Digestivo') {
+                    // Corrección de nombre a Senior
+                    $Kalorias = 2073;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Digestivo";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Alergia sabor carne') {
-                $Kalorias = 2470;
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Alergias";
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Alergia sabor carne') {
+                    $Kalorias = 2500;
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Alergias";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cálculos estruvita') {
-                $Kalorias = 2540;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Estruvita";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cálculos estruvita') {
+                    $Kalorias = 2510;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Estruvita";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cálculso oxalatos') {
-                $Kalorias = 2424;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Oxalatos";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cálculso oxalatos') {
+                    $Kalorias = 3200;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Oxalatos";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Control peso') {
-                $Kalorias = 2000;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Control de Peso";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Control peso') {
+                    $Kalorias = 1900;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Control de Peso";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado articular') {
-                $Kalorias = 2349;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "DDieta Natural Prescrita - Osteoarticular";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado articular') {
+                    $Kalorias = 2240;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "DDieta Natural Prescrita - Osteoarticular";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado cardiaco') {
-                $Kalorias = 2618;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Cardíaco";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado cardiaco') {
+                    $Kalorias = 2600;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Cardíaco";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado de la piel') {
-                $Kalorias = 2435;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado de Piel";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado de la piel') {
+                    $Kalorias = 2240;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado de Piel";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado hepática ') {
-                $Kalorias = 2421;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Hepático";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado hepática ') {
+                    $Kalorias = 2183;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Hepático";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado hepatica sabor carne') {
-                $Kalorias = 2555;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Hepático Res";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado hepatica sabor carne') {
+                    $Kalorias = 2500;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Hepático Res";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Cuidado renal') {
-                $Kalorias = 2565;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Renal";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado renal') {
+                    $Kalorias = 2300;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Renal";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Diabetes') {
-                $Kalorias = 1780;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Diabetes";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Diabetes') {
+                    $Kalorias = 1820;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Diabetes";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Estreñimiento') {
-                $Kalorias = 2360;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Estreñimiento";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Estreñimiento') {
+                    $Kalorias = 1974;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Estreñimiento";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Grain Free') {
-                $Kalorias = 1370;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Hepático Grain Free";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Grain Free') {
+                    $Kalorias = 1110;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Cuidado Hepático Grain Free";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Hemoparásitos') {
-                $Kalorias = 2308;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Hemoparásitos";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Hemoparásitos') {
+                    $Kalorias = 2120;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Hemoparásitos";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Hipoalergenica cerdo') {
-                $Kalorias = 2541;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Hipoalergénica";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Hipoalergenica cerdo') {
+                    $Kalorias = 2500;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Hipoalergénica";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Oncológico') {
-                $Kalorias = 2159;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Oncológica";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Oncológico') {
+                    $Kalorias = 1940;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Oncológica";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Pancreatitis') {
-                $Kalorias = 2374;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Pancreatitis";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Pancreatitis') {
+                    $Kalorias = 2133;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Pancreatitis";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Shunt') {
-                $Kalorias = 2089;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Shunt";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Shunt') {
+                    $Kalorias = 2090;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita - Shunt";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            }
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-            // Inicio de la dieta
-            $dieta = $_SESSION['food_check'][$_SESSION['id']]['ideal_check'];
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                }
 
-            if ($dieta == 'BCarne') {
-                $Kalorias = 2614;
+                // Inicio de la dieta
+                $dieta = $_SESSION['food_check'][$_SESSION['id']]['ideal_check'];
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Res";
-                // $_SESSION['consumoDiaDiet'] = round((($_SESSION['requirimient_energi'][$_SESSION['id']] /  $Kalorias) * 1000), 0);
+                if ($dieta == 'BCarne') {
+                    $Kalorias = 2500;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Res";
+                    // $_SESSION['consumoDiaDiet'] = ((($_SESSION['requirimient_energi'][$_SESSION['id']] /  $Kalorias) * 1000), 0);
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BCarne y leguminosas') {
-                $Kalorias = 2140;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada Light";
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BCarne y leguminosas') {
+                    $Kalorias = 2063;
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BCerdo') {
-                $Kalorias = 2599;
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada Light";
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Cerdo";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BCerdo') {
+                    $Kalorias = 2500;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Cerdo";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BMix') {
-                $Kalorias = 2381;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Res y Pollo";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BMix') {
+                    $Kalorias = 2262;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Res y Pollo";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BPollo') {
-                $Kalorias = 2440;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Pollo";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BPollo') {
+                    $Kalorias = 2221;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Pollo";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Senior ') {
-                $Kalorias = 2441;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Senior";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Senior ') {
+                    $Kalorias = 2154;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Senior";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BCahorros') {
-                $Kalorias = 2300;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Cachorros";
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BCahorros') {
+                    $Kalorias = 2300;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Cachorros";
 
-                $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                }
+            } else {
+                if ($dieta == 'Pollo_Res') {
+                    $Kalorias = 1472;
+
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Balanceada Gatos - Pollo y Res";
+
+                    $energi = $_SESSION['requirimient_energi'][$_SESSION['id']];
+                    $var = $energi;
+
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Pescado') {
+                    // Corrección de nombre a Senior
+                    $Kalorias = 1343;
+
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Balanceada Gatos - Pescado";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado Digestivo') {
+                    $Kalorias = 1406;
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita Gatos - Cuidado Digestivo";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Peso-Diabetes') {
+                    $Kalorias = 1486;
+
+                    $_SESSION['nombreFoodCuidado'] = " Dieta Natural Prescrita Gatos - Control de Peso-Diabetes";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Renal Pollo') {
+                    $Kalorias = 1214;
+
+                    $_SESSION['nombreFoodCuidado'] = "Dieta Natural Prescrita Gatos - Cuidado Renal Pollo";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+
+                    $_SESSION['consumoDiaPrein'] = round((($var /  $Kalorias) * 1.1) * 1000);
+                }
             }
 
             if (empty($_SESSION['consumoDiaPrein'])) {
@@ -430,53 +519,97 @@ class controllerOperation
 
             $dieta = $_SESSION['food_check'][$_SESSION['id']]['ideal_check'];
 
-            if ($dieta == 'BCarne') {
-                $Kalorias = 2614;
+            if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') {
 
-                $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Res";
+                if ($dieta == 'BCarne') {
+                    $Kalorias = 2500;
+
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada - Res";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BCarne y leguminosas') {
+                    $Kalorias = 2063;
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BCerdo') {
+                    $Kalorias = 2500;
 
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-                
-            } else if ($dieta == 'BCarne y leguminosas') {
-                $Kalorias = 2140;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BMix') {
+                    $Kalorias = 2262;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BCerdo') {
-                $Kalorias = 2599;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BPollo') {
+                    $Kalorias = 2221;
 
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Senior') {
+                    $Kalorias = 2154;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BMix') {
-                $Kalorias = 2381;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'BCahorros') {
+                    $Kalorias = 2300;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BPollo') {
-                $Kalorias = 2440;
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                }
+            } else {
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'Senior') {
-                $Kalorias = 2441;
+                if ($dieta == 'Pollo_Res') {
+                    $Kalorias = 1472;
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
-            } else if ($dieta == 'BCahorros') {
-                $Kalorias = 2300;
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada Gatos - Pollo y Res";
 
-                $energi = round($_SESSION['requirimient_energi'][$_SESSION['id']], 2, PHP_ROUND_HALF_UP);
-                $var = round($energi);
-                $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Pescado') {
+                    $Kalorias = 1343;
+
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Balanceada Gatos - Pescado";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Cuidado Digestivo') {
+                    $Kalorias = 1406;
+
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Prescrita Gatos - Cuidado Digestivo";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Peso-Diabetes') {
+                    $Kalorias = 1486;
+
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Prescrita Gatos - Control de Peso-Diabetes";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                } else if ($dieta == 'Renal Pollo') {
+                    $Kalorias = 1214;
+
+                    $_SESSION['nombreFoodCheck'] = "Dieta Natural Prescrita Gatos - Cuidado Renal Pollo";
+
+                    $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
+                    $var = ($energi);
+                    $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
+                }
             }
 
             return $_SESSION['consumoDía'] =  $consumoDiaDiet;

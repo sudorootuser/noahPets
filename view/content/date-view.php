@@ -73,7 +73,11 @@ if (isset($_POST['date'])) {
                     <div class="row">
                         <div class="col-6 cont-button-g">
                             <div class="button-g text-center margin-50 regresar">
-                                <a class="btn" href="<?php echo SERVERURL; ?>raze/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                                <?php if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') { ?>
+                                    <a class="btn" href="<?php echo SERVERURL; ?>raze/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                                <?php } else { ?>
+                                    <a class="btn" href="<?php echo SERVERURL; ?>esterilized/"> Atras <img class='mi-yo-img' ; src="<?php echo SERVERURL; ?>view/assets/img/icons-pets.png"></a>
+                                <?php   } ?>
                             </div>
                             <br><br>
                         </div>

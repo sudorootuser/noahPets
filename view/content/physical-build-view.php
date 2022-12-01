@@ -31,12 +31,23 @@ if (isset($_POST['build'])) {
 
         $_SESSION['physical_build'][$_SESSION['id']] = [
             "physical_build" => $physical_build
-        ]; ?>
+        ];
 
-        <script>
-            window.location.replace("<?php echo SERVERURL . 'physical-activity/' ?>");
-        </script>
-<?php
+        if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] == 'Gato') {
+
+            $_SESSION['physical_activity'][$_SESSION['id']] = [
+                "physical_activity" => 'No aplica'
+            ]; ?>
+            <script>
+                window.location.replace("<?php echo SERVERURL . 'snackConsumption/' ?>");
+            </script>
+
+        <?php   } else { ?>
+
+            <script>
+                window.location.replace("<?php echo SERVERURL . 'physical-activity/' ?>");
+            </script>
+<?php  }
     }
 } ?>
 
@@ -66,7 +77,7 @@ if (isset($_POST['build'])) {
                     <br>
                     <div class="row text-center" style="align-items: center; align-content: center; text-align: center;">
                         <!-- Delgado -->
-                        <div class="col-sm-4">
+                        <div class="col-sm">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div id="delgado_og" class="col-12" <?php echo $physical_build == 'Delgado' ? 'style="display:block;"' : 'style="display:none;"' ?>>
@@ -94,34 +105,36 @@ if (isset($_POST['build'])) {
                             </div>
                         </div>
                         <!-- Ideal -->
-                        <div class="col-sm-4">
-                            <div class="row">
-                                <div id="ideal_og" class="col-12" <?php echo $physical_build == 'Ideal' ? 'style="display:block;"' : 'style="display:none;"' ?>>
-                                    <img class="img-contextura" src="../view/assets/img/delgado_orange.png" alt="" srcset="">
-                                </div>
-                                <div id="ideal_wt" class="col-12" <?php echo $physical_build == 'Ideal' ? 'style="display:none;"' : 'style="display:block;"' ?>>
-                                    <img class="img-contextura" src="../view/assets/img/delgado_white.png" alt="" srcset="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <div id="delgado_wt" style="display:block;margin: 12px">
-                                        <span class="text-contextura-label">Ideal</span>
+                        <?php if ($_SESSION['mi_pet'][$_SESSION['id']]['Pet_Type'] != 'Gato') { ?>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div id="ideal_og" class="col-12" <?php echo $physical_build == 'Ideal' ? 'style="display:block;"' : 'style="display:none;"' ?>>
+                                        <img class="img-contextura" src="../view/assets/img/delgado_orange.png" alt="" srcset="">
+                                    </div>
+                                    <div id="ideal_wt" class="col-12" <?php echo $physical_build == 'Ideal' ? 'style="display:none;"' : 'style="display:block;"' ?>>
+                                        <img class="img-contextura" src="../view/assets/img/delgado_white.png" alt="" srcset="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-1"></div>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Ideal" <?php echo $physical_build == 'Ideal' ? 'checked' : '' ?>>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <div id="delgado_wt" style="display:block;margin: 12px">
+                                            <span class="text-contextura-label">Ideal</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-1"></div>
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="physical-build" id="physical-build1" value="Ideal" <?php echo $physical_build == 'Ideal' ? 'checked' : '' ?>>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <!-- Sobrepeso -->
-                        <div class="col-sm-4">
+                        <div class="col-sm">
                             <div class="row">
                                 <div id="peso_wt" class="col-12" <?php echo $physical_build == 'Sobrepeso' ? 'style="display:none;"' : 'style="display:block;"' ?>>
                                     <img class="img-contextura" src="../view/assets/img/sobrepeso_white.png" alt="" style="cursor:pointer;">
