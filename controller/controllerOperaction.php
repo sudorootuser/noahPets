@@ -537,8 +537,7 @@ class controllerOperation
                     $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
                 } else if ($dieta == 'BCerdo') {
                     $Kalorias = 2500;
-
-
+                    
                     $energi = ($_SESSION['requirimient_energi'][$_SESSION['id']]);
                     $var = ($energi);
                     $consumoDiaDiet = round((($var /  $Kalorias) * 1.1) * 1000);
